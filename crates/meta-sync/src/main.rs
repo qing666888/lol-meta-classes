@@ -57,6 +57,16 @@ async fn find_lol_game_client_directories(
     });
 
     for version_item in lol_contents.items.iter().rev() {
+        let version = Path::new(&version_item.name)
+            .file_stem()
+            .unwrap()
+            .to_str()
+            .unwrap();
+
+        if !should_process_version(version) {
+            break;
+        }
+
         process_version(version_item).await?;
     }
 
@@ -152,4 +162,21 @@ fn execute_dumper(input_path: impl AsRef<Path>, output_path: impl AsRef<Path>) -
     println!("Output: {}", String::from_utf8_lossy(&output.stdout));
 
     Ok(())
+}
+
+/// Checks if a version should be processed based on the legacy cutoff
+/// Returns false if the version is at or below the cutoff (13.14.5227601)
+fn should_process_version(version: &str) -> bool {
+    let cutoff_version = semver::Version::parse("13.14.5227601").unwrap();
+    let current_version = semver::Version::parse(version).unwrap();
+
+    if current_version <= cutoff_version {
+        println!(
+            "Stopping at version {} - reached legacy version cutoff (<={})",
+            version, cutoff_version
+        );
+        return false;
+    }
+
+    true
 }
