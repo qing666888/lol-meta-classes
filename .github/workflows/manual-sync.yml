@@ -18,6 +18,11 @@ on:
           - 'KR'
           - 'ALL'
 
+env:
+  CARGO_TERM_COLOR: always
+  # Ensure warnings don't cause build failures
+  RUSTFLAGS: "-A warnings"
+
 jobs:
   manual-sync:
     runs-on: ubuntu-latest
