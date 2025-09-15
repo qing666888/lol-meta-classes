@@ -93,16 +93,16 @@ pub enum ContainerStorage {
 
 #[repr(C)]
 pub struct ContainerIVtable {
-    pub destructor: extern "thiscall" fn(this: &ContainerI),
-    pub deleter: extern "thiscall" fn(this: &ContainerI),
-    pub get_size: extern "thiscall" fn(this: &ContainerI, instance: usize) -> usize,
-    pub set_size: extern "thiscall" fn(this: &ContainerI, instance: usize, size: usize),
-    pub get_mut: extern "thiscall" fn(this: &ContainerI, instance: usize, index: usize) -> usize,
-    pub get_const: extern "thiscall" fn(this: &ContainerI, instance: usize, index: usize) -> usize,
-    pub clear: extern "thiscall" fn(this: &ContainerI, instance: usize),
-    pub push: extern "thiscall" fn(this: &ContainerI, instance: usize, value: usize) -> usize,
-    pub pop: extern "thiscall" fn(this: &ContainerI, instance: usize),
-    pub get_fixed_size: extern "thiscall" fn(this: &ContainerI) -> i32,
+    pub destructor: extern "C" fn(this: &ContainerI),
+    pub deleter: extern "C" fn(this: &ContainerI),
+    pub get_size: extern "C" fn(this: &ContainerI, instance: usize) -> usize,
+    pub set_size: extern "C" fn(this: &ContainerI, instance: usize, size: usize),
+    pub get_mut: extern "C" fn(this: &ContainerI, instance: usize, index: usize) -> usize,
+    pub get_const: extern "C" fn(this: &ContainerI, instance: usize, index: usize) -> usize,
+    pub clear: extern "C" fn(this: &ContainerI, instance: usize),
+    pub push: extern "C" fn(this: &ContainerI, instance: usize, value: usize) -> usize,
+    pub pop: extern "C" fn(this: &ContainerI, instance: usize),
+    pub get_fixed_size: extern "C" fn(this: &ContainerI) -> i32,
 }
 
 #[repr(C)]
@@ -157,12 +157,12 @@ pub enum MapStorage {
 
 #[repr(C)]
 pub struct MapConstIterIVtable {
-    pub destructor: extern "thiscall" fn(this: &mut MapConstIterI),
-    pub deleter: extern "thiscall" fn(this: &MapConstIterI),
-    pub has_next: extern "thiscall" fn(this: &MapConstIterI) -> bool,
-    pub next: extern "thiscall" fn(this: &mut MapConstIterI) -> usize,
-    pub get_key: extern "thiscall" fn(this: &MapConstIterI) -> usize,
-    pub get_value: extern "thiscall" fn(this: &MapConstIterI) -> usize,
+    pub destructor: extern "C" fn(this: &mut MapConstIterI),
+    pub deleter: extern "C" fn(this: &MapConstIterI),
+    pub has_next: extern "C" fn(this: &MapConstIterI) -> bool,
+    pub next: extern "C" fn(this: &mut MapConstIterI) -> usize,
+    pub get_key: extern "C" fn(this: &MapConstIterI) -> usize,
+    pub get_value: extern "C" fn(this: &MapConstIterI) -> usize,
 }
 
 #[repr(C)]
@@ -196,19 +196,19 @@ impl<'a> Iterator for MapConstIter<'a> {
 
 #[repr(C)]
 pub struct MapIVtable {
-    pub destructor: extern "thiscall" fn(this: &MapI),
-    pub deleter: extern "thiscall" fn(this: &MapI),
-    pub get_size: extern "thiscall" fn(this: &MapI, instance: usize) -> usize,
-    pub reserve_size: extern "thiscall" fn(this: &MapI, instance: usize, size: usize),
-    pub finalize: extern "thiscall" fn(this: &MapI, instance: usize),
-    pub find: extern "thiscall" fn(this: &MapI, instance: usize, key: usize) -> usize,
-    pub clear: extern "thiscall" fn(this: &MapI, instance: usize),
-    pub create: extern "thiscall" fn(this: &MapI, instance: usize, key: usize) -> usize,
-    pub inplace_ctor: extern "thiscall" fn(this: &MapI, instance: usize, key: usize) -> usize,
-    pub inplace_dtor: extern "thiscall" fn(this: &MapI, instance: usize, key: usize),
-    pub erase: extern "thiscall" fn(this: &MapI, instance: usize, key: usize) -> usize,
-    pub iter_mut: extern "thiscall" fn(this: &MapI, instance: usize) -> usize,
-    pub iter_const: extern "thiscall" fn(this: &MapI, instance: usize) -> &mut MapConstIterI,
+    pub destructor: extern "C" fn(this: &MapI),
+    pub deleter: extern "C" fn(this: &MapI),
+    pub get_size: extern "C" fn(this: &MapI, instance: usize) -> usize,
+    pub reserve_size: extern "C" fn(this: &MapI, instance: usize, size: usize),
+    pub finalize: extern "C" fn(this: &MapI, instance: usize),
+    pub find: extern "C" fn(this: &MapI, instance: usize, key: usize) -> usize,
+    pub clear: extern "C" fn(this: &MapI, instance: usize),
+    pub create: extern "C" fn(this: &MapI, instance: usize, key: usize) -> usize,
+    pub inplace_ctor: extern "C" fn(this: &MapI, instance: usize, key: usize) -> usize,
+    pub inplace_dtor: extern "C" fn(this: &MapI, instance: usize, key: usize),
+    pub erase: extern "C" fn(this: &MapI, instance: usize, key: usize) -> usize,
+    pub iter_mut: extern "C" fn(this: &MapI, instance: usize) -> usize,
+    pub iter_const: extern "C" fn(this: &MapI, instance: usize) -> &mut MapConstIterI,
 }
 
 #[repr(C)]
