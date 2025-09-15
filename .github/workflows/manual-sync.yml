@@ -31,6 +31,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Install system dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y libc++1 build-essential cmake
+
     - name: Setup Rust
       uses: actions-rust-lang/setup-rust-toolchain@v1
       with:
