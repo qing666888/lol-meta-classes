@@ -1,0 +1,145 @@
+name: Sync LoL Meta Classes
+
+on:
+  # Trigger when riot-manifests repository updates
+  repository_dispatch:
+    types: [manifest-updated]
+  
+  # Manual trigger for testing
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Force run even if no changes detected'
+        required: false
+        default: 'false'
+
+  # Fallback: scheduled run every 6 hours
+  schedule:
+    - cron: '0 */6 * * *'
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        toolchain: stable
+        target: x86_64-unknown-linux-gnu
+
+    - name: Cache cargo dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-cargo-
+
+    - name: Build dumper
+      run: |
+        cargo build --release --bin dumper --target x86_64-unknown-linux-gnu
+
+    - name: Run meta-sync
+      run: |
+        cargo run --release --bin meta-sync
+      env:
+        # Add any environment variables needed by your sync script
+        RUST_LOG: info
+
+    - name: Check for changes
+      id: changes
+      run: |
+        if git diff --quiet dumps/; then
+          echo "changes=false" >> $GITHUB_OUTPUT
+          echo "No changes detected in dumps/"
+        else
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "Changes detected in dumps/"
+          git diff --name-status dumps/
+        fi
+
+    - name: Commit and push changes
+      if: steps.changes.outputs.changes == 'true' || github.event.inputs.force_run == 'true'
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add dumps/
+        git add temp/ || true  # Add temp files if they should be committed
+        
+        # Create commit message with version info
+        if [ -d "dumps" ] && [ "$(ls -A dumps/)" ]; then
+          LATEST_VERSION=$(ls dumps/ | grep -E '^\d+\.\d+\.\d+\.json$' | sort -V | tail -1 | sed 's/\.json$//')
+          git commit -m "chore(dumper): ${LATEST_VERSION}" || exit 0
+        else
+          git commit -m "Update LoL meta classes" || exit 0
+        fi
+        
+        git push
+
+    - name: Create release on major version change
+      if: steps.changes.outputs.changes == 'true'
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          // Get latest version from dumps directory
+          try {
+            const dumpsDir = 'dumps';
+            const files = fs.readdirSync(dumpsDir);
+            const versionFiles = files.filter(f => /^\d+\.\d+\.\d+\.json$/.test(f));
+            
+            if (versionFiles.length > 0) {
+              const latestVersion = versionFiles.sort((a, b) => {
+                const versionA = a.replace('.json', '');
+                const versionB = b.replace('.json', '');
+                return versionA.localeCompare(versionB, undefined, { numeric: true });
+              }).pop();
+              
+              const version = latestVersion.replace('.json', '');
+              const [major, minor, patch] = version.split('.').map(Number);
+              
+              // Check if this is a new major version (you can adjust this logic)
+              const previousVersions = versionFiles.map(f => f.replace('.json', ''));
+              const isNewMajor = !previousVersions.some(v => {
+                const [prevMajor] = v.split('.').map(Number);
+                return prevMajor === major && v !== version;
+              });
+              
+              if (isNewMajor) {
+                await github.rest.repos.createRelease({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  tag_name: `v${version}`,
+                  name: `LoL Meta Classes v${version}`,
+                  body: `Updated meta classes for League of Legends version ${version}`,
+                  draft: false,
+                  prerelease: false
+                });
+                
+                console.log(`Created release for version ${version}`);
+              }
+            }
+          } catch (error) {
+            console.log('Could not create release:', error.message);
+          }
+
+    - name: Upload artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: lol-meta-dumps-${{ github.run_id }}
+        path: |
+          dumps/
+        retention-days: 30

@@ -1,0 +1,65 @@
+name: Manual LoL Meta Sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_filter:
+        description: 'Specific version to process (optional, e.g., 15.19.0)'
+        required: false
+        type: string
+      region:
+        description: 'Region to sync'
+        required: false
+        type: choice
+        default: 'EUW1'
+        options:
+          - 'EUW1'
+          - 'NA1'
+          - 'KR'
+          - 'ALL'
+
+jobs:
+  manual-sync:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+      with:
+        toolchain: stable
+        target: x86_64-unknown-linux-gnu
+
+    - name: Cache cargo dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cargo/registry
+          ~/.cargo/git
+          target
+        key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+    - name: Build dumper
+      run: |
+        cargo build --release --bin dumper --target x86_64-unknown-linux-gnu
+
+    - name: Run manual sync
+      run: |
+        echo "Running manual sync for region: ${{ github.event.inputs.region }}"
+        if [ "${{ github.event.inputs.version_filter }}" != "" ]; then
+          echo "Filtering for version: ${{ github.event.inputs.version_filter }}"
+        fi
+        cargo run --release --bin meta-sync
+      env:
+        RUST_LOG: info
+        SYNC_REGION: ${{ github.event.inputs.region }}
+        VERSION_FILTER: ${{ github.event.inputs.version_filter }}
+
+    - name: Upload results
+      uses: actions/upload-artifact@v4
+      with:
+        name: manual-sync-results-${{ github.run_id }}
+        path: |
+          dumps/
