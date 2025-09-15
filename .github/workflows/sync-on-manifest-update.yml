@@ -19,8 +19,8 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
-  # Ensure warnings don't cause build failures
-  RUSTFLAGS: "-A warnings"
+  # Ensure warnings don't cause build failures and include export-dynamic for dumper
+  RUSTFLAGS: "-A warnings -C link-args=-Wl,-export-dynamic"
 
 jobs:
   sync:
