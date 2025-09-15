@@ -6,7 +6,6 @@ use std::{
 
 use eyre::{Context, Result};
 use octocrab::Octocrab;
-use tempfile::NamedTempFile;
 
 const CDN_URL: &str = "http://lol.secure.dyn.riotcdn.net/channels/public/bundles";
 
@@ -70,6 +69,17 @@ async fn process_version(version_item: &octocrab::models::repos::Content) -> Res
         .unwrap()
         .to_str()
         .unwrap();
+
+    // Check if version dump already exists
+    let version_dump_path = Path::new("dumps").join(format!("{}.json", version));
+    if version_dump_path.exists() {
+        println!(
+            "Skipping version {} - dump already exists at {}",
+            version,
+            version_dump_path.display()
+        );
+        return Ok(());
+    }
 
     println!("Processing version: {}", version);
 
