@@ -97,13 +97,24 @@ jobs:
         git add dumps/
         git add temp/ || true  # Add temp files if they should be committed
         
-        # Create commit message with version info
-        if [ -d "dumps" ] && [ "$(ls -A dumps/)" ]; then
-          LATEST_VERSION=$(ls dumps/ | grep -E '^\d+\.\d+\.\d+\.json$' | sort -V | tail -1 | sed 's/\.json$//')
-          git commit -m "chore(dumper): ${LATEST_VERSION}" || exit 0
+        # Create commit message with version info from actually changed files
+        CHANGED_FILES=$( (git diff --name-only -- dumps/; git ls-files --others --exclude-standard -- dumps/) | sort -u )
+        LATEST_FROM_CHANGES=$(echo "$CHANGED_FILES" \
+          | grep -E '^dumps/[0-9]+\.[0-9]+\.[0-9]+\.json$' \
+          | sed -E 's#^dumps/([0-9]+\.[0-9]+\.[0-9]+)\.json$#\1#' \
+          | sort -V \
+          | tail -1)
+
+        if [ -n "$LATEST_FROM_CHANGES" ]; then
+          COMMIT_MSG="chore(dumper): ${LATEST_FROM_CHANGES}"
+        elif [ -d "dumps" ] && [ "$(ls -A dumps/)" ]; then
+          LATEST_VERSION=$(ls dumps/ | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.json$' | sort -V | tail -1 | sed 's/\.json$//')
+          COMMIT_MSG="chore(dumper): ${LATEST_VERSION}"
         else
-          git commit -m "Update LoL meta classes" || exit 0
+          COMMIT_MSG="Update LoL meta classes"
         fi
+
+        git commit -m "$COMMIT_MSG" || exit 0
         
         git push
 
