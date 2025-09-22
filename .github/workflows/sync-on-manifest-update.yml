@@ -25,10 +25,15 @@ env:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        persist-credentials: true
 
     - name: Install system dependencies
       run: |
@@ -66,13 +71,22 @@ jobs:
     - name: Check for changes
       id: changes
       run: |
-        if git diff --quiet dumps/; then
+        # First detect tracked file changes
+        if ! git diff --quiet -- dumps/; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "Tracked changes detected in dumps/"
+          git diff --name-status -- dumps/
+          exit 0
+        fi
+
+        # Also detect untracked files (new dumps not yet added to Git)
+        if [ -n "$(git ls-files --others --exclude-standard -- dumps/)" ]; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "Untracked files detected in dumps/"
+          git ls-files --others --exclude-standard -- dumps/
+        else
           echo "changes=false" >> $GITHUB_OUTPUT
           echo "No changes detected in dumps/"
-        else
-          echo "changes=true" >> $GITHUB_OUTPUT
-          echo "Changes detected in dumps/"
-          git diff --name-status dumps/
         fi
 
     - name: Commit and push changes
