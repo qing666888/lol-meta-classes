@@ -118,6 +118,47 @@ jobs:
         
         git push
 
+    - name: Regenerate db/database.py from latest dump
+      if: steps.changes.outputs.changes == 'true' || github.event.inputs.force_run == 'true'
+      run: |
+        set -e
+        if [ ! -d "dumps" ] || [ -z "$(ls -1 dumps/*.json 2>/dev/null || true)" ]; then
+          echo "No dumps found, skipping database regeneration."
+          exit 0
+        fi
+
+        LATEST_DUMP=$(ls -1 dumps/*.json | sort -V | tail -1)
+        echo "Using latest dump: ${LATEST_DUMP}"
+
+        # Ensure db directory exists
+        mkdir -p db
+
+        # Generate/update the database file
+        python3 scripts/db_import.py db/database.py "${LATEST_DUMP}"
+
+    - name: Commit and push database update
+      if: steps.changes.outputs.changes == 'true' || github.event.inputs.force_run == 'true'
+      run: |
+        set -e
+        if git diff --quiet -- db/database.py; then
+          echo "No changes to db/database.py"
+          exit 0
+        fi
+
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add db/database.py
+
+        # Use latest dump version in commit message if available
+        if [ -d "dumps" ] && [ -n "$(ls -1 dumps/*.json 2>/dev/null || true)" ]; then
+          VERSION=$(ls -1 dumps/*.json | sort -V | tail -1 | xargs -n1 basename | sed 's/\.json$//')
+          git commit -m "chore(db): update database.py from ${VERSION}"
+        else
+          git commit -m "chore(db): update database.py"
+        fi
+
+        git push
+
     - name: Create release on major version change
       if: steps.changes.outputs.changes == 'true'
       uses: actions/github-script@v7
