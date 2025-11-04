@@ -7,8 +7,8 @@ import glob
 
 # A python class with mandatory () for base classes
 RE_CLASS = re.compile(r'^class\s+(\w+)\s*\(((?:\s*\w+\s*,?\s*)*)\):$')
-# A python field with mandatory () for flattened typedef
-RE_FIELD = re.compile(r'^    (\w+)\s*:\s*\(((?:\s*\w+\s*,?\s*)*)\)$')
+# A python field with mandatory () for flattened typedef, optional default after '='
+RE_FIELD = re.compile(r'^    (\w+)\s*:\s*\(((?:\s*\w+\s*,?\s*)*)\)\s*(?:=\s*(.+))?$')
 
 def rehex_fnv1a(s):
     if s.startswith('0x'): return hex(int(s, 16))
@@ -21,6 +21,12 @@ def read_hashes(filename):
     with open(filename, "r") as inf:
         lines = [ x.rstrip().split(' ') for x in inf.readlines() ]
         return { hex(int(h, 16)) : v for h, v in lines }
+
+def _canon_json(value_str):
+    if value_str is None:
+        return None
+    obj = json.loads(value_str)
+    return json.dumps(obj, separators=(",", ":"), sort_keys=True)
 
 def read_database(filename):
     if not os.path.exists(filename):
@@ -37,17 +43,22 @@ def read_database(filename):
             if m := RE_CLASS.match(line):
                 kname = rehex_fnv1a(m.group(1))
                 bases = set(rehex_fnv1a(b.strip()) for b in m.group(2).split(',') if b.strip())
-                fields = set()
+                fields = {}
                 if kname in db: raise ValueError(f"Duplicate class: {line}")
                 db[kname] = { 'bases': bases, 'fields': fields }
                 continue
             if m := RE_FIELD.match(line):
                 fname = rehex_fnv1a(m.group(1))
                 ft, kt, vt, kh = tuple(t.strip() for t in m.group(2).split(','))
-                field = (fname, (ft, kt, vt, rehex_fnv1a(kh)))
+                default_str = _canon_json(m.group(3))
+                key = (fname, (ft, kt, vt, rehex_fnv1a(kh)))
                 if fields == None: raise ValueError(f"Stray field: {line}")
-                if field in fields: raise ValueError(f"Duplicate field: {line}")
-                fields.add(field)
+                if key in fields:
+                    # Prefer the most recent explicit default seen in file order
+                    if default_str is not None:
+                        fields[key] = default_str
+                else:
+                    fields[key] = default_str
                 continue
             raise ValueError(f"Failed to parse: {line}")
         return db
@@ -59,18 +70,21 @@ def write_databse(filename, db):
         return h if not h in h_fields else h_fields[h]
     with open(filename, 'w') as outf:
         outf.write("#!python\n")
-        for kname in sorted(db.keys()):
+        for kname in sorted(db.keys(), key=lambda k: (h2type(k), k)):
             klass = db[kname]
             outf.write(f"class {h2type(kname)}({', '.join(h2type(b) for b in sorted(klass['bases']))}):\n")
-            for fname, (ft, kt, vt, kh) in sorted(klass['fields']):
-                outf.write(f"    {h2field(fname)}: ({ft}, {kt}, {vt}, {h2type(kh)})\n")
+            for (fname, (ft, kt, vt, kh)), default_str in sorted(klass['fields'].items(), key=lambda item: (item[0][0], item[0][1])):
+                if default_str is None:
+                    outf.write(f"    {h2field(fname)}: ({ft}, {kt}, {vt}, {h2type(kh)})\n")
+                else:
+                    outf.write(f"    {h2field(fname)}: ({ft}, {kt}, {vt}, {h2type(kh)}) = {default_str}\n")
             outf.write(f"    pass\n")
             outf.write('\n')
 
 def import_database(db, meta):
     for kname, klass in meta['classes'].items():
         kname = rehex_fnv1a(kname)
-        if not kname in db: db[kname] = { 'bases': set(), 'fields': set() }
+        if not kname in db: db[kname] = { 'bases': set(), 'fields': {} }
         bases = db[kname]['bases']
         fields = db[kname]['fields']
         if klass["base"]: bases.add(rehex_fnv1a(klass["base"]))
@@ -91,7 +105,23 @@ def import_database(db, meta):
                 ftype.append(rehex_fnv1a(field['other_class']))
             else:
                 ftype.append(hex(0))
-            fields.add((rehex_fnv1a(fname), tuple(ftype)))
+            key = (rehex_fnv1a(fname), tuple(ftype))
+            # defaults may be null (explicit) or absent; only include when present in map
+            defaults_map = klass.get('defaults')
+            default_present = isinstance(defaults_map, dict) and fname in defaults_map
+            default_str = None
+            if default_present:
+                default_str = json.dumps(defaults_map[fname], separators=(",", ":"), sort_keys=True)
+            if key in fields:
+                existing = fields[key]
+                if existing is None and default_str is not None:
+                    fields[key] = default_str
+                elif existing is not None and default_str is not None and existing != default_str:
+                    # Prefer later dumps (caller should iterate files in ascending order)
+                    fields[key] = default_str
+                # If default_str is None, keep existing (whether None or not)
+            else:
+                fields[key] = default_str
 
 def read_meta(filename):
     def convert_type(t, is_old):
@@ -205,7 +235,7 @@ if __name__ == '__main__':
     h_types = read_hashes(f"hashes/hashes.bintypes.txt")
     database = read_database(sys.argv[1])
     for arg in sys.argv[2:]:
-        for filename in glob.iglob(arg):
+        for filename in sorted(glob.iglob(arg)):
             meta = read_meta(filename)
             import_database(database, meta)
     write_databse(sys.argv[1], database)

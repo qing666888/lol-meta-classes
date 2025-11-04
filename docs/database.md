@@ -18,7 +18,7 @@
     - `<TypeName>` is the resolved type name if known, otherwise the raw hex hash (e.g. `0xe75aad84`).
     - Base list contains the resolved primary base and any secondary bases (if any). - inheritance
   - Field lines (indented 4 spaces):
-    - `FieldName: (ft, kt, vt, kh)`
+    - `FieldName: (ft, kt, vt, kh)` optionally followed by ` = <json-default>`
       - **FieldName**: resolved field name if known, otherwise the raw hex hash.
       - **ft** (field type): one of scalar or composite types, e.g. `Bool`, `I32`, `U32`, `F32`, `String`, `Hash`, `File`, `Flag`, or composite types `List`, `List2`, `Pointer`, `Embed`, `Link`, `Option`, `Map`.
       - **kt** and **vt** (auxiliary type parameters):
@@ -27,15 +27,17 @@
         - For scalars and non-container composites: both are `0x0`.
       - **kh** (other-class/type reference):
         - For `Pointer`/`Embed`/`Link` and some composites, this is the referenced class. It is resolved to a known type name when available; otherwise it remains the raw hex hash. For non-referential types it is `0x0`.
+      - **Default value (optional)**:
+        - If a property has a default in the dump, it is appended using ` = ` followed by a compact JSON literal (e.g. `null`, `false`, `0`, `"text"`, `[]`, `{}` or nested objects). Keys are written with stable ordering.
   - Terminator: `pass`
 
 Example:
 ```text
 class ExampleClass(BaseType):
-    ExampleList: (List2, 0x0, U32, 0x0)
-    PointerToOther: (Pointer, 0x0, 0x0, OtherType)
-    NameToCount: (Map, String, U32, 0x0)
-    ScalarValue: (I32, 0x0, 0x0, 0x0)
+    ExampleList: (List2, 0x0, U32, 0x0) = []
+    PointerToOther: (Pointer, 0x0, 0x0, OtherType) = null
+    NameToCount: (Map, String, U32, 0x0) = {}
+    ScalarValue: (I32, 0x0, 0x0, 0x0) = 0
     pass
 ```
 
@@ -44,9 +46,9 @@ class ExampleClass(BaseType):
 - If a hash is unknown, it is left as its raw hex form in the output (no prefixing). This applies to both class names and field names, and to the `kh` referenced type.
 
 ### Ordering
-- Classes are written in ascending order by their class hash (hex string key).
+- Classes are written in alphabetical order by their display name (resolved type name if known, otherwise the raw hex). Ties are broken by class hash to ensure stability.
 - Each class’s `bases` are sorted before printing.
-- Each class’s `fields` are sorted before printing. The tuple `(ft, kt, vt, kh)` is included in sorting, so ordering is stable for identical inputs.
+- Each class’s `fields` are sorted before printing. Sorting uses `(FieldName, (ft, kt, vt, kh))` only; any default value does not affect ordering.
 
 ### How merging works
 - Running `db_import.py` repeatedly merges in additional classes/fields from new dumps into the existing `db/database.py` representation.
