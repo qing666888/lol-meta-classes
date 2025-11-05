@@ -68,6 +68,15 @@ def write_databse(filename, db):
         return h if not h in h_types else h_types[h]
     def h2field(h):
         return h if not h in h_fields else h_fields[h]
+    def translate_default_keys(obj):
+        if isinstance(obj, dict):
+            out = {}
+            for k, v in obj.items():
+                out[h2field(k)] = translate_default_keys(v)
+            return out
+        if isinstance(obj, list):
+            return [ translate_default_keys(x) for x in obj ]
+        return obj
     with open(filename, 'w') as outf:
         outf.write("#!python\n")
         for kname in sorted(db.keys(), key=lambda k: (h2type(k), k)):
@@ -77,7 +86,13 @@ def write_databse(filename, db):
                 if default_str is None:
                     outf.write(f"    {h2field(fname)}: ({ft}, {kt}, {vt}, {h2type(kh)})\n")
                 else:
-                    outf.write(f"    {h2field(fname)}: ({ft}, {kt}, {vt}, {h2type(kh)}) = {default_str}\n")
+                    try:
+                        obj = json.loads(default_str)
+                        obj = translate_default_keys(obj)
+                        default_out = json.dumps(obj, separators=(",", ":"), sort_keys=True)
+                    except Exception:
+                        default_out = default_str
+                    outf.write(f"    {h2field(fname)}: ({ft}, {kt}, {vt}, {h2type(kh)}) = {default_out}\n")
             outf.write(f"    pass\n")
             outf.write('\n')
 
