@@ -13512,7 +13512,9 @@ class BarracksDefinition(0x46d8b2a4):
     IconHelper: (Pointer, 0x0, 0x0, 0x712af79e) = null
     IconHelper: (Pointer, 0x0, 0x0, 0x7b69ca81) = null
     IconHelper: (Pointer, 0x0, 0x0, 0xd671c3f2) = null
+    0x45403ae3: (Map, String, Hash, 0x0) = {}
     0x45403ae3: (Map, String, Link, BarracksConfig) = {}
+    BarracksConfig: (Hash, 0x0, 0x0, 0x0) = "0x0"
     BarracksConfig: (Link, 0x0, 0x0, BarracksConfig) = "0x0"
     LinkedPath: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
