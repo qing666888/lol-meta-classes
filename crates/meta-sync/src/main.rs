@@ -1,182 +1,135 @@
-use std::{
-    fs,
-    path::{Path, PathBuf},
-    process::Command,
-};
+//! # meta-sync
+//!
+//! Automated synchronization tool for League of Legends metaclass information.
+//!
+//! ## What it does
+//!
+//! 1. Fetches available game versions from GitHub (Morilli/riot-manifests)
+//! 2. Downloads RMAN manifests and extracts macOS binaries
+//! 3. Runs the dumper tool to extract metaclass definitions
+//! 4. Saves structured JSON output to `dumps/{version}.json`
+//!
+//! ## Usage
+//!
+//! ```bash
+//! cargo run --release --bin meta-sync
+//! ```
+//!
+//! The tool will process all versions newer than the legacy cutoff (13.14.5227601)
+//! and skip any versions that have already been dumped.
 
-use eyre::{Context, Result};
+mod config;
+mod dumper;
+mod error;
+mod github;
+mod manifest;
+
+use config::{Config, LEGACY_CUTOFF};
+use error::Result;
 use octocrab::Octocrab;
-
-const CDN_URL: &str = "http://lol.secure.dyn.riotcdn.net/channels/public/bundles";
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    // Create client (no auth needed for public repos)
+    println!("🚀 Starting meta-sync");
+    println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+
+    // Initialize configuration
+    let config = Config::new();
+    config.ensure_directories()?;
+
+    // Verify dumper exists
+    if !config.dumper_path.exists() {
+        eprintln!("❌ Dumper not found at: {}", config.dumper_path.display());
+        eprintln!("💡 Build the dumper first:");
+        eprintln!("   cargo build --release --bin dumper");
+        return Err(error::SyncError::DumperNotFound {
+            path: config.dumper_path,
+        });
+    }
+    println!("✓ Dumper found at: {}", config.dumper_path.display());
+
+    // Create GitHub client
     let octocrab = Octocrab::default();
 
-    // List all files in the lol-game-client directories
-    println!("Searching for lol-game-client directories in Morilli/riot-manifests:");
+    // Fetch available versions
+    let versions = github::fetch_game_versions(&octocrab).await?;
+    println!("✓ Found {} game versions", versions.len());
+    println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-    // Option 1: Search for all lol-game-client directories across different regions
-    find_lol_game_client_directories(&octocrab, "Morilli", "riot-manifests")
-        .await
-        .context("Failed to find lol-game-client directories")?;
+    let mut processed_count = 0;
+    let mut skipped_count = 0;
+    let mut failed_count = 0;
 
-    // Option 2: If you want to target a specific region, uncomment the lines below:
-    // let specific_path = "LoL/EUW1/windows/lol-game-client";
-    // println!("\n🎮 Files in {}:", specific_path);
-    // list_directory_contents(&octocrab, "Morilli", "riot-manifests", specific_path).await?;
+    // Process each version
+    for game_version in versions {
+        let version = &game_version.version;
 
-    Ok(())
-}
-
-async fn find_lol_game_client_directories(
-    octocrab: &Octocrab,
-    owner: &str,
-    repo: &str,
-) -> Result<()> {
-    let mut lol_contents = octocrab
-        .repos(owner, repo)
-        .get_content()
-        .path("LoL/EUW1/macos/lol-game-client")
-        .send()
-        .await
-        .context("Failed to fetch repository contents from GitHub API")?;
-
-    lol_contents.items.sort_by(|a, b| {
-        // remove extension from name
-        // format: x.y.z.txt
-
-        let a_version = Path::new(&a.name).file_stem().unwrap().to_str().unwrap();
-        let b_version = Path::new(&b.name).file_stem().unwrap().to_str().unwrap();
-
-        let a_version = semver::Version::parse(a_version).unwrap();
-        let b_version = semver::Version::parse(b_version).unwrap();
-
-        a_version.cmp(&b_version)
-    });
-
-    for version_item in lol_contents.items.iter().rev() {
-        let version = Path::new(&version_item.name)
-            .file_stem()
-            .unwrap()
-            .to_str()
-            .unwrap();
-
-        if !should_process_version(version) {
+        // Check if we should process this version
+        if !github::should_process_version(version, LEGACY_CUTOFF)? {
             break;
         }
 
-        process_version(version_item).await?;
-    }
-
-    Ok(())
-}
-
-async fn process_version(version_item: &octocrab::models::repos::Content) -> Result<()> {
-    let version = Path::new(&version_item.name)
-        .file_stem()
-        .unwrap()
-        .to_str()
-        .unwrap();
-
-    // Check if version dump already exists
-    let version_dump_path = Path::new("dumps").join(format!("{}.json", version));
-    if version_dump_path.exists() {
-        println!(
-            "Skipping version {} - dump already exists at {}",
-            version,
-            version_dump_path.display()
-        );
-        return Ok(());
-    }
-
-    println!("Processing version: {}", version);
-
-    let version_manifest_url =
-        get_version_manifest_url(version_item.download_url.as_ref().unwrap()).await?;
-
-    let manifest_response = reqwest::get(version_manifest_url).await?;
-
-    let manifest_bytes = manifest_response.bytes().await?;
-
-    let mut manifest_reader = std::io::Cursor::new(manifest_bytes);
-    let manifest = rman::Manifest::read(&mut manifest_reader).unwrap();
-
-    // need to match file name with this regex - /.+\/LeagueofLegends
-    for file in manifest.files.iter() {
-        if !file
-            .name
-            .eq("LeagueofLegends.app/Contents/MacOS/LeagueofLegends")
-        {
+        // Skip if already dumped
+        if config.has_dump(version) {
+            println!("⏭️  Skipping {} - already dumped", version);
+            skipped_count += 1;
             continue;
         }
 
-        // create a temp file
-        let temp_file_path = std::env::current_dir()
-            .unwrap()
-            .join("temp")
-            .join(version_item.name.clone());
-        fs::create_dir_all(temp_file_path.parent().unwrap())?;
-        let mut temp_file = fs::File::create(&temp_file_path)?;
+        println!("\n🎮 Processing version: {}", version);
+        println!("────────────────────────────────────────");
 
-        let version_dump_path = Path::new("dumps").join(format!("{}.json", version));
-        fs::create_dir_all(version_dump_path.parent().unwrap())?;
+        // Process the version
+        match process_version(&config, &game_version).await {
+            Ok(_) => {
+                println!("✅ Successfully processed {}", version);
+                processed_count += 1;
+            }
+            Err(e) => {
+                eprintln!("❌ Failed to process {}: {}", version, e);
+                failed_count += 1;
+                // Continue processing other versions
+            }
+        }
+    }
 
-        file.download_all()
-            .download(&mut ureq::Agent::new(), CDN_URL, &mut temp_file)
-            .map_err(|e| eyre::eyre!("Failed to download file: {}", e))?;
+    // Print summary
+    println!("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
+    println!("📊 Processing Summary");
+    println!("   Processed: {}", processed_count);
+    println!("   Skipped:   {}", skipped_count);
+    println!("   Failed:    {}", failed_count);
+    println!("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━");
 
-        execute_dumper(&temp_file_path, &version_dump_path)
-            .map_err(|e| eyre::eyre!("Failed to dump classes: {}", e))?;
+    if failed_count > 0 {
+        println!("⚠️  Some versions failed to process. Check logs above for details.");
+    } else if processed_count > 0 {
+        println!("🎉 All versions processed successfully!");
+    } else {
+        println!("✓ No new versions to process");
     }
 
     Ok(())
 }
 
-async fn get_version_manifest_url(download_url: &str) -> Result<String> {
-    let content = reqwest::get(download_url).await?;
-    Ok(content.text().await?)
-}
+/// Processes a single game version: downloads binary and runs dumper
+async fn process_version(config: &Config, game_version: &github::GameVersion) -> Result<()> {
+    let version = &game_version.version;
 
-fn execute_dumper(input_path: impl AsRef<Path>, output_path: impl AsRef<Path>) -> Result<()> {
-    let mut exe = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
-    exe.push("../../target");
-    exe.push("x86_64-unknown-linux-gnu/release"); // TODO: make this dynamic
-    exe.push("dumper");
+    // Get manifest URL from GitHub file
+    println!("  🔗 Fetching manifest URL...");
+    let manifest_url = github::fetch_manifest_url(&game_version.download_url).await?;
 
-    println!("Executing dumper: {}", exe.display());
-    let output = Command::new(exe)
-        .arg(input_path.as_ref())
-        .arg("--output")
-        .arg(output_path.as_ref())
-        .output()
-        .map_err(|e| eyre::eyre!("Failed to execute dumper: {}", e))?;
+    // Download binary
+    let temp_binary_path = config.temp_binary_path(version);
+    manifest::download_game_binary(&manifest_url, &temp_binary_path).await?;
 
-    if !output.status.success() {
-        eprintln!("Dumper failed with exit code: {}", output.status);
-        eprintln!("Stderr: {}", String::from_utf8_lossy(&output.stderr));
-        return Err(eyre::eyre!("Dumper execution failed"));
-    }
+    // Run dumper
+    let output_path = config.dump_path(version);
+    dumper::execute_dumper(config, &temp_binary_path, &output_path)?;
 
-    println!("Output: {}", String::from_utf8_lossy(&output.stdout));
+    // Cleanup temporary file
+    dumper::cleanup_temp_file(&temp_binary_path)?;
 
     Ok(())
-}
-
-/// Checks if a version should be processed based on the legacy cutoff
-/// Returns false if the version is at or below the cutoff (13.14.5227601)
-fn should_process_version(version: &str) -> bool {
-    let cutoff_version = semver::Version::parse("13.14.5227601").unwrap();
-    let current_version = semver::Version::parse(version).unwrap();
-
-    if current_version <= cutoff_version {
-        println!(
-            "Stopping at version {} - reached legacy version cutoff (<={})",
-            version, cutoff_version
-        );
-        return false;
-    }
-
-    true
 }
