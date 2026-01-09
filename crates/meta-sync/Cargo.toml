@@ -1,7 +1,7 @@
 [package]
 name = "meta-sync"
 version = "0.1.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
 octocrab = "0.44"
@@ -12,3 +12,4 @@ tempfile = "3.20.0"
 rman = { path = "../rman" }
 ureq = "2.11"
 semver = "1.0.26"
+thiserror = "2.0"

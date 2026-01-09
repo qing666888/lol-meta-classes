@@ -1101,6 +1101,7 @@ dependencies = [
  "rman",
  "semver",
  "tempfile",
+ "thiserror",
  "tokio",
  "ureq",
 ]
