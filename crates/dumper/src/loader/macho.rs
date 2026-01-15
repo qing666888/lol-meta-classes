@@ -6,61 +6,6 @@ use goblin::mach::exports::ExportInfo;
 use mmap::{MapOption, MemoryMap};
 use scroll::{Pread, Uleb128};
 
-// Chained fixups pointer format constants
-#[allow(dead_code)]
-const DYLD_CHAINED_PTR_ARM64E: u16 = 1;
-const DYLD_CHAINED_PTR_64: u16 = 2;
-const DYLD_CHAINED_PTR_32: u16 = 3;
-const DYLD_CHAINED_PTR_32_CACHE: u16 = 4;
-const DYLD_CHAINED_PTR_32_FIRMWARE: u16 = 5;
-const DYLD_CHAINED_PTR_64_OFFSET: u16 = 6;
-#[allow(dead_code)]
-const DYLD_CHAINED_PTR_ARM64E_KERNEL: u16 = 7;
-#[allow(dead_code)]
-const DYLD_CHAINED_PTR_64_KERNEL_CACHE: u16 = 8;
-const DYLD_CHAINED_PTR_ARM64E_USERLAND: u16 = 9;
-#[allow(dead_code)]
-const DYLD_CHAINED_PTR_ARM64E_FIRMWARE: u16 = 10;
-#[allow(dead_code)]
-const DYLD_CHAINED_PTR_X86_64_KERNEL_CACHE: u16 = 11;
-const DYLD_CHAINED_PTR_ARM64E_USERLAND24: u16 = 12;
-
-const DYLD_CHAINED_PTR_START_NONE: u16 = 0xFFFF;
-const DYLD_CHAINED_PTR_START_MULTI: u16 = 0x8000;
-
-/// Header for chained fixups data
-#[repr(C)]
-#[derive(Debug, Clone, Copy)]
-struct DyldChainedFixupsHeader {
-    fixups_version: u32,
-    starts_offset: u32,
-    imports_offset: u32,
-    symbols_offset: u32,
-    imports_count: u32,
-    imports_format: u32,
-    symbols_format: u32,
-}
-
-/// Per-segment chained starts info
-#[repr(C)]
-#[derive(Debug, Clone, Copy)]
-struct DyldChainedStartsInSegment {
-    size: u32,
-    page_size: u16,
-    pointer_format: u16,
-    segment_offset: u64,
-    max_valid_pointer: u32,
-    page_count: u16,
-    // page_start array follows
-}
-
-/// Rebase entry from chained fixups
-#[derive(Debug, Clone)]
-pub struct ChainedRebase {
-    pub vmaddr: u64,
-    pub target: u64,
-}
-
 #[derive(Debug, Clone)]
 #[allow(dead_code)]
 pub struct MachORebase {
@@ -151,7 +96,6 @@ pub struct MachOImage {
     pub segments: Vec<MachOSegment>,
     pub imports: Vec<MachOImport>,
     pub rebase: Vec<MachORebase>,
-    pub chained_rebase: Vec<ChainedRebase>,
     pub exports: Vec<MachOExport>,
     pub entry: u64,
     pub tlv: MachOTlv,
@@ -286,14 +230,9 @@ impl MachOImage {
 
         // Goblin does not read 10.6+ relocations :(
         let mut rebase = Vec::new();
-        let mut chained_rebase = Vec::new();
-        let mut chained_fixups_offset: Option<u32> = None;
 
         for c in macho.load_commands.iter() {
             match &c.command {
-                CommandVariant::DyldChainedFixups(linkedit) => {
-                    chained_fixups_offset = Some(linkedit.dataoff);
-                }
                 CommandVariant::DyldInfo(info) | CommandVariant::DyldInfoOnly(info) => {
                     let mut i = info.rebase_off as usize;
                     let mut kind = 1u8;
@@ -372,11 +311,6 @@ impl MachOImage {
             }
         }
 
-        // Parse chained fixups if present
-        if let Some(fixups_off) = chained_fixups_offset {
-            chained_rebase = Self::parse_chained_fixups(data, fixups_off as usize, &segments)?;
-        }
-
         let entry = macho.entry;
 
         Ok(Self {
@@ -385,220 +319,10 @@ impl MachOImage {
             segments,
             imports,
             rebase,
-            chained_rebase,
             exports,
             entry,
             tlv,
         })
-    }
-
-    /// Parse chained fixups from LC_DYLD_CHAINED_FIXUPS data
-    fn parse_chained_fixups(
-        data: &[u8],
-        fixups_off: usize,
-        segments: &[MachOSegment],
-    ) -> anyhow::Result<Vec<ChainedRebase>> {
-        let mut rebases = Vec::new();
-
-        // Read the header
-        let header: DyldChainedFixupsHeader = unsafe {
-            std::ptr::read_unaligned(data.as_ptr().add(fixups_off) as *const _)
-        };
-
-        // Get starts_in_image offset (relative to fixups_off)
-        let starts_off = fixups_off + header.starts_offset as usize;
-
-        // Read seg_count
-        let seg_count: u32 = unsafe {
-            std::ptr::read_unaligned(data.as_ptr().add(starts_off) as *const _)
-        };
-
-        // Read segment info offsets (array of u32 after seg_count)
-        let seg_info_offsets_ptr = unsafe { data.as_ptr().add(starts_off + 4) as *const u32 };
-
-        for seg_idx in 0..seg_count as usize {
-            // Get the offset to this segment's starts info
-            let seg_info_off: u32 = unsafe { *seg_info_offsets_ptr.add(seg_idx) };
-            if seg_info_off == 0 {
-                continue; // No fixups in this segment
-            }
-
-            let seg_starts_off = starts_off + seg_info_off as usize;
-
-            // Read the segment starts structure
-            let seg_starts: DyldChainedStartsInSegment = unsafe {
-                std::ptr::read_unaligned(data.as_ptr().add(seg_starts_off) as *const _)
-            };
-
-            if seg_starts.page_count == 0 {
-                continue;
-            }
-
-            // Get segment base address
-            let seg_vmaddr = if seg_idx < segments.len() {
-                segments[seg_idx].vmaddr
-            } else {
-                continue;
-            };
-
-            // Get pointer stride based on format
-            let stride = Self::get_pointer_stride(seg_starts.pointer_format);
-            if stride == 0 {
-                eprintln!(
-                    "Warning: Unsupported pointer format {} in segment {}",
-                    seg_starts.pointer_format, seg_idx
-                );
-                continue;
-            }
-
-            // Page starts array follows the fixed-size portion of the struct
-            let page_starts_ptr = unsafe {
-                data.as_ptr().add(seg_starts_off + 22) as *const u16 // 22 = size of fixed fields
-            };
-
-            for page_idx in 0..seg_starts.page_count as usize {
-                let page_start: u16 = unsafe { *page_starts_ptr.add(page_idx) };
-
-                if page_start == DYLD_CHAINED_PTR_START_NONE {
-                    continue; // No fixups on this page
-                }
-
-                if (page_start & DYLD_CHAINED_PTR_START_MULTI) != 0 {
-                    // Multiple chain starts on this page - not common, skip for now
-                    eprintln!("Warning: Multi-start page not fully implemented");
-                    continue;
-                }
-
-                // Calculate the starting address in the file for this chain
-                let page_content_start = seg_starts.segment_offset as usize
-                    + (page_idx * seg_starts.page_size as usize);
-                let chain_start = page_content_start + page_start as usize;
-
-                // Walk the chain
-                Self::walk_chain(
-                    data,
-                    chain_start,
-                    seg_vmaddr + (page_idx * seg_starts.page_size as usize) as u64
-                        + page_start as u64,
-                    seg_starts.pointer_format,
-                    stride,
-                    &mut rebases,
-                );
-            }
-        }
-
-        Ok(rebases)
-    }
-
-    /// Get the stride (distance between fixup entries) based on pointer format
-    fn get_pointer_stride(pointer_format: u16) -> usize {
-        match pointer_format {
-            DYLD_CHAINED_PTR_ARM64E
-            | DYLD_CHAINED_PTR_ARM64E_KERNEL
-            | DYLD_CHAINED_PTR_ARM64E_USERLAND
-            | DYLD_CHAINED_PTR_ARM64E_FIRMWARE
-            | DYLD_CHAINED_PTR_ARM64E_USERLAND24 => 8, // 8-byte stride
-            DYLD_CHAINED_PTR_64 | DYLD_CHAINED_PTR_64_OFFSET => 4, // 4-byte stride
-            DYLD_CHAINED_PTR_64_KERNEL_CACHE | DYLD_CHAINED_PTR_X86_64_KERNEL_CACHE => 4,
-            DYLD_CHAINED_PTR_32 | DYLD_CHAINED_PTR_32_CACHE | DYLD_CHAINED_PTR_32_FIRMWARE => 4,
-            _ => 0, // Unknown format
-        }
-    }
-
-    /// Walk a chain of fixups starting at the given file offset
-    fn walk_chain(
-        data: &[u8],
-        mut file_offset: usize,
-        mut vmaddr: u64,
-        pointer_format: u16,
-        stride: usize,
-        rebases: &mut Vec<ChainedRebase>,
-    ) {
-        loop {
-            if file_offset >= data.len() {
-                break;
-            }
-
-            // Read the pointer value
-            let raw_value: u64 = match pointer_format {
-                DYLD_CHAINED_PTR_32 | DYLD_CHAINED_PTR_32_CACHE | DYLD_CHAINED_PTR_32_FIRMWARE => {
-                    unsafe { std::ptr::read_unaligned(data.as_ptr().add(file_offset) as *const u32) as u64 }
-                }
-                _ => unsafe { std::ptr::read_unaligned(data.as_ptr().add(file_offset) as *const u64) },
-            };
-
-            // Parse based on format
-            let (next, is_bind, target) = match pointer_format {
-                DYLD_CHAINED_PTR_64 => {
-                    // target:36, high8:8, reserved:7, next:12, bind:1
-                    let bind = (raw_value >> 63) & 1;
-                    let next = ((raw_value >> 51) & 0xFFF) as usize;
-                    let target = raw_value & 0xFFFFFFFFF; // 36 bits
-                    let high8 = ((raw_value >> 36) & 0xFF) << 56;
-                    (next, bind != 0, target | high8)
-                }
-                DYLD_CHAINED_PTR_64_OFFSET => {
-                    // Same layout as DYLD_CHAINED_PTR_64 but target is an offset, not absolute
-                    let bind = (raw_value >> 63) & 1;
-                    let next = ((raw_value >> 51) & 0xFFF) as usize;
-                    let target = raw_value & 0xFFFFFFFFF;
-                    let high8 = ((raw_value >> 36) & 0xFF) << 56;
-                    (next, bind != 0, target | high8)
-                }
-                DYLD_CHAINED_PTR_ARM64E | DYLD_CHAINED_PTR_ARM64E_USERLAND => {
-                    // For rebase: target:43, high8:8, next:11, bind:1, auth:1
-                    let auth = (raw_value >> 63) & 1;
-                    let bind = (raw_value >> 62) & 1;
-                    let next = ((raw_value >> 51) & 0x7FF) as usize;
-                    if auth != 0 {
-                        // Authenticated pointer - skip for now
-                        (next, true, 0)
-                    } else {
-                        let target = raw_value & 0x7FFFFFFFFFF; // 43 bits
-                        let high8 = ((raw_value >> 43) & 0xFF) << 56;
-                        (next, bind != 0, target | high8)
-                    }
-                }
-                DYLD_CHAINED_PTR_ARM64E_USERLAND24 => {
-                    // Similar to ARM64E but with 24-bit ordinal for binds
-                    let auth = (raw_value >> 63) & 1;
-                    let bind = (raw_value >> 62) & 1;
-                    let next = ((raw_value >> 51) & 0x7FF) as usize;
-                    if auth != 0 || bind != 0 {
-                        (next, true, 0)
-                    } else {
-                        let target = raw_value & 0x7FFFFFFFFFF;
-                        let high8 = ((raw_value >> 43) & 0xFF) << 56;
-                        (next, false, target | high8)
-                    }
-                }
-                DYLD_CHAINED_PTR_32 => {
-                    // target:26, next:5, bind:1
-                    let bind = (raw_value >> 31) & 1;
-                    let next = ((raw_value >> 26) & 0x1F) as usize;
-                    let target = raw_value & 0x3FFFFFF;
-                    (next, bind != 0, target)
-                }
-                _ => {
-                    // Unknown format - stop walking
-                    break;
-                }
-            };
-
-            // Record rebase if this is not a bind
-            if !is_bind {
-                rebases.push(ChainedRebase { vmaddr, target });
-            }
-
-            // Move to next fixup in the chain
-            if next == 0 {
-                break; // End of chain
-            }
-
-            let delta = next * stride;
-            file_offset += delta;
-            vmaddr += delta as u64;
-        }
     }
 
     pub fn map_image(&self, data: &[u8]) -> anyhow::Result<MemoryMap> {
@@ -669,21 +393,6 @@ impl MachOImage {
                             .wrapping_add(image.as_ptr() as _),
                     );
                 };
-            }
-        }
-
-        // Apply chained fixups rebases
-        // These always need to be applied because the file contains encoded values
-        for rebase in self.chained_rebase.iter() {
-            let addr = rebase.vmaddr - self.vmbase;
-            if addr as usize >= image.len() {
-                continue;
-            }
-            unsafe {
-                let ptr = image.as_mut_ptr().offset(addr as _).cast::<usize>();
-                // The target is an offset from the image base, convert to runtime address
-                let runtime_addr = image.as_ptr() as usize + rebase.target as usize;
-                ptr.write_unaligned(runtime_addr);
             }
         }
 

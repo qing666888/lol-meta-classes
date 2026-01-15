@@ -12,8 +12,8 @@ pub fn map_image<P: AsRef<Path>>(path: P) -> anyhow::Result<MemoryMap> {
     let data = fs::read(path)?;
     eprintln!("  Parsing Mach-O ({} bytes)...", data.len());
     let macho = macho::MachOImage::new(&data)?;
-    eprintln!("  Parsed: vmbase={:#x}, vmsize={:#x}, rebase={}, chained_rebase={}",
-              macho.vmbase, macho.vmsize, macho.rebase.len(), macho.chained_rebase.len());
+    eprintln!("  Parsed: vmbase={:#x}, vmsize={:#x}, rebase={}",
+              macho.vmbase, macho.vmsize, macho.rebase.len());
     eprintln!("  Mapping image...");
     let map = macho.map_image(&data)?;
     eprintln!("  Mapped at {:#x}", map.data() as usize);
