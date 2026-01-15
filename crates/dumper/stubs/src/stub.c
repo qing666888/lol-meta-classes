@@ -54,6 +54,7 @@
     apply(_ZNSt3__16threadD1Ev) \
     apply(_ZNSt3__16threadD2Ev) \
     apply(__bzero) \
+    apply(___chkstk_darwin) \
     apply(__cxa_throw) \
     apply(__darwin_check_fd_set_overflow) \
     apply(__error) \
@@ -122,6 +123,7 @@
     apply(memset_pattern16) \
     apply(mmap) \
     apply(objc_alloc) \
+    apply(objc_alloc_init) \
     apply(objc_empty_vtable) \
     apply(objc_msgSend) \
     apply(opendir$INODE64) \

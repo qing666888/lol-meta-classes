@@ -22,7 +22,7 @@ struct $darwin$objc2_class {
 static jmp_buf jmp_hack = {0};
 static int has_hack = 0;
 
-void* $darwin$objc_alloc(void* id) { 
+void* $darwin$objc_alloc(void* id) {
     if (id) {
         struct $darwin$objc2_class_ro* info = ((struct $darwin$objc2_class*)id)->info;
         if (has_hack && info && info->name) {
@@ -31,7 +31,22 @@ void* $darwin$objc_alloc(void* id) {
             }
         }
     }
-    return 0; 
+    return 0;
+}
+
+void* $darwin$objc_alloc_init(void* id) {
+    if (id) {
+        struct $darwin$objc2_class_ro* info = ((struct $darwin$objc2_class*)id)->info;
+        if (has_hack && info && info->name) {
+            if (0 == strcmp("OSXAlertBox", info->name)) {
+                longjmp(jmp_hack, 1);
+            }
+            if (0 == strcmp("HextechAppDelegate", info->name)) {
+                longjmp(jmp_hack, 1);
+            }
+        }
+    }
+    return 0;
 }
 
 void* $darwin$objc_msgSend(void* id, const char* sel) { return 0; }

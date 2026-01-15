@@ -91,4 +91,7 @@ int $darwin$uname(struct $darwin$utsname *buf) {
   return 0;
 }
 
+// Stack probe function - just return, Linux doesn't need stack probing
+void $darwin$___chkstk_darwin() { }
+
 void $darwin$__cxa_throw() { panic("throwing dont work"); }

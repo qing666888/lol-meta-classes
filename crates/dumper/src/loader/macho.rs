@@ -691,6 +691,10 @@ impl MachOImage {
     }
 
     pub fn resolve_imports<R: Fn(&str) -> usize>(&self, image: &mut [u8], resolver: R) {
+        let mut resolved = 0;
+        let mut unresolved = 0;
+        let mut unresolved_names: Vec<&str> = Vec::new();
+
         for import in self.imports.iter() {
             // dont bind weak symbols
             if import.is_weak {
@@ -698,13 +702,24 @@ impl MachOImage {
             }
             let value = resolver(&import.name);
             if value == 0 {
+                unresolved += 1;
+                if unresolved_names.len() < 20 {
+                    unresolved_names.push(&import.name);
+                }
                 continue;
             }
+            resolved += 1;
             let addr = import.address - self.vmbase;
             unsafe {
                 let target = image.as_mut_ptr().offset(addr as _).cast::<usize>();
                 target.write_unaligned(value.wrapping_add(import.addend as _));
             }
+        }
+
+        eprintln!("    Resolved {}/{} imports ({} unresolved)",
+                  resolved, resolved + unresolved, unresolved);
+        if !unresolved_names.is_empty() {
+            eprintln!("    First unresolved: {:?}", unresolved_names);
         }
     }
 
@@ -760,9 +775,15 @@ impl MachOImage {
             }
         }
 
-        // Run initializers
-        for f in init {
+        eprintln!("    Found {} initializers", init.len());
+
+        // Run initializers with flush to ensure output before crash
+        for (idx, f) in init.iter().enumerate() {
+            eprint!("    Running init {}/{} at {:#x}...", idx + 1, init.len(), *f as usize);
+            use std::io::Write;
+            std::io::stderr().flush().ok();
             f();
+            eprintln!(" OK");
         }
     }
 

@@ -7,6 +7,19 @@ use std::path::PathBuf;
 #[macro_use]
 extern crate lazy_static;
 
+// Install a SIGSEGV handler to print the faulting address
+fn install_sigsegv_handler() {
+    unsafe {
+        libc::signal(libc::SIGSEGV, sigsegv_handler as usize);
+    }
+}
+
+extern "C" fn sigsegv_handler(sig: libc::c_int) {
+    eprintln!("\n!!! SIGSEGV (signal {}) caught !!!", sig);
+    eprintln!("The program crashed. This is likely due to an unresolved import.");
+    std::process::exit(139);
+}
+
 /// A tool to dump metaclass information from League of Legends executables
 #[derive(Parser)]
 #[command(name = "dumper")]
