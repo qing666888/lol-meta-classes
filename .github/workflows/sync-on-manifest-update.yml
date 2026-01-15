@@ -67,6 +67,7 @@ jobs:
       env:
         # Add any environment variables needed by your sync script
         RUST_LOG: info
+        DUMPER_PATH: ${{ github.workspace }}/target/x86_64-unknown-linux-gnu/release/dumper
 
     - name: Check for changes
       id: changes
