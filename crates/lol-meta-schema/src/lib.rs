@@ -1,0 +1,199 @@
+//! Schema types for League of Legends metaclass dumps.
+//!
+//! This crate provides typed structures for deserializing the JSON dumps
+//! produced by the `dumper` tool. It allows consumers to work with strongly-typed
+//! data instead of raw `serde_json::Value`.
+//!
+//! # Example
+//!
+//! ```no_run
+//! use lol_meta_schema::MetaDump;
+//! use std::fs::File;
+//!
+//! let file = File::open("dumps/14.24.6442327.json").unwrap();
+//! let dump: MetaDump = serde_json::from_reader(file).unwrap();
+//!
+//! println!("Version: {}", dump.version);
+//! println!("Classes: {}", dump.classes.len());
+//! ```
+
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+
+/// Root structure for a metaclass dump file.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MetaDump {
+    /// Game version string (e.g., "14.24.6442327").
+    pub version: String,
+    /// Map of class hash (hex string) to class definition.
+    pub classes: HashMap<String, ClassDump>,
+}
+
+/// A metaclass definition.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ClassDump {
+    /// Base class hash (hex string), if any.
+    pub base: Option<String>,
+    /// Secondary base classes with their offsets.
+    pub secondary_bases: HashMap<String, u32>,
+    /// Secondary child classes with their offsets.
+    pub secondary_children: HashMap<String, u32>,
+    /// Size of the class in bytes.
+    pub size: usize,
+    /// Alignment requirement.
+    pub alignment: usize,
+    /// Class flags.
+    #[serde(rename = "is")]
+    pub flags: ClassFlags,
+    /// Class function pointers.
+    #[serde(rename = "fn")]
+    pub functions: ClassFunctions,
+    /// Map of property hash (hex string) to property definition.
+    pub properties: HashMap<String, PropertyDump>,
+    /// Default values for properties (null for interfaces).
+    pub defaults: Option<HashMap<String, serde_json::Value>>,
+}
+
+/// Flags describing class characteristics.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ClassFlags {
+    /// True if this is an interface (no constructor).
+    pub interface: bool,
+    /// True if this is a value type.
+    pub value: bool,
+    /// True if this is a secondary base class.
+    pub secondary_base: bool,
+    /// Unknown flag.
+    pub unk5: bool,
+}
+
+/// Function pointers for class operations.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ClassFunctions {
+    /// Upcast to secondary base function.
+    pub upcast_secondary: Option<String>,
+    /// Constructor function.
+    pub constructor: Option<String>,
+    /// Destructor function.
+    pub destructor: Option<String>,
+    /// In-place constructor function.
+    pub inplace_constructor: Option<String>,
+    /// In-place destructor function.
+    pub inplace_destructor: Option<String>,
+    /// Register function.
+    pub register: Option<String>,
+}
+
+/// A property definition within a class.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct PropertyDump {
+    /// Other class hash for Link/Pointer/Embed types.
+    pub other_class: Option<String>,
+    /// Byte offset within the class.
+    pub offset: u32,
+    /// Bitmask for Flag types.
+    pub bitmask: u8,
+    /// The property's value type.
+    pub value_type: BinType,
+    /// Container info for List/Option types.
+    pub container: Option<ContainerDump>,
+    /// Map info for Map types.
+    pub map: Option<MapDump>,
+    /// Unknown pointer (always "0x0").
+    pub unkptr: String,
+}
+
+/// Container type information (for List, List2, Option).
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct ContainerDump {
+    /// Vtable offset (hex string).
+    pub vtable: String,
+    /// Type of values in the container.
+    pub value_type: BinType,
+    /// Size of each value in bytes.
+    pub value_size: usize,
+    /// Fixed size for fixed-length arrays, if applicable.
+    pub fixed_size: Option<usize>,
+    /// Storage type, if known.
+    pub storage: Option<ContainerStorage>,
+}
+
+/// Map type information.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct MapDump {
+    /// Vtable offset (hex string).
+    pub vtable: String,
+    /// Type of keys in the map.
+    pub key_type: BinType,
+    /// Type of values in the map.
+    pub value_type: BinType,
+    /// Storage type.
+    pub storage: MapStorage,
+}
+
+/// Binary property types.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub enum BinType {
+    None,
+    Bool,
+    I8,
+    U8,
+    I16,
+    U16,
+    I32,
+    U32,
+    I64,
+    U64,
+    F32,
+    Vec2,
+    Vec3,
+    Vec4,
+    Mtx44,
+    Color,
+    String,
+    Hash,
+    File,
+    List,
+    List2,
+    Pointer,
+    Embed,
+    Link,
+    Option,
+    Map,
+    Flag,
+}
+
+/// Container storage types.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub enum ContainerStorage {
+    UnknownVector,
+    Option,
+    Fixed,
+    StdVector,
+    RitoVector,
+}
+
+/// Map storage types.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub enum MapStorage {
+    UnknownMap,
+    StdMap,
+    StdUnorderedMap,
+    RitoVectorMap,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_deserialize_minimal() {
+        let json = r#"{
+            "version": "14.24.6442327",
+            "classes": {}
+        }"#;
+        let dump: MetaDump = serde_json::from_str(json).unwrap();
+        assert_eq!(dump.version, "14.24.6442327");
+        assert!(dump.classes.is_empty());
+    }
+}

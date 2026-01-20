@@ -1,6 +1,5 @@
 use clap::Parser;
 use regex::bytes::Regex;
-use serde_json::json;
 use std::fs::File;
 use std::io::BufWriter;
 use std::path::PathBuf;
@@ -130,10 +129,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     );
 
     eprintln!("Processing classes...");
-    let meta_info = json!({
-        "version": version.unwrap_or_else(|| "unknown".to_string()),
-        "classes": meta_dump::dump_class_list(data.as_ptr() as usize, classes.slice()),
-    });
+    let meta_info = meta_dump::dump_meta(
+        data.as_ptr() as usize,
+        classes.slice(),
+        version.unwrap_or_else(|| "unknown".to_string()),
+    );
 
     eprintln!("Writing output to {}...", args.output.display());
     let output_file = File::create(&args.output)?;

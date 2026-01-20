@@ -1,0 +1,11 @@
+[package]
+name = "lol-meta-schema"
+version = "0.1.0"
+authors = ["moonshadow565 <moonshadow565@hotmail.com>", "Crauzer 0xcrauzer@proton.me"]
+edition = "2021"
+description = "Schema types for League of Legends metaclass dumps"
+license = "MIT"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
