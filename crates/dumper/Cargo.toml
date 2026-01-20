@@ -5,6 +5,7 @@ authors = ["moonshadow565 <moonshadow565@hotmail.com>"]
 edition = "2021"
 
 [dependencies]
+lol-meta-schema = { path = "../lol-meta-schema" }
 anyhow = "1.0.80"
 clap = { version = "4.0", features = ["derive"] }
 goblin = { version = "0.8", default-features = false, features = [

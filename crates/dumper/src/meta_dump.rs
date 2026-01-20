@@ -1,14 +1,75 @@
 use core::ffi::c_void;
 use core::fmt::LowerHex;
+use std::collections::BTreeMap;
 
-use serde_json::json;
-use serde_json::{Map, Value};
+use lol_meta_schema::{
+    BinType as SchemaBinType, ClassDump, ClassFlags, ClassFunctions, ContainerDump,
+    ContainerStorage as SchemaContainerStorage, MapDump, MapStorage as SchemaMapStorage, MetaDump,
+    PropertyDump,
+};
+use serde_json::Value;
 
 use crate::meta::*;
 
 fn dump_hex<T: Copy + LowerHex>(value: T) -> String {
     format!("0x{:x}", value)
 }
+
+// Convert internal BinType to schema BinType
+fn convert_bin_type(t: BinType) -> SchemaBinType {
+    match t {
+        BinType::None => SchemaBinType::None,
+        BinType::Bool => SchemaBinType::Bool,
+        BinType::I8 => SchemaBinType::I8,
+        BinType::U8 => SchemaBinType::U8,
+        BinType::I16 => SchemaBinType::I16,
+        BinType::U16 => SchemaBinType::U16,
+        BinType::I32 => SchemaBinType::I32,
+        BinType::U32 => SchemaBinType::U32,
+        BinType::I64 => SchemaBinType::I64,
+        BinType::U64 => SchemaBinType::U64,
+        BinType::F32 => SchemaBinType::F32,
+        BinType::Vec2 => SchemaBinType::Vec2,
+        BinType::Vec3 => SchemaBinType::Vec3,
+        BinType::Vec4 => SchemaBinType::Vec4,
+        BinType::Mtx44 => SchemaBinType::Mtx44,
+        BinType::Color => SchemaBinType::Color,
+        BinType::String => SchemaBinType::String,
+        BinType::Hash => SchemaBinType::Hash,
+        BinType::File => SchemaBinType::File,
+        BinType::List => SchemaBinType::List,
+        BinType::List2 => SchemaBinType::List2,
+        BinType::Pointer => SchemaBinType::Pointer,
+        BinType::Embed => SchemaBinType::Embed,
+        BinType::Link => SchemaBinType::Link,
+        BinType::Option => SchemaBinType::Option,
+        BinType::Map => SchemaBinType::Map,
+        BinType::Flag => SchemaBinType::Flag,
+    }
+}
+
+fn convert_container_storage(s: ContainerStorage) -> SchemaContainerStorage {
+    match s {
+        ContainerStorage::UnknownVector => SchemaContainerStorage::UnknownVector,
+        ContainerStorage::Option => SchemaContainerStorage::Option,
+        ContainerStorage::Fixed => SchemaContainerStorage::Fixed,
+        ContainerStorage::StdVector => SchemaContainerStorage::StdVector,
+        ContainerStorage::RitoVector => SchemaContainerStorage::RitoVector,
+    }
+}
+
+fn convert_map_storage(s: MapStorage) -> SchemaMapStorage {
+    match s {
+        MapStorage::UnknownMap => SchemaMapStorage::UnknownMap,
+        MapStorage::StdMap => SchemaMapStorage::StdMap,
+        MapStorage::StdUnorderedMap => SchemaMapStorage::StdUnorderedMap,
+        MapStorage::RitoVectorMap => SchemaMapStorage::RitoVectorMap,
+    }
+}
+
+// ============================================================================
+// Instance dumping (for default values) - these return serde_json::Value
+// ============================================================================
 
 fn dump_instance_bool(instance: usize) -> Value {
     let result = unsafe { *(instance as *const c_void as *const u8) };
@@ -54,7 +115,7 @@ fn dump_instance_path(instance: usize) -> Value {
 }
 
 fn dump_instance_embed(instance: usize, class: &Class) -> Value {
-    let mut results = Map::new();
+    let mut results = serde_json::Map::new();
     dump_instance_properties(class, instance, &mut results);
     results.into()
 }
@@ -64,7 +125,6 @@ fn dump_instance_pointer(instance: usize, class: &Class) -> Value {
     if instance != 0 {
         return dump_instance_embed(instance, class);
     }
-
     Value::Null
 }
 
@@ -81,7 +141,7 @@ fn dump_instance_list(instance: usize, container: &ContainerI, class: Option<&Cl
 
 fn dump_instance_map(instance: usize, map: &MapI, _class: Option<&Class>) -> Value {
     assert_eq!(map.get_size(instance), 0, "Map is not empty");
-    Map::new().into()
+    serde_json::Map::new().into()
 }
 
 fn dump_instance_flag(instance: usize, bitmask: u8) -> Value {
@@ -151,7 +211,11 @@ fn dump_instance_property(instance: usize, property: &Property) -> Value {
     }
 }
 
-fn dump_instance_properties(class: &Class, instance: usize, results: &mut Map<String, Value>) {
+fn dump_instance_properties(
+    class: &Class,
+    instance: usize,
+    results: &mut serde_json::Map<String, Value>,
+) {
     if let Some(class) = class.base_class {
         dump_instance_properties(class, instance, results);
     }
@@ -165,117 +229,134 @@ fn dump_instance_properties(class: &Class, instance: usize, results: &mut Map<St
     }
 }
 
-fn dump_property_container(base: usize, container: &ContainerI, source: BinType) -> Value {
-    json!({
-        "vtable": dump_hex(container.vtable as *const _ as usize - base),
-        "value_type": container.value_type,
-        "value_size": container.value_size,
-        "fixed_size": container.get_fixed_size(),
-        "storage": (source != BinType::Option).then(|| container.get_storage()),
-    })
+// ============================================================================
+// Schema type construction
+// ============================================================================
+
+fn dump_property_container(base: usize, container: &ContainerI, source: BinType) -> ContainerDump {
+    ContainerDump {
+        vtable: dump_hex(container.vtable as *const _ as usize - base),
+        value_type: convert_bin_type(container.value_type),
+        value_size: container.value_size,
+        fixed_size: container.get_fixed_size(),
+        storage: (source != BinType::Option)
+            .then(|| convert_container_storage(container.get_storage())),
+    }
 }
 
-fn dump_property_map(base: usize, map: &MapI) -> Value {
-    json!({
-        "vtable": dump_hex(map.vtable as *const _ as usize - base),
-        "key_type": map.key_type,
-        "value_type": map.value_type,
-        "storage": map.get_storage(),
-    })
+fn dump_property_map(base: usize, map: &MapI) -> MapDump {
+    MapDump {
+        vtable: dump_hex(map.vtable as *const _ as usize - base),
+        key_type: convert_bin_type(map.key_type),
+        value_type: convert_bin_type(map.value_type),
+        storage: convert_map_storage(map.get_storage()),
+    }
 }
 
-fn dump_property(base: usize, property: &Property) -> Value {
-    json!({
-        "other_class": property.other_class.map(|c| dump_hex(c.hash)),
-        "offset": property.offset,
-        "bitmask": property.bitmask,
-        "value_type": property.value_type,
-        "container": property.container.map(|c| dump_property_container(base, c, property.value_type)),
-        "map": property.map.map(|m| dump_property_map(base, m)),
-        "unkptr": dump_hex(0usize),
-    })
+fn dump_property(base: usize, property: &Property) -> PropertyDump {
+    PropertyDump {
+        other_class: property.other_class.map(|c| dump_hex(c.hash)),
+        offset: property.offset,
+        bitmask: property.bitmask,
+        value_type: convert_bin_type(property.value_type),
+        container: property
+            .container
+            .map(|c| dump_property_container(base, c, property.value_type)),
+        map: property.map.map(|m| dump_property_map(base, m)),
+        unkptr: dump_hex(0usize),
+    }
 }
 
-fn dump_property_list(base: usize, properites: &[Property]) -> Value {
-    let mut results = Map::new();
-    for property in properites {
+fn dump_property_list(base: usize, properties: &[Property]) -> BTreeMap<String, PropertyDump> {
+    let mut results = BTreeMap::new();
+    for property in properties {
         let key = dump_hex(property.hash);
         let value = dump_property(base, property);
         results.insert(key, value);
     }
-    results.into()
+    results
 }
 
-fn dump_class_functions(base: usize, class: &Class) -> Value {
-    json!({
-        "upcast_secondary": class.upcast_secondary_fn.map(|c| dump_hex(c as usize - base)),
-        "constructor": class.constructor_fn.map(|c| dump_hex(c as usize - base)),
-        "destructor": class.destructor_fn.map(|c| dump_hex(c as usize - base)),
-        "inplace_constructor": class.inplace_constructor_fn.map(|c| dump_hex(c as usize - base)),
-        "inplace_destructor": class.inplace_destructor_fn.map(|c| dump_hex(c as usize - base)),
-        "register": class.register_fn.map(|c| dump_hex(c as usize - base)),
-    })
+fn dump_class_functions(base: usize, class: &Class) -> ClassFunctions {
+    ClassFunctions {
+        upcast_secondary: class
+            .upcast_secondary_fn
+            .map(|c| dump_hex(c as usize - base)),
+        constructor: class.constructor_fn.map(|c| dump_hex(c as usize - base)),
+        destructor: class.destructor_fn.map(|c| dump_hex(c as usize - base)),
+        inplace_constructor: class
+            .inplace_constructor_fn
+            .map(|c| dump_hex(c as usize - base)),
+        inplace_destructor: class
+            .inplace_destructor_fn
+            .map(|c| dump_hex(c as usize - base)),
+        register: class.register_fn.map(|c| dump_hex(c as usize - base)),
+    }
 }
 
-fn dump_class_flags(class: &Class) -> Value {
-    json!({
-        // FIXME: gone with 12.10, what do we print here?
-        // "property_base": class.is_property_base,
-        "interface": class.constructor_fn.is_none(),
-        "value": class.is_value,
-        "secondary_base": class.is_secondary_base,
-        "unk5": class.is_unk5,
-    })
+fn dump_class_flags(class: &Class) -> ClassFlags {
+    ClassFlags {
+        interface: class.constructor_fn.is_none(),
+        value: class.is_value,
+        secondary_base: class.is_secondary_base,
+        unk5: class.is_unk5,
+    }
 }
 
-fn dump_class_secondary(class_offset_pairs: &[BaseOff]) -> Value {
-    let mut results = Map::new();
+fn dump_class_secondary(class_offset_pairs: &[BaseOff]) -> BTreeMap<String, u32> {
+    let mut results = BTreeMap::new();
     for &BaseOff(class, offset) in class_offset_pairs {
         let key = dump_hex(class.hash);
-        let value = offset.into();
-        results.insert(key, value);
+        results.insert(key, offset);
     }
-    results.into()
+    results
 }
 
 fn is_empty(class: &Class) -> bool {
     class.properties.size() == 0 && class.base_class.iter().all(|class| is_empty(class))
 }
 
-pub fn dump_class_defaults(class: &Class) -> Value {
+pub fn dump_class_defaults(class: &Class) -> Option<BTreeMap<String, Value>> {
     if class.constructor_fn.is_some() {
-        let mut results = Map::new();
+        let mut results = serde_json::Map::new();
         if !is_empty(class) {
             let instance = class.create_instance();
             dump_instance_properties(class, instance, &mut results);
             class.destroy_instance(instance);
         }
-        results.into()
+        Some(results.into_iter().collect())
     } else {
-        Value::Null
+        None
     }
 }
 
-pub fn dump_class(base: usize, class: &Class) -> Value {
-    json!({
-        "base": class.base_class.map(|c| dump_hex(c.hash)),
-        "secondary_bases": dump_class_secondary(class.secondary_bases.slice()),
-        "secondary_children": dump_class_secondary(class.secondary_children.slice()),
-        "size": class.class_size,
-        "alignment": class.alignment,
-        "is": dump_class_flags(class),
-        "fn": dump_class_functions(base, class),
-        "properties": dump_property_list(base, class.properties.slice()),
-        "defaults": dump_class_defaults(class),
-    })
+pub fn dump_class(base: usize, class: &Class) -> ClassDump {
+    ClassDump {
+        base: class.base_class.map(|c| dump_hex(c.hash)),
+        secondary_bases: dump_class_secondary(class.secondary_bases.slice()),
+        secondary_children: dump_class_secondary(class.secondary_children.slice()),
+        size: class.class_size,
+        alignment: class.alignment,
+        flags: dump_class_flags(class),
+        functions: dump_class_functions(base, class),
+        properties: dump_property_list(base, class.properties.slice()),
+        defaults: dump_class_defaults(class),
+    }
 }
 
-pub fn dump_class_list(base: usize, classes: &[&Class]) -> Value {
-    let mut results = Map::new();
+pub fn dump_class_list(base: usize, classes: &[&Class]) -> BTreeMap<String, ClassDump> {
+    let mut results = BTreeMap::new();
     for &class in classes {
         let key = dump_hex(class.hash);
         let value = dump_class(base, class);
         results.insert(key, value);
     }
-    results.into()
+    results
+}
+
+pub fn dump_meta(base: usize, classes: &[&Class], version: String) -> MetaDump {
+    MetaDump {
+        version,
+        classes: dump_class_list(base, classes),
+    }
 }
