@@ -18,7 +18,7 @@
 //! ```
 
 use serde::{Deserialize, Serialize};
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 /// Root structure for a metaclass dump file.
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -26,7 +26,7 @@ pub struct MetaDump {
     /// Game version string (e.g., "14.24.6442327").
     pub version: String,
     /// Map of class hash (hex string) to class definition.
-    pub classes: HashMap<String, ClassDump>,
+    pub classes: BTreeMap<String, ClassDump>,
 }
 
 /// A metaclass definition.
@@ -35,9 +35,9 @@ pub struct ClassDump {
     /// Base class hash (hex string), if any.
     pub base: Option<String>,
     /// Secondary base classes with their offsets.
-    pub secondary_bases: HashMap<String, u32>,
+    pub secondary_bases: BTreeMap<String, u32>,
     /// Secondary child classes with their offsets.
-    pub secondary_children: HashMap<String, u32>,
+    pub secondary_children: BTreeMap<String, u32>,
     /// Size of the class in bytes.
     pub size: usize,
     /// Alignment requirement.
@@ -49,9 +49,9 @@ pub struct ClassDump {
     #[serde(rename = "fn")]
     pub functions: ClassFunctions,
     /// Map of property hash (hex string) to property definition.
-    pub properties: HashMap<String, PropertyDump>,
+    pub properties: BTreeMap<String, PropertyDump>,
     /// Default values for properties (null for interfaces).
-    pub defaults: Option<HashMap<String, serde_json::Value>>,
+    pub defaults: Option<BTreeMap<String, serde_json::Value>>,
 }
 
 /// Flags describing class characteristics.

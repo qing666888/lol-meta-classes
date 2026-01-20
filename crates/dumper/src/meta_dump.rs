@@ -1,11 +1,11 @@
 use core::ffi::c_void;
 use core::fmt::LowerHex;
-use std::collections::HashMap;
+use std::collections::BTreeMap;
 
 use lol_meta_schema::{
     BinType as SchemaBinType, ClassDump, ClassFlags, ClassFunctions, ContainerDump,
-    ContainerStorage as SchemaContainerStorage, MapDump, MapStorage as SchemaMapStorage,
-    MetaDump, PropertyDump,
+    ContainerStorage as SchemaContainerStorage, MapDump, MapStorage as SchemaMapStorage, MetaDump,
+    PropertyDump,
 };
 use serde_json::Value;
 
@@ -239,7 +239,8 @@ fn dump_property_container(base: usize, container: &ContainerI, source: BinType)
         value_type: convert_bin_type(container.value_type),
         value_size: container.value_size,
         fixed_size: container.get_fixed_size(),
-        storage: (source != BinType::Option).then(|| convert_container_storage(container.get_storage())),
+        storage: (source != BinType::Option)
+            .then(|| convert_container_storage(container.get_storage())),
     }
 }
 
@@ -266,8 +267,8 @@ fn dump_property(base: usize, property: &Property) -> PropertyDump {
     }
 }
 
-fn dump_property_list(base: usize, properties: &[Property]) -> HashMap<String, PropertyDump> {
-    let mut results = HashMap::new();
+fn dump_property_list(base: usize, properties: &[Property]) -> BTreeMap<String, PropertyDump> {
+    let mut results = BTreeMap::new();
     for property in properties {
         let key = dump_hex(property.hash);
         let value = dump_property(base, property);
@@ -278,11 +279,17 @@ fn dump_property_list(base: usize, properties: &[Property]) -> HashMap<String, P
 
 fn dump_class_functions(base: usize, class: &Class) -> ClassFunctions {
     ClassFunctions {
-        upcast_secondary: class.upcast_secondary_fn.map(|c| dump_hex(c as usize - base)),
+        upcast_secondary: class
+            .upcast_secondary_fn
+            .map(|c| dump_hex(c as usize - base)),
         constructor: class.constructor_fn.map(|c| dump_hex(c as usize - base)),
         destructor: class.destructor_fn.map(|c| dump_hex(c as usize - base)),
-        inplace_constructor: class.inplace_constructor_fn.map(|c| dump_hex(c as usize - base)),
-        inplace_destructor: class.inplace_destructor_fn.map(|c| dump_hex(c as usize - base)),
+        inplace_constructor: class
+            .inplace_constructor_fn
+            .map(|c| dump_hex(c as usize - base)),
+        inplace_destructor: class
+            .inplace_destructor_fn
+            .map(|c| dump_hex(c as usize - base)),
         register: class.register_fn.map(|c| dump_hex(c as usize - base)),
     }
 }
@@ -296,8 +303,8 @@ fn dump_class_flags(class: &Class) -> ClassFlags {
     }
 }
 
-fn dump_class_secondary(class_offset_pairs: &[BaseOff]) -> HashMap<String, u32> {
-    let mut results = HashMap::new();
+fn dump_class_secondary(class_offset_pairs: &[BaseOff]) -> BTreeMap<String, u32> {
+    let mut results = BTreeMap::new();
     for &BaseOff(class, offset) in class_offset_pairs {
         let key = dump_hex(class.hash);
         results.insert(key, offset);
@@ -309,7 +316,7 @@ fn is_empty(class: &Class) -> bool {
     class.properties.size() == 0 && class.base_class.iter().all(|class| is_empty(class))
 }
 
-pub fn dump_class_defaults(class: &Class) -> Option<HashMap<String, Value>> {
+pub fn dump_class_defaults(class: &Class) -> Option<BTreeMap<String, Value>> {
     if class.constructor_fn.is_some() {
         let mut results = serde_json::Map::new();
         if !is_empty(class) {
@@ -337,8 +344,8 @@ pub fn dump_class(base: usize, class: &Class) -> ClassDump {
     }
 }
 
-pub fn dump_class_list(base: usize, classes: &[&Class]) -> HashMap<String, ClassDump> {
-    let mut results = HashMap::new();
+pub fn dump_class_list(base: usize, classes: &[&Class]) -> BTreeMap<String, ClassDump> {
+    let mut results = BTreeMap::new();
     for &class in classes {
         let key = dump_hex(class.hash);
         let value = dump_class(base, class);
