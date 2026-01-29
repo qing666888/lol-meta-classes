@@ -1,7 +1,7 @@
 use anyhow::bail;
 use goblin::mach::bind_opcodes::BIND_TYPE_POINTER;
 use goblin::mach::constants::*;
-use goblin::mach::{load_command::CommandVariant, MachO};
+use goblin::mach::{load_command::CommandVariant, MultiArch, MachO};
 use goblin::mach::exports::ExportInfo;
 use mmap::{MapOption, MemoryMap};
 use scroll::{Pread, Uleb128};
@@ -99,6 +99,7 @@ pub struct MachOImage {
     pub exports: Vec<MachOExport>,
     pub entry: u64,
     pub tlv: MachOTlv,
+    pub mapoffset: usize,
 }
 
 #[repr(C)]
@@ -115,6 +116,20 @@ extern "C" fn tlv_thunk(desc: *const TlvDescriptor) -> usize {
 
 impl MachOImage {
     pub fn new(data: &[u8]) -> anyhow::Result<Self> {
+        if let Ok(multi) = MultiArch::new(&data[..]) {
+            if let Ok(Some(arch)) = multi.find_cputype(goblin::mach::constants::cputype::CPU_TYPE_X86_64) {
+                if arch.offset != 0 {
+                    eprintln!("  Detected FAT Mach-O with x86_64 arch at offset {:#x}, size {:#x}", arch.offset, arch.size);
+                    return MachOImage::new_amd64(&data[arch.offset as usize..][..arch.size as usize], arch.offset as usize);
+                }
+            }
+        }
+
+        // Assume we have a thin Mach-O
+        Self::new_amd64(data, 0)
+    }
+
+    pub fn new_amd64(data: &[u8], mapoffset: usize) -> anyhow::Result<Self> {
         let macho = MachO::parse(data, 0)?;
 
         // Copy out segments and sections
@@ -322,10 +337,13 @@ impl MachOImage {
             exports,
             entry,
             tlv,
+            mapoffset,
         })
     }
 
     pub fn map_image(&self, data: &[u8]) -> anyhow::Result<MemoryMap> {
+        let data = &data[self.mapoffset..];
+
         // Try to map at prefered address first.
         let map = MemoryMap::new(
             self.vmsize as _,
@@ -347,6 +365,7 @@ impl MachOImage {
                         MapOption::MapReadable,
                         MapOption::MapWritable,
                         MapOption::MapExecutable,
+                        MapOption::MapOffset(self.mapoffset as _),
                     ],
                 )?,
                 true,
