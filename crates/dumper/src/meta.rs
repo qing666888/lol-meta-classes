@@ -270,6 +270,8 @@ pub struct Property {
     pub map: Option<&'static MapI>,
     // added in 13.13
     pub hashed: Option<&'static HashedI>,
+    // added in 16.1
+    pub unkptr2: usize,
 }
 
 #[repr(C)]
