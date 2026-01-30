@@ -314,6 +314,14 @@ fn dump_class_secondary(class_offset_pairs: &[BaseOff]) -> BTreeMap<String, u32>
 }
 
 fn is_empty(class: &Class) -> bool {
+    // FIXME: 16.1+ these depend on game flow being started
+    let blacklist = [
+        0xfea4e3fe,
+        0xe501834f,
+    ];
+    if blacklist.contains(&class.hash) {
+        return true;
+    }
     class.properties.size() == 0 && class.base_class.iter().all(|class| is_empty(class))
 }
 
