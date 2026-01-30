@@ -147,7 +147,7 @@ fn dump_instance_map(instance: usize, map: &MapI, _class: Option<&Class>) -> Val
 
 fn dump_instance_flag(instance: usize, bitmask: u8) -> Value {
     let result = unsafe { *(instance as *const c_void as *const u8) };
-    ((result & (1 << bitmask)) != 0).into()
+    ((result & bitmask) != 0).into()
 }
 
 fn dump_instance_option(instance: usize, container: &ContainerI, class: Option<&Class>) -> Value {
