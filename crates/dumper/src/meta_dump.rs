@@ -45,6 +45,7 @@ fn convert_bin_type(t: BinType) -> SchemaBinType {
         BinType::Option => SchemaBinType::Option,
         BinType::Map => SchemaBinType::Map,
         BinType::Flag => SchemaBinType::Flag,
+        _ => panic!("Unknown BinType!"),
     }
 }
 

@@ -50,6 +50,7 @@ impl AString {
 }
 
 #[repr(u8)]
+#[non_exhaustive]
 #[derive(Debug, Serialize, PartialEq, Eq, PartialOrd, Ord, Clone, Copy)]
 pub enum BinType {
     None = 0,
