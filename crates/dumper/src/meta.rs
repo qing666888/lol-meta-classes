@@ -244,6 +244,21 @@ impl MapI {
 }
 
 #[repr(C)]
+pub struct HashedI {
+    pub vtable: &'static HashedIVtable,
+}
+
+#[repr(C)]
+pub struct HashedIVtable {
+    pub destructor: extern "C" fn(this: &HashedI),
+    pub deleter: extern "C" fn(this: &HashedI),
+    pub get_size: extern "C" fn(this: &HashedI, instance: usize) -> usize,
+    pub from_string: extern "C" fn(this: &HashedI, instance: usize, str: *const AString) -> usize,
+    pub from_hash: extern "C" fn(this: &HashedI, instance: usize, hash: u64) -> usize,
+    pub to_hash: extern "C" fn(this: &HashedI, instance: usize) -> u64,
+}
+
+#[repr(C)]
 pub struct Property {
     pub other_class: Option<&'static Class>,
     pub hash: u32,
@@ -253,7 +268,7 @@ pub struct Property {
     pub container: Option<&'static ContainerI>,
     pub map: Option<&'static MapI>,
     // added in 13.13
-    pub unkptr: usize,
+    pub hashed: Option<&'static HashedI>,
 }
 
 #[repr(C)]
