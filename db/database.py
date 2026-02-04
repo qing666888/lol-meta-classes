@@ -171,6 +171,9 @@ class 0x12b12bdf():
     SubTeamName: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0x12b2d1cc():
+    pass
+
 class 0x12b69e95():
     Behaviors: (List2, 0x0, Embed, 0xfe897399) = []
     pass
@@ -399,6 +402,12 @@ class 0x17409c51():
 
 class 0x17411ce(0x27d92a31):
     Group: (Pointer, 0x0, 0x0, 0xb60096a7) = null
+    pass
+
+class 0x1742fda9():
+    0x6476eef4: (Link, 0x0, 0x0, InputEvent2Axis) = "0x0"
+    0x6cb6c4fd: (F32, 0x0, 0x0, 0x0) = 0.0
+    0xc53c0790: (List2, 0x0, Link, 0xc8400f38) = []
     pass
 
 class 0x174c7096(UiPropertyLoadable):
@@ -654,6 +663,11 @@ class 0x1bb49ec5(0x8b54c9a7):
     0x44ee0c82: (Link, 0x0, 0x0, 0xb5d9d3a0) = "0x0"
     pass
 
+class 0x1bbd2264(0x7a3483c4):
+    Concept: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xa85a9d2d: (Pointer, 0x0, 0x0, IIntGet) = {}
+    pass
+
 class 0x1c0e452():
     0x1aad2ecc: (Bool, 0x0, 0x0, 0x0) = true
     0x922eae5: (F32, 0x0, 0x0, 0x0) = 0.0
@@ -667,6 +681,11 @@ class 0x1c1ae0c8(0x505f1532):
     pass
 
 class 0x1c22201c(IComponentData, 0x51f54b8e):
+    pass
+
+class 0x1c3ab3f1(0x2508c71e):
+    ItemId: (String, 0x0, 0x0, 0x0) = ""
+    ItemType: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x1c4bac51(MapGraphicsFeature):
@@ -701,7 +720,7 @@ class 0x1cda14e0(ViewController):
     0xc71ea871: (Embed, 0x0, 0x0, 0xf7d950e) = {"0x199e58ca":"0x0","0x5ae88401":"0x0","0x61e00057":"0x0","0x9042fa06":"0x0","Background":"0x0","BackgroundHover":"0x0","CurrencyIcon":"0x0","CurrencyText":"0x0","Group":"0x0","HoverRegion":"0x0","Icon":"0x0","Subtitle":"0x0","Title":"0x0"}
     pass
 
-class 0x1ced7194(0x129e311, 0x2576b4fc, 0x2a036a61, 0x3497f0cf):
+class 0x1ced7194(0x129e311, 0x2576b4fc, 0x2a036a61, 0x3497f0cf, 0x49b45024):
     pass
 
 class 0x1cf9835(ISequenceAction):
@@ -709,6 +728,10 @@ class 0x1cf9835(ISequenceAction):
     TargetLocation: (Pointer, 0x0, 0x0, 0x94e82d1f) = null
     TargetLocation: (Pointer, 0x0, 0x0, ISequenceLocation) = null
     0xf92ca41e: (Embed, 0x0, 0x0, 0x641e4225) = {"FalloffRate":2.0,"Magnitude":20.0,"ShakesPerSecond":6.0}
+    pass
+
+class 0x1cfeba20(0x2508c71e):
+    ItemId: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x1d04cfa7(0x8877ad7c):
@@ -787,6 +810,14 @@ class 0x1e2d1428():
     0x5b5f63b5: (Bool, 0x0, 0x0, 0x0) = false
     pass
 
+class 0x1e3c6622():
+    CatalogEntry: (Embed, 0x0, 0x0, CatalogEntry) = {"ContentId":"","ItemId":0,"TypeId":""}
+    LocalizedName: (String, 0x0, 0x0, 0x0) = ""
+    0xa1fce550: (U32, 0x0, 0x0, 0x0) = 0
+    Image: (String, 0x0, 0x0, 0x0) = ""
+    LocalizedDescription: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0x1e3ddf38():
     0x82aeb8a7: (U8, 0x0, 0x0, 0x0) = 1
     0xcc9ed5ef: (Embed, 0x0, 0x0, 0x5c5e2d13) = {"Rows":[{"0x8ab31a3c":[0,0,0,0,0,0,0]},{"0x8ab31a3c":[0,0,0,0,0,0,0]},{"0x8ab31a3c":[0,0,0,0,0,0,0]},{"0x8ab31a3c":[0,0,0,0,0,0,0]}]}
@@ -834,7 +865,7 @@ class 0x1f1f50f2(0x40a9c74a):
     Definition: (Embed, 0x0, 0x0, VfxDefinition) = {"0x63176011":false,"0x8f59d48c":[],"0x9d9b6793":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"IsReplicated":true,"OptionalConfigs":[],"System":"0x0","Tags":[],"Team":100,"TeamDefinition":"0x0","TextureOverride":null}
     IsReplicated: (Bool, 0x0, 0x0, 0x0) = true
     Vfx: (Embed, 0x0, 0x0, 0x385c323f) = {}
-    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x9d9b6793":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
+    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x9d9b6793":false,"0xf718ab13":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
     Team: (Embed, 0x0, 0x0, 0x1b1b0d1a) = {"Team":100,"TeamDefinition":"0x0"}
     0xf8f165ee: (Embed, 0x0, 0x0, 0x1eee9d10) = {}
     0xf8f165ee: (Embed, 0x0, 0x0, 0x385c323f) = {}
@@ -970,6 +1001,7 @@ class 0x20b66cd9():
     pass
 
 class 0x20cda9b0(0xc59dfcfb):
+    Source: (U8, 0x0, 0x0, 0x0) = 0
     0xbfc92e63: (Pointer, 0x0, 0x0, ILogicDriver) = null
     pass
 
@@ -1189,6 +1221,15 @@ class 0x24e1cb45():
     0xc080021c: (F32, 0x0, 0x0, 0x0) = 0.0
     0xc080021c: (U32, 0x0, 0x0, 0x0) = 0
     0xec211346: (U32, 0x0, 0x0, 0x0) = 0
+    pass
+
+class 0x2508c71e():
+    0x1ba79c9a: (U8, 0x0, 0x0, 0x0)
+    0x31c5f01c: (String, 0x0, 0x0, 0x0)
+    Id: (String, 0x0, 0x0, 0x0)
+    Quantity: (I16, 0x0, 0x0, 0x0)
+    0xd35466b8: (String, 0x0, 0x0, 0x0)
+    0xfc9adf03: (Pointer, 0x0, 0x0, 0x4aa1b945)
     pass
 
 class 0x252c22fd():
@@ -1598,6 +1639,24 @@ class 0x2a2c82dc():
     Outputs: (List2, 0x0, Pointer, ScriptTableSet) = []
     pass
 
+class 0x2a4b4fcd(IMilestoneProperty):
+    0x14d7d5a7: (U8, 0x0, 0x0, 0x0) = 1
+    0x29ce012: (Bool, 0x0, 0x0, 0x0) = false
+    Description: (String, 0x0, 0x0, 0x0) = ""
+    0x3730b3d2: (Embed, 0x0, 0x0, 0x3730b3d2) = {"0xb21ccbf0":1,"0xdc402f3a":1}
+    Id: (String, 0x0, 0x0, 0x0) = ""
+    0x57e0eb89: (I64, 0x0, 0x0, 0x0) = 0
+    0x6049cd42: (I64, 0x0, 0x0, 0x0) = 0
+    InternalName: (String, 0x0, 0x0, 0x0) = ""
+    LocalizedName: (String, 0x0, 0x0, 0x0) = ""
+    ProductId: (String, 0x0, 0x0, 0x0) = "d1c2664a-5938-4c41-8d1b-61fd51052c22"
+    Rewards: (List, 0x0, Pointer, 0x2508c71e) = []
+    0xb7c96973: (U8, 0x0, 0x0, 0x0) = 0
+    Active: (Bool, 0x0, 0x0, 0x0) = true
+    0xee192a3e: (Embed, 0x0, 0x0, 0xd443ea96) = {"0x83172271":{"0x5c77e8b":0,"0x87ac0600":0,"0xc12d04c6":""},"0xa62782e2":{"0x99b0deea":"","0xad22c790":""},"Intro":{"0x1327149b":"","0x66bde3f":"","0x6a8398d3":"","0xe7214e2d":"","IntroAnimation":""}}
+    0xffe0c49a: (List, 0x0, String, 0x0) = []
+    pass
+
 class 0x2a549c1c(0x4cc1ed12):
     Name: (String, 0x0, 0x0, 0x0) = ""
     pass
@@ -1700,6 +1759,11 @@ class 0x2bfb084c():
     GroupName: (String, 0x0, 0x0, 0x0) = ""
     0xec01928c: (Bool, 0x0, 0x0, 0x0) = false
     Tags: (List2, 0x0, Embed, 0xf6f4bb5f) = []
+    pass
+
+class 0x2bfff098(0x27d92a31):
+    Duration: (Pointer, 0x0, 0x0, IFloatGet) = {}
+    Target: (Pointer, 0x0, 0x0, IEntityGet) = null
     pass
 
 class 0x2c0b6330():
@@ -2114,6 +2178,14 @@ class 0x31bf21b0(0xa91b85e3):
     0xf6b809cd: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0x31d66103():
+    0x1327149b: (String, 0x0, 0x0, 0x0) = ""
+    0x66bde3f: (String, 0x0, 0x0, 0x0) = ""
+    0x6a8398d3: (String, 0x0, 0x0, 0x0) = ""
+    0xe7214e2d: (String, 0x0, 0x0, 0x0) = ""
+    IntroAnimation: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0x31d87ea6(ScriptTableGet, IBoolGet):
     PropPath: (String, 0x0, 0x0, 0x0) = ""
     pass
@@ -2372,6 +2444,11 @@ class 0x36aa243a(0x1f6455ec):
 class 0x36db6d98(0xc142ff1e, 0xd2366037):
     pass
 
+class 0x3730b3d2():
+    0xb21ccbf0: (I16, 0x0, 0x0, 0x0) = 1
+    0xdc402f3a: (I16, 0x0, 0x0, 0x0) = 1
+    pass
+
 class 0x373272a6():
     0x26188390: (Pointer, 0x0, 0x0, 0x68eabd15) = null
     pass
@@ -2514,6 +2591,7 @@ class 0x396e5d4f(IGameModeConfig):
     0x292cb8e0: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
     0x4247adf7: (F32, 0x0, 0x0, 0x0) = 0.25
     0x42d15d45: (Color, 0x0, 0x0, 0x0) = [0,215,255,255]
+    0x5250e696: (Bool, 0x0, 0x0, 0x0) = true
     0x9a3f7c17: (F32, 0x0, 0x0, 0x0) = 250.0
     0x9eb14c42: (Bool, 0x0, 0x0, 0x0) = false
     0xb2ecce33: (Color, 0x0, 0x0, 0x0) = [0,0,0,0]
@@ -2614,7 +2692,9 @@ class 0x3aa4575e():
     pass
 
 class 0x3aa63a24(0x27d92a31):
+    0x18c117f4: (Pointer, 0x0, 0x0, IFloatGet) = {}
     Target: (Pointer, 0x0, 0x0, IEntityGet) = null
+    0x5d1f23f0: (Pointer, 0x0, 0x0, IBoolGet) = {}
     pass
 
 class 0x3ab4ee7c():
@@ -3226,6 +3306,11 @@ class 0x46a7786(0xece68ca6):
 class 0x46ce0526(LoLCursorContextAwareKeybind):
     pass
 
+class 0x46d43861(0x4aa1b945):
+    0x15c4c3cb: (String, 0x0, 0x0, 0x0) = ""
+    Image: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0x46d8b2a4(0x115c2d61):
     0x29b5826a: (Pointer, 0x0, 0x0, 0x29b5826a)
     TeamDefinition: (Link, 0x0, 0x0, TeamDefinition)
@@ -3251,6 +3336,11 @@ class 0x4750ceb6(IStringCalculation):
     RangedResult: (String, 0x0, 0x0, 0x0) = ""
     DefaultResult: (String, 0x0, 0x0, 0x0) = ""
     MeleeResult: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0x47c8ad9b(0x7a3483c4):
+    Concept: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xa85a9d2d: (Pointer, 0x0, 0x0, IFloatGet) = {}
     pass
 
 class 0x47f0573d(0xc657a95d):
@@ -3300,6 +3390,7 @@ class 0x48b2d5fb():
 
 class 0x48b525af(IUiTextureDataProvider):
     0xaaea5743: (String, 0x0, 0x0, 0x0) = ""
+    Loop: (Bool, 0x0, 0x0, 0x0) = false
     pass
 
 class 0x48b8590e(0x7f631ac9):
@@ -3428,6 +3519,8 @@ class 0x4a310da5(0x505f1532):
 class 0x4a3e3da9(0x8b5022d2):
     Size: (Vec3, 0x0, 0x0, 0x0) = [1.0,1.0,1.0]
     0x3498512b: (Embed, 0x0, 0x0, 0x67104c43) = {"0x27188523":null}
+    0x3498512b: (Pointer, 0x0, 0x0, 0x2d42ea41) = null
+    0xacee2354: (U8, 0x0, 0x0, 0x0) = 0
     pass
 
 class 0x4a4575a8(MapAction):
@@ -3454,6 +3547,9 @@ class 0x4a929a90():
     ActiveIcons: (List2, 0x0, Hash, 0x0) = []
     pass
 
+class 0x4aa1b945():
+    pass
+
 class 0x4ab36eb5(IContextualCondition):
     SituationName: (String, 0x0, 0x0, 0x0) = ""
     pass
@@ -3478,6 +3574,8 @@ class 0x4b26ffad(0x27071fbd):
 
 class 0x4b30a085(0x27d92a31):
     Target: (Pointer, 0x0, 0x0, IEntityGet) = null
+    0x47ac0d65: (Pointer, 0x0, 0x0, IFloatGet) = {}
+    0x9e8fcd0c: (Pointer, 0x0, 0x0, IBoolGet) = {}
     pass
 
 class 0x4b7bc412(ILolSpellScriptEvent):
@@ -3494,7 +3592,7 @@ class 0x4bd85f7d(0x40a9c74a):
     0x58a1d8fb: (Embed, 0x0, 0x0, 0x385c323f) = {}
     0x58a1d8fb: (Embed, 0x0, 0x0, 0x7a2bf6d5) = {}
     Definition: (Embed, 0x0, 0x0, VfxDefinition) = {"0x63176011":false,"0x8f59d48c":[],"0x9d9b6793":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"IsReplicated":true,"OptionalConfigs":[],"System":"0x0","Tags":[],"Team":100,"TeamDefinition":"0x0","TextureOverride":null}
-    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x9d9b6793":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
+    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x9d9b6793":false,"0xf718ab13":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
     Team: (Embed, 0x0, 0x0, 0x1b1b0d1a) = {"Team":100,"TeamDefinition":"0x0"}
     0xc7a3b52: (Embed, 0x0, 0x0, 0x385c323f) = {}
     0xc7a3b52: (Embed, 0x0, 0x0, 0x82b49579) = {}
@@ -4003,6 +4101,10 @@ class 0x57165476(0x91873e8a):
     0x7783ca05: (F32, 0x0, 0x0, 0x0) = 9.999999747378752e-06
     CameraDamping: (F32, 0x0, 0x0, 0x0) = 20.0
     CameraMass: (F32, 0x0, 0x0, 0x0) = 1.0
+    pass
+
+class 0x571eec0a(0x2508c71e):
+    ItemId: (String, 0x0, 0x0, 0x0) = "XP"
     pass
 
 class 0x5727ed42(IScriptCondition):
@@ -4718,6 +4820,10 @@ class 0x62ca0ae():
 class 0x62d020ca():
     pass
 
+class 0x630106f3(0x62a09c62):
+    0x9ebe984e: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
 class 0x6302c267(0x505f1532):
     0x1d59898a: (Pointer, 0x0, 0x0, 0x8877ad7c) = null
     0x27188523: (Pointer, 0x0, 0x0, 0x505f1532) = null
@@ -4874,6 +4980,9 @@ class 0x65c4db8f(0x6c7a6a03):
     Source: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
     pass
 
+class 0x65d58192(0x7f631ac9):
+    pass
+
 class 0x65daf5d4(0x4201f026):
     pass
 
@@ -4901,6 +5010,10 @@ class 0x6665076c(0x3497f0cf, 0x4feb7d99):
 class 0x667eafac(0x27d92a31, IScriptBlock):
     Target: (Pointer, 0x0, 0x0, IEntityGet) = null
     Dest: (Embed, 0x0, 0x0, VectorTableSet) = {"Table":{},"Var":""}
+    pass
+
+class 0x668688b0(LoLCursorContextAwareKeybind):
+    0xa4aaab62: (U32, 0x0, 0x0, 0x0) = 0
     pass
 
 class 0x6693bb9(0x2b00c366):
@@ -5234,6 +5347,11 @@ class 0x6b91544a(IGameModeConfigClient, IGameModeConfig):
     UpscaleTextures: (Bool, 0x0, 0x0, 0x0) = true
     pass
 
+class 0x6ba221d7(0x27d92a31):
+    Duration: (Pointer, 0x0, 0x0, IFloatGet) = {}
+    Target: (Pointer, 0x0, 0x0, IEntityGet) = null
+    pass
+
 class 0x6bbc3db6(0x288b8edc):
     SpellObjects: (List, 0x4, Link, SpellObject) = ["0x0","0x0","0x0","0x0"]
     0xda28e4c: (Color, 0x0, 0x0, 0x0) = [0,0,0,255]
@@ -5292,6 +5410,9 @@ class 0x6cac8699(Cheat):
 class 0x6cae67ad(ISequenceAction):
     Modifier: (Pointer, 0x0, 0x0, 0xd5b0f96f) = null
     TargetObject: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
+    pass
+
+class 0x6cb0c909():
     pass
 
 class 0x6cbaf1a3():
@@ -5518,6 +5639,12 @@ class 0x70e76440(0x2b949af2):
     Definition: (Embed, 0x0, 0x0, 0x2461f3a9) = {"0x8f59d48c":[],"Tags":[]}
     pass
 
+class 0x70f5ed1c(IContextualCondition):
+    0x49e47ecd: (Embed, 0x0, 0x0, 0xe46a1cdb) = {"0x1ccf05c7":0,"0x6b5e21ef":0,"Objectives":0,"SourceId":0}
+    CompareOp: (U8, 0x0, 0x0, 0x0) = 3
+    0xb95ee9e0: (Embed, 0x0, 0x0, 0xe46a1cdb) = {"0x1ccf05c7":0,"0x6b5e21ef":0,"Objectives":0,"SourceId":0}
+    pass
+
 class 0x71107421(0xb432effc):
     pass
 
@@ -5585,6 +5712,8 @@ class 0x7296321a():
 
 class 0x72a4bae5(0x8b5022d2):
     0x654153c3: (Embed, 0x0, 0x0, 0x373272a6) = {"0x26188390":null}
+    0x654153c3: (Pointer, 0x0, 0x0, 0x3eb74cbe) = null
+    0xacee2354: (U8, 0x0, 0x0, 0x0) = 0
     Radius: (Embed, 0x0, 0x0, 0xafe1d569) = {"0xa6c45d85":{}}
     Radius: (F32, 0x0, 0x0, 0x0) = 1.0
     0xe60c4bed: (Flag, 0x0, 0x0, 0x0) = false
@@ -5709,6 +5838,11 @@ class 0x758967c5(0x7992a72c):
     0xb4b47052: (U8, 0x0, 0x0, 0x0) = 0
     pass
 
+class 0x759b8cc5(0x8877ad7c):
+    Source: (U8, 0x0, 0x0, 0x0) = 0
+    0xbfc92e63: (Pointer, 0x0, 0x0, ILogicFloatDriver) = null
+    pass
+
 class 0x759c2f60():
     PointsText: (Hash, 0x0, 0x0, 0x0) = "0x0"
     SelectedHolder: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -5813,6 +5947,11 @@ class 0x770f7888():
     HpRegenPerLevel: (F32, 0x0, 0x0, 0x0) = 0.0
     ArmorPerLevel: (F32, 0x0, 0x0, 0x0) = 0.0
     HpPerLevel: (F32, 0x0, 0x0, 0x0) = 0.0
+    pass
+
+class 0x77274757(0x4aa1b945):
+    0x15c4c3cb: (String, 0x0, 0x0, 0x0) = ""
+    Image: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x7730763b(0x64c18f7d):
@@ -6015,6 +6154,9 @@ class 0x7a28c026(ConceptBase):
 class 0x7a2bf6d5(0x62a09c62):
     pass
 
+class 0x7a3483c4(0x91b37a79):
+    pass
+
 class 0x7a5040ea(BaseLoadoutData):
     IconTexturePath: (String, 0x0, 0x0, 0x0) = ""
     0x7599f2c8: (String, 0x0, 0x0, 0x0) = ""
@@ -6022,6 +6164,10 @@ class 0x7a5040ea(BaseLoadoutData):
     EnemyDamageSkin: (Hash, 0x0, 0x0, 0x0) = "0x0"
     EnemyCompanion: (Hash, 0x0, 0x0, 0x0) = "0x0"
     DifficultyLevel: (U8, 0x0, 0x0, 0x0) = 0
+    pass
+
+class 0x7aa5ea7a(0x2508c71e):
+    ItemId: (String, 0x0, 0x0, 0x0) = "6e4b2a5c-dfbb-5f9f-9194-718107047829"
     pass
 
 class 0x7ab86c01(0xb432effc):
@@ -6141,6 +6287,11 @@ class 0x7c809adf():
     0xcaaf01bd: (List2, 0x0, Link, TftItemData) = []
     BossData: (List2, 0x0, Link, 0xe4b58196) = []
     0xf5a8c9b7: (U8, 0x0, 0x0, 0x0) = 1
+    pass
+
+class 0x7c85ea46(0x27d92a31):
+    Target: (Pointer, 0x0, 0x0, IEntityGet) = null
+    Dest: (Embed, 0x0, 0x0, VectorTableSet) = {"Table":{},"Var":""}
     pass
 
 class 0x7c8b2cd8(0x26d26471):
@@ -6278,6 +6429,12 @@ class 0x7ebc692d(0x26c7d48a):
     pass
 
 class 0x7ecb2959(0x129e311, 0x3497f0cf, 0x4feb7d99):
+    pass
+
+class 0x7ee2ba62():
+    CatalogEntry: (Link, 0x0, 0x0, CatalogEntry) = "0x0"
+    0x42e3afec: (String, 0x0, 0x0, 0x0) = ""
+    Name: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x7efceaff():
@@ -6480,6 +6637,7 @@ class 0x82b49579(0x62a09c62):
     0x63176011: (Bool, 0x0, 0x0, 0x0) = false
     0x9d9b6793: (Bool, 0x0, 0x0, 0x0) = false
     ColorModulate: (Vec4, 0x0, 0x0, 0x0) = [1.0,1.0,1.0,1.0]
+    0xf718ab13: (Bool, 0x0, 0x0, 0x0) = false
     pass
 
 class 0x82b7d21d():
@@ -6982,6 +7140,7 @@ class 0x8a46e486(ISequenceAction):
     0x266cb0e8: (Bool, 0x0, 0x0, 0x0) = false
     AnimationName: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Object: (Pointer, 0x0, 0x0, 0x8b54c9a7) = null
+    0xcd97640d: (Bool, 0x0, 0x0, 0x0) = false
     TargetObject: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
     pass
 
@@ -7410,6 +7569,7 @@ class 0x9228bd44(0x505f1532):
 
 class 0x92309121(IGameModeConfig):
     0x17659fc6: (Pointer, 0x0, 0x0, 0x67bfa45e) = null
+    0x1e5c4657: (U8, 0x0, 0x0, 0x0) = 0
     0x1e88b9d4: (F32, 0x0, 0x0, 0x0) = 1.0
     0x20fc97e7: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x20fc97e7: (Link, 0x0, 0x0, LolSpellScript) = "0x0"
@@ -7574,7 +7734,7 @@ class 0x94a73165(0x40a9c74a):
     IsReplicated: (Bool, 0x0, 0x0, 0x0) = true
     Team: (Embed, 0x0, 0x0, 0x1b1b0d1a) = {"Team":100,"TeamDefinition":"0x0"}
     0xd01ec7fc: (Embed, 0x0, 0x0, 0x385c323f) = {}
-    0xd01ec7fc: (Embed, 0x0, 0x0, 0xde1e8cca) = {"0x6a6c6fe":false,"FillVolume":true,"ShapeData":null,"SoundName":""}
+    0xd01ec7fc: (Embed, 0x0, 0x0, 0xde1e8cca) = {"0x610b3282":false,"0x6a6c6fe":false,"FillVolume":true,"ShapeData":null,"SoundName":""}
     0xf8f165ee: (Embed, 0x0, 0x0, 0x1eee9d10) = {}
     0xf8f165ee: (Embed, 0x0, 0x0, 0x385c323f) = {}
     pass
@@ -7822,8 +7982,8 @@ class 0x9984b4a(0xa91b85e3):
 
 class 0x9999dd64():
     0x2b1b533a: (U8, 0x0, 0x0, 0x0) = 0
-    0x5546f441: (Embed, 0x0, 0x0, 0xd2221304) = {"0x2c188d02":null}
-    0x7170a81b: (Embed, 0x0, 0x0, 0xd2221304) = {"0x2c188d02":null}
+    0x5546f441: (Embed, 0x0, 0x0, 0xd2221304) = {"0x2c188d02":{}}
+    0x7170a81b: (Embed, 0x0, 0x0, 0xd2221304) = {"0x2c188d02":{}}
     pass
 
 class 0x99a020c3(MovingSituations):
@@ -8178,6 +8338,11 @@ class 0x9f40fcd2():
     Internal: (Embed, 0x0, 0x0, 0x3978db55) = {"0x927c10c9":0,"0xb9f88dc0":0}
     pass
 
+class 0x9f4272ac(0x2508c71e):
+    ItemId: (String, 0x0, 0x0, 0x0) = ""
+    0xba947a2: (Link, 0x0, 0x0, 0x4945c5ac) = "0x0"
+    pass
+
 class 0x9f9ec6c2(GameModeConstant):
     Characters: (List2, 0x0, Hash, 0x0) = []
     pass
@@ -8204,6 +8369,13 @@ class 0xa004a785(0x27d92a31, IScriptBlock):
 
 class 0xa01bb4c2(0x8930818a):
     Source: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
+    pass
+
+class 0xa02d99c5(0xe057ab66):
+    pass
+
+class 0xa047920e(LoLCursorContextAwareKeybind):
+    0xa4aaab62: (U32, 0x0, 0x0, 0x0) = 0
     pass
 
 class 0xa07a91e8(0x8930818a):
@@ -8414,6 +8586,10 @@ class 0xa4f28691():
 class 0xa4f2e42e(0xb432effc):
     pass
 
+class 0xa4fcf99f(0x2508c71e):
+    ItemId: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0xa50ab26():
     OwnerChampion: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Tooltip: (String, 0x0, 0x0, 0x0) = ""
@@ -8483,6 +8659,12 @@ class 0xa67e6b6(0x91873e8a):
     pass
 
 class 0xa6a35b():
+    pass
+
+class 0xa6a9829a():
+    Constant: (Pointer, 0x0, 0x0, GameModeConstant) = null
+    Item: (Link, 0x0, 0x0, TftItemData) = "0x0"
+    0xa59d3dc9: (Pointer, 0x0, 0x0, GameModeConstant) = null
     pass
 
 class 0xa6cd46b0():
@@ -8574,13 +8756,16 @@ class 0xa8fef3df():
     0x25f550a: (String, 0x0, 0x0, 0x0) = ""
     0x2fec612a: (String, 0x0, 0x0, 0x0) = ""
     0x4549fe91: (String, 0x0, 0x0, 0x0) = ""
+    0x49a76d44: (String, 0x0, 0x0, 0x0) = ""
     0x68337617: (String, 0x0, 0x0, 0x0) = ""
     0x87753e0a: (String, 0x0, 0x0, 0x0) = ""
     0xa586608d: (String, 0x0, 0x0, 0x0) = ""
     0xba54f86d: (String, 0x0, 0x0, 0x0) = ""
+    0xcdf065dc: (String, 0x0, 0x0, 0x0) = ""
     0xd3a0a511: (String, 0x0, 0x0, 0x0) = ""
     0xd41df86e: (String, 0x0, 0x0, 0x0) = ""
     0xdd3fe563: (String, 0x0, 0x0, 0x0) = ""
+    0xe8b9cb1a: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0xa91b85e3(IOptionTemplate):
@@ -8605,6 +8790,11 @@ class 0xa9253585():
     pass
 
 class 0xa92e29f6(ISequenceActionInstance):
+    pass
+
+class 0xa953e0b(0x505f1532):
+    Source: (U8, 0x0, 0x0, 0x0) = 0
+    0xbfc92e63: (Pointer, 0x0, 0x0, ILogicVector3Driver) = null
     pass
 
 class 0xa9593c80():
@@ -8657,7 +8847,7 @@ class 0xaab3465e(0xb98830a1):
     Option: (Link, 0x0, 0x0, 0x808c79e4) = "0x0"
     pass
 
-class 0xaadc6ca8(0x3497f0cf, 0xa4795108):
+class 0xaadc6ca8(0x12b2d1cc, 0x3497f0cf, 0xa4795108):
     pass
 
 class 0xab02008c(0xa8a6ac21):
@@ -8818,9 +9008,14 @@ class 0xadfcc498(LoLCursorContextAwareKeybind):
 
 class 0xae005c94(IGameModeConfig):
     ProgressionTracks: (List2, 0x0, Link, ProgressTrack) = []
+    Name: (String, 0x0, 0x0, 0x0) = ""
+    0xca39692c: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0xae1a932(0x129e311, 0x2576b4fc, 0x2a036a61, 0x3497f0cf):
+    pass
+
+class 0xae4d057b(ILogicVector3Driver):
     pass
 
 class 0xae56d8c4(LoLCursorContextAwareKeybind):
@@ -8989,6 +9184,10 @@ class 0xb168751c(0x7992a72c):
     0xb4b47052: (U8, 0x0, 0x0, 0x0) = 0
     pass
 
+class 0xb183179():
+    0x7bbce67d: (List2, 0x0, Link, 0xd41a611d) = []
+    pass
+
 class 0xb1c52813(0x62a09c62):
     0x301dab05: (Pointer, 0x0, 0x0, 0x301dab05) = null
     RenderInfo: (Pointer, 0x0, 0x0, 0x3ff79219) = null
@@ -9090,6 +9289,11 @@ class 0xb3674a86(TftGameStartSequenceSimpleObject):
 
 class 0xb37ab600(0xbc413e21):
     ButtonElement: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0xb3ecfad0(0x2508c71e):
+    0x877a7447: (String, 0x0, 0x0, 0x0) = ""
+    0xfa4f01: (Link, 0x0, 0x0, LootItem) = "0x0"
     pass
 
 class 0xb3f382ff():
@@ -9329,6 +9533,9 @@ class 0xb7b9b55b(0x2bde0c9c):
 class 0xb7d27a44(0x7f631ac9):
     pass
 
+class 0xb7ea4f54(IOptionItemFilter):
+    pass
+
 class 0xb8326dde():
     KeybindSet: (Link, 0x0, 0x0, 0x2cfe8421) = "0x0"
     Champion: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -9461,6 +9668,9 @@ class 0xbafc3e15(0x67c526d3):
     SpellLevel: (Pointer, 0x0, 0x0, ILogicFloatDriver) = null
     pass
 
+class 0xbafcf76c(0x3497f0cf):
+    pass
+
 class 0xbb04e22d(0xee35f912):
     CharacterRecord: (Hash, 0x0, 0x0, 0x0) = "0x0"
     RequiredLevel: (I32, 0x0, 0x0, 0x0) = 0
@@ -9468,6 +9678,9 @@ class 0xbb04e22d(0xee35f912):
     0x3d6a5a2: (String, 0x0, 0x0, 0x0) = ""
     0x9631656f: (List2, 0x0, I32, 0x0) = []
     DescriptionTra: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0xbb0904fc(LoLCursorContextAwareKeybind):
     pass
 
 class 0xbb1b4a24(IGameModeConfig):
@@ -9684,6 +9897,10 @@ class 0xbe081d2c():
     0xbcde5149: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0xbe4626e1(0x2508c71e):
+    0x55a243d9: (Link, 0x0, 0x0, ChallengeTitleData) = "0x0"
+    pass
+
 class 0xbe586e39(ILoopScriptBlock, 0xff4e30bb):
     OutEntity: (Embed, 0x0, 0x0, 0x851d2116) = {"Table":{},"Var":""}
     Group: (Pointer, 0x0, 0x0, 0x13d71082) = null
@@ -9877,6 +10094,12 @@ class 0xc261f71e(ILolSpellScriptEvent):
 class 0xc26559f8(0x46d8b2a4):
     Skin: (String, 0x0, 0x0, 0x0) = ""
     BannerFrameData: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0xc29d5ff(ViewController):
+    Scene: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    LeaveButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    SpectateButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0xc2afdb3d(0xaa0bf832):
@@ -10362,6 +10585,11 @@ class 0xcb3604f0(IScriptCondition):
     Emote: (U8, 0x0, 0x0, 0x0) = 0
     pass
 
+class 0xcb6bad8():
+    0x99b0deea: (String, 0x0, 0x0, 0x0) = ""
+    0xad22c790: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0xcbd100e7():
     pass
 
@@ -10545,6 +10773,9 @@ class 0xced882fd(0x62a09c62):
 
 class 0xceeafc35(0x8877ad7c):
     0xa6c45d85: (F32, 0x0, 0x0, 0x0) = 0.0
+    pass
+
+class 0xcf1bda19(0x7f631ac9):
     pass
 
 class 0xcf47a9a3():
@@ -10814,8 +11045,16 @@ class 0xd3f07247():
     0xb7e2d7e4: (Map, String, Embed, 0x32902d31) = {}
     pass
 
+class 0xd41a611d():
+    Item: (Link, 0x0, 0x0, TftItemData) = "0x0"
+    0xd3c84ef7: (List2, 0x0, Embed, 0xa6a9829a) = []
+    pass
+
 class 0xd42411cf(0x608e61e9):
     0xfb5fd8a8: (Embed, 0x0, 0x0, 0xa6ebe6e1) = {"EntityInputs":[],"SequenceLink":"0x0"}
+    pass
+
+class 0xd42d11e(0xe057ab66):
     pass
 
 class 0xd42fa4dc(ISequenceAction):
@@ -10824,6 +11063,12 @@ class 0xd42fa4dc(ISequenceAction):
     0x8adb25f4: (String, 0x0, 0x0, 0x0) = ""
     Object: (Pointer, 0x0, 0x0, 0x8b54c9a7) = null
     TargetObject: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
+    pass
+
+class 0xd443ea96():
+    Intro: (Embed, 0x0, 0x0, 0x31d66103) = {"0x1327149b":"","0x66bde3f":"","0x6a8398d3":"","0xe7214e2d":"","IntroAnimation":""}
+    0x83172271: (Embed, 0x0, 0x0, 0xe27f0273) = {"0x5c77e8b":0,"0x87ac0600":0,"0xc12d04c6":""}
+    0xa62782e2: (Embed, 0x0, 0x0, 0xcb6bad8) = {"0x99b0deea":"","0xad22c790":""}
     pass
 
 class 0xd4508d13():
@@ -11474,6 +11719,7 @@ class 0xde125976(ILogicFloatDriver):
 
 class 0xde1e8cca(0x62a09c62):
     FillVolume: (Bool, 0x0, 0x0, 0x0) = true
+    0x610b3282: (Bool, 0x0, 0x0, 0x0) = false
     0x6a6c6fe: (Bool, 0x0, 0x0, 0x0) = false
     SoundName: (String, 0x0, 0x0, 0x0) = ""
     ShapeData: (Pointer, 0x0, 0x0, 0x29c76c1f) = null
@@ -11586,6 +11832,12 @@ class 0xe09b8684(0x50794e0e):
 class 0xe0cb9899():
     pass
 
+class 0xe0f036ce(MissileMovementSpec):
+    0x488b3e23: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
+    Lifetime: (F32, 0x0, 0x0, 0x0) = 0.0
+    0xadbdac5e: (F32, 0x0, 0x0, 0x0) = 0.0
+    pass
+
 class 0xe12de24f(0xd456bab6):
     0xcfa2b9d6: (Pointer, 0x0, 0x0, 0xe2a48eac) = null
     RequiredValue: (I32, 0x0, 0x0, 0x0) = 0
@@ -11657,6 +11909,7 @@ class 0xe228ce4a(UiMetricTypeI):
 
 class 0xe24d73c6(ViewController):
     0x4161e976: (String, 0x0, 0x0, 0x0) = ""
+    0x484a9c55: (F32, 0x0, 0x0, 0x0) = 0.20000000298023224
     DefaultAdjustments: (Embed, 0x0, 0x0, PerLocaleTooltipAdjustments) = {"BottomHrYPostAdjustment":0,"BottomHrYPreAdjustment":0,"BottomYPaddingAdjustment":0,"TitleYAdjustment":0,"TopHrYPostAdjustment":0,"TopHrYPreAdjustment":0}
     TooltipPopupTimeout: (F32, 0x0, 0x0, 0x0) = 0.0
     0x9d4faf57: (String, 0x0, 0x0, 0x0) = ""
@@ -11667,6 +11920,12 @@ class 0xe24d73c6(ViewController):
 
 class 0xe24e86a2(LolGameEntity):
     Definition: (Pointer, 0x0, 0x0, 0xc26559f8) = null
+    pass
+
+class 0xe27f0273():
+    0x5c77e8b: (U8, 0x0, 0x0, 0x0) = 0
+    0x87ac0600: (U8, 0x0, 0x0, 0x0) = 0
+    0xc12d04c6: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0xe2a48eac():
@@ -11716,12 +11975,24 @@ class 0xe35f9399():
     TransitionStartTime: (F32, 0x0, 0x0, 0x0) = 0.0
     pass
 
+class 0xe3c2c81a(0x2508c71e):
+    ItemType: (String, 0x0, 0x0, 0x0) = "BUNDLES"
+    0x4d4a2c20: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0xe4420d48(UiMetricTypeSimpleI):
     pass
 
 class 0xe45d99fc():
     Properties: (List2, 0x0, Pointer, 0x3e149034) = []
     Includes: (List2, 0x0, Link, 0xe45d99fc) = []
+    pass
+
+class 0xe46a1cdb():
+    Objectives: (U32, 0x0, 0x0, 0x0) = 0
+    0x1ccf05c7: (U32, 0x0, 0x0, 0x0) = 0
+    0x6b5e21ef: (U32, 0x0, 0x0, 0x0) = 0
+    SourceId: (U8, 0x0, 0x0, 0x0) = 0
     pass
 
 class 0xe4b58196():
@@ -11973,6 +12244,7 @@ class 0xe90140f4(0xadce0266):
     BirthAcceleration: (Embed, 0x0, 0x0, ValueVector3) = {"ConstantValue":[0.0,0.0,0.0],"Dynamics":null}
     IsEmitterSpace: (Bool, 0x0, 0x0, 0x0) = false
     IsEmitterSpace: (Flag, 0x0, 0x0, 0x0) = false
+    FieldCollectionDefinition: (Pointer, 0x0, 0x0, VfxFieldCollectionDefinitionData) = null
     TranslationOverride: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
     RotationOverride: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
     Drag: (Embed, 0x0, 0x0, ValueVector3) = {"ConstantValue":[0.0,0.0,0.0],"Dynamics":null}
@@ -12026,6 +12298,11 @@ class 0xe92f8b6c(ViewController):
     SubTeamsLoadable: (Link, 0x0, 0x0, UiPropertyLoadable) = "0x0"
     0xebeabff1: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xfff63be6: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0xe945834a(IGameCalculationPart):
+    0x7db9ab0b: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Coefficient: (F32, 0x0, 0x0, 0x0) = 0.0
     pass
 
 class 0xe97bc20d(0x2b949af2):
@@ -12402,6 +12679,8 @@ class 0xeea0bf1(ISkinAugmentModifier):
 
 class 0xeeaaebe(0x8b5022d2):
     0x654153c3: (Embed, 0x0, 0x0, 0x373272a6) = {"0x26188390":null}
+    0x654153c3: (Pointer, 0x0, 0x0, 0x3eb74cbe) = null
+    0xacee2354: (U8, 0x0, 0x0, 0x0) = 0
     Height: (Embed, 0x0, 0x0, 0xafe1d569) = {"0xa6c45d85":{}}
     Height: (F32, 0x0, 0x0, 0x0) = 1.0
     Radius: (Embed, 0x0, 0x0, 0xafe1d569) = {"0xa6c45d85":{}}
@@ -12653,7 +12932,7 @@ class 0xf2c8525d(0x114828a9):
     SideLength: (F32, 0x0, 0x0, 0x0) = 0.0
     pass
 
-class 0xf2d18d28(0x6ff8b2a7):
+class 0xf2d18d28(0x1742fda9, 0x6ff8b2a7):
     CastW: (Link, 0x0, 0x0, InputEventBool) = "0x0"
     CastR: (Link, 0x0, 0x0, InputEventBool) = "0x0"
     0x17bd532d: (Link, 0x0, 0x0, InputEventBool) = "0x0"
@@ -12705,6 +12984,10 @@ class 0xf3121b20(0x62a09c62):
     BarracksConfig: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Lane: (U16, 0x0, 0x0, 0x0) = 3
     LinkedPath: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0xf32625a7(0x2508c71e):
+    0x4831f40d: (Link, 0x0, 0x0, 0x7ee2ba62) = "0x0"
     pass
 
 class 0xf32e24af(0xe057ab66):
@@ -14045,7 +14328,7 @@ class AugmentSlotData():
     AugmentDescription: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentRefreshVfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentNotPickedVfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
-    RerollButtonData: (Embed, 0x0, 0x0, RerollButtonData) = {"0xc8f7f131":"0x0","RerollButton":"0x0","RerollButtonText":"0x0","RerollButtonTextColor":[0,0,0,255],"RerollButtonTextDisabledColor":[0,0,0,255]}
+    RerollButtonData: (Embed, 0x0, 0x0, RerollButtonData) = {"0x156908a":"","0x3e778531":"","0xc8f7f131":"0x0","0xe591c9c1":"0x0","RerollButton":"0x0","RerollButtonText":"0x0","RerollButtonTextColor":[0,0,0,255],"RerollButtonTextDisabledColor":[0,0,0,255]}
     AugmentIcon: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x76215b4c: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x791eb92e: (Embed, 0x0, 0x0, 0x791eb92e) = {"0x8f6fed86":"0x0","0xb136a8a8":[]}
@@ -15154,7 +15437,7 @@ class CherryAugmentSelectionViewController(ViewController):
     MaxAugmentSlots: (U32, 0x0, 0x0, 0x0) = 3
     0xce64b8ab: (Embed, 0x0, 0x0, 0xfb1989a3) = {"0x34296273":"0x0","HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     TooltipAnchor: (Hash, 0x0, 0x0, 0x0) = "0x0"
-    AugmentSlotData: (Embed, 0x0, 0x0, AugmentSlotData) = {"0x2984933":"0x0","0x344729ae":"0x0","0x4ddb7d67":"0x0","0x58d3e60":null,"0x76215b4c":"0x0","0x791eb92e":{"0x8f6fed86":"0x0","0xb136a8a8":[]},"AugmentButton":"0x0","AugmentDescription":"0x0","AugmentDisplayTagData":{"AugmentDisplayTagFrame":"0x0","AugmentDisplayTagRow":"0x0","AugmentDisplayTagSpacer":"0x0","AugmentDisplayTagText":"0x0"},"AugmentGroup":"0x0","AugmentHoverVfx":"0x0","AugmentIconLarge":"0x0","AugmentIconMedium":"0x0","AugmentIdleVfx":"0x0","AugmentName":"0x0","AugmentNotPickedVfx":"0x0","AugmentPickedVfx":"0x0","AugmentRefreshOverlayVfx":"0x0","AugmentRefreshVfx":"0x0","RerollButtonData":{"0xc8f7f131":"0x0","RerollButton":"0x0","RerollButtonText":"0x0","RerollButtonTextColor":[0,0,0,255],"RerollButtonTextDisabledColor":[0,0,0,255]}}
+    AugmentSlotData: (Embed, 0x0, 0x0, AugmentSlotData) = {"0x2984933":"0x0","0x344729ae":"0x0","0x4ddb7d67":"0x0","0x58d3e60":null,"0x76215b4c":"0x0","0x791eb92e":{"0x8f6fed86":"0x0","0xb136a8a8":[]},"AugmentButton":"0x0","AugmentDescription":"0x0","AugmentDisplayTagData":{"AugmentDisplayTagFrame":"0x0","AugmentDisplayTagRow":"0x0","AugmentDisplayTagSpacer":"0x0","AugmentDisplayTagText":"0x0"},"AugmentGroup":"0x0","AugmentHoverVfx":"0x0","AugmentIconLarge":"0x0","AugmentIconMedium":"0x0","AugmentIdleVfx":"0x0","AugmentName":"0x0","AugmentNotPickedVfx":"0x0","AugmentPickedVfx":"0x0","AugmentRefreshOverlayVfx":"0x0","AugmentRefreshVfx":"0x0","RerollButtonData":{"0x156908a":"","0x3e778531":"","0xc8f7f131":"0x0","0xe591c9c1":"0x0","RerollButton":"0x0","RerollButtonText":"0x0","RerollButtonTextColor":[0,0,0,255],"RerollButtonTextDisabledColor":[0,0,0,255]}}
     0xf8d5ccda: (Embed, 0x0, 0x0, 0xfb1989a3) = {"0x34296273":"0x0","HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     pass
 
@@ -16842,6 +17125,7 @@ class ExperienceCurveData():
     mExperienceGrantedMultForSharedKillPerLevel: (List, 0x0, F32, 0x0) = []
     LevelDifferenceExperienceMultiplierPerLevel: (List, 0x0, F32, 0x0) = []
     mExperienceGrantedForKillPerLevel: (List, 0x0, F32, 0x0) = []
+    0xb007a40c: (Bool, 0x0, 0x0, 0x0) = false
     mExperienceRequiredPerLevel: (List, 0x0, F32, 0x0) = []
     mMinimumExperienceMultiplier: (F32, 0x0, 0x0, 0x0) = 0.4000000059604645
     mBaseExperienceMultiplier: (F32, 0x0, 0x0, 0x0) = 1.0
@@ -20053,7 +20337,7 @@ class ListenerConstraintInfo():
     pass
 
 class LiveFeatureToggles():
-    mLolToggles: (Embed, 0x0, 0x0, LolFeatureToggles) = {"0x1243f0b":false,"0x17fb5d01":false,"0x1ac248aa":true,"0x1db16466":false,"0x1fb605bf":false,"0x2094dd6e":false,"0x2cb137a3":false,"0x30ba7188":false,"0x3eebe0a":true,"0x46a63d99":false,"0x488bc114":false,"0x51601c15":false,"0x5a0599c9":false,"0x5adee452":false,"0x5b41032a":false,"0x5e414ebb":false,"0x60db17b3":false,"0x625c69b3":false,"0x62aaa28f":true,"0x632dd61f":false,"0x724bed8c":false,"0x751afdde":true,"0x791348b4":true,"0x79300d79":false,"0x7aacbbbc":false,"0x7de343b9":false,"0x86df15e6":true,"0x898c0b97":false,"0x8ce38003":true,"0x8d1b31e9":false,"0x96eee674":false,"0x9a0588ef":true,"0xa6dc5d6f":false,"0xaa0fcb5":false,"0xab3d1e78":true,"0xaef3b874":true,"0xb059e275":false,"0xbc0ba76a":true,"0xbe70d686":true,"0xc05ca3fa":true,"0xc1a41d10":false,"0xc34957b2":false,"0xce944dc0":false,"0xda2f1faf":false,"0xda5b6e04":false,"0xe2213221":true,"0xeb6a5659":false,"0xed1d15f0":true,"0xf306863":false,"0xf5d6cca4":false,"0xf5f28af2":false,"0xfb9572d0":false,"AllChatRemoved":false,"AutoItemPurchasingUsesNewRecData":false,"BbNewBlockOnly":true,"CloseOnEndGameAfterDelay":false,"EnableCustomPlayerScoreColoring":false,"EnableUnitOrderHandler":false,"FixAccidentalAttackWhileSnared":true,"FixAttackMoveWhileSnared":true,"GetAcquisitionRangeUsesAttackRange":false,"InGameReportAndMuteModal":false,"ItemUndo":true,"LiveClientDataApi":true,"OmnivampStat":false,"PathControllerMessageSizeLimit":false,"PhysicalVampStat":false,"PromoController":false,"RegularUpdateClock":false,"RuneBerserkRefactorsOn":false,"SpellsCheckTheirAmmoRequirement":true,"TftLittleLegendEvolution":false,"TftMatchupBanner":false,"TftPcItemPanel":false,"TftPcTeamPlanner":false,"TftRegularUpdateClock":false,"TftSocialModeRequestSystem":false,"TftUnrestrictedArenaCamera":false,"TftZoomSkin":false,"UseOverideAttackSpeedForAutoAttackTime":false}
+    mLolToggles: (Embed, 0x0, 0x0, LolFeatureToggles) = {"0x1243f0b":false,"0x17fb5d01":false,"0x1ac248aa":true,"0x1db16466":false,"0x2094dd6e":false,"0x2cb137a3":false,"0x30ba7188":false,"0x3eebe0a":true,"0x46a63d99":false,"0x488bc114":false,"0x51601c15":false,"0x5524ca3c":false,"0x5a0599c9":false,"0x5adee452":false,"0x5b41032a":false,"0x5e414ebb":false,"0x60db17b3":false,"0x625c69b3":false,"0x62aaa28f":true,"0x632dd61f":false,"0x724bed8c":false,"0x751afdde":true,"0x791348b4":true,"0x79300d79":false,"0x7aacbbbc":false,"0x7de343b9":false,"0x86df15e6":true,"0x898c0b97":false,"0x8ce38003":true,"0x8d1b31e9":false,"0x90ede9a7":false,"0x96eee674":false,"0x9a0588ef":true,"0xa6dc5d6f":false,"0xa882cddf":false,"0xaa0fcb5":false,"0xab3d1e78":true,"0xaef3b874":true,"0xb059e275":false,"0xbc0ba76a":true,"0xbe70d686":true,"0xc05ca3fa":true,"0xc1a41d10":false,"0xc34957b2":false,"0xda2f1faf":false,"0xda5b6e04":false,"0xe2213221":true,"0xe314b705":true,"0xeb6a5659":false,"0xed1d15f0":true,"0xf306863":false,"0xf5d6cca4":false,"0xf5f28af2":false,"0xfb9572d0":false,"AllChatRemoved":false,"AutoItemPurchasingUsesNewRecData":false,"BbNewBlockOnly":true,"CloseOnEndGameAfterDelay":false,"EnableCustomPlayerScoreColoring":false,"EnableUnitOrderHandler":false,"FixAccidentalAttackWhileSnared":true,"FixAttackMoveWhileSnared":true,"GetAcquisitionRangeUsesAttackRange":false,"InGameReportAndMuteModal":false,"ItemUndo":true,"LiveClientDataApi":true,"OmnivampStat":false,"PathControllerMessageSizeLimit":false,"PhysicalVampStat":false,"PromoController":false,"RegularUpdateClock":false,"RuneBerserkRefactorsOn":false,"SpellsCheckTheirAmmoRequirement":true,"TftLittleLegendEvolution":false,"TftMatchupBanner":false,"TftPcItemPanel":false,"TftPcTeamPlanner":false,"TftRegularUpdateClock":false,"TftSocialModeRequestSystem":false,"TftUnrestrictedArenaCamera":false,"TftZoomSkin":false,"UseOverideAttackSpeedForAutoAttackTime":false}
     mGameplayToggles: (Embed, 0x0, 0x0, GameplayFeatureToggles) = {"DisableSpellLevelMinimumProtections":false,"FowCastRayAccurate":false}
     pass
 
@@ -20688,6 +20972,7 @@ class LoginViewController(ViewController):
     0x8d60d1a1: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x95c2d7cf: (Hash, 0x0, 0x0, 0x0) = "0x0"
     LogoutButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xb96dbb63: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xff4ab060: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
@@ -20757,6 +21042,7 @@ class LolFeatureToggles():
     0x50cada4c: (Bool, 0x0, 0x0, 0x0) = true
     0x51601c15: (Bool, 0x0, 0x0, 0x0) = false
     0x53dc659d: (Bool, 0x0, 0x0, 0x0) = false
+    0x5524ca3c: (Bool, 0x0, 0x0, 0x0) = false
     0x57a5db59: (Bool, 0x0, 0x0, 0x0) = true
     0x57d3f2c8: (Bool, 0x0, 0x0, 0x0) = false
     TftPcItemPanel: (Bool, 0x0, 0x0, 0x0) = false
@@ -20811,6 +21097,7 @@ class LolFeatureToggles():
     0x8ce38003: (Bool, 0x0, 0x0, 0x0) = true
     0x8d1b31e9: (Bool, 0x0, 0x0, 0x0) = false
     TftTraitTrackerClarityUpdate: (Bool, 0x0, 0x0, 0x0) = false
+    0x90ede9a7: (Bool, 0x0, 0x0, 0x0) = false
     PathfindingLevelMovementRestriction: (Bool, 0x0, 0x0, 0x0) = true
     0x9363692a: (Bool, 0x0, 0x0, 0x0) = false
     0x937aae2c: (Bool, 0x0, 0x0, 0x0) = false
@@ -20834,6 +21121,7 @@ class LolFeatureToggles():
     0xa6dc5d6f: (Bool, 0x0, 0x0, 0x0) = false
     TftCollapsibleStageUi: (Bool, 0x0, 0x0, 0x0) = false
     0xa770b762: (Bool, 0x0, 0x0, 0x0) = true
+    0xa882cddf: (Bool, 0x0, 0x0, 0x0) = false
     0xaa0fcb5: (Bool, 0x0, 0x0, 0x0) = false
     0xab3d1e78: (Bool, 0x0, 0x0, 0x0) = true
     0xab545ae5: (Bool, 0x0, 0x0, 0x0) = false
@@ -20890,6 +21178,7 @@ class LolFeatureToggles():
     0xdf0412a6: (Bool, 0x0, 0x0, 0x0) = false
     TftUnrestrictedArenaCamera: (Bool, 0x0, 0x0, 0x0) = false
     0xe2213221: (Bool, 0x0, 0x0, 0x0) = true
+    0xe314b705: (Bool, 0x0, 0x0, 0x0) = true
     0xe759b66e: (Bool, 0x0, 0x0, 0x0) = true
     0xeb6a5659: (Bool, 0x0, 0x0, 0x0) = false
     0xeb74e213: (Bool, 0x0, 0x0, 0x0) = true
@@ -22362,12 +22651,16 @@ class MouseOverEffectData():
     mInteractionTimes: (List, 0x4, F32, 0x0) = [0.0,0.0,0.0,0.0]
     mEnemyColor: (Color, 0x0, 0x0, 0x0) = [0,0,255,255]
     mAllyColor: (Color, 0x0, 0x0, 0x0) = [255,0,0,255]
+    0x3ca56918: (F32, 0x0, 0x0, 0x0) = 0.10000000149011612
     mSelfColor: (Color, 0x0, 0x0, 0x0) = [0,255,0,255]
     mSelectedBlurPassCount: (U32, 0x0, 0x0, 0x0) = 1
     mKillerColorFactor: (F32, 0x0, 0x0, 0x0) = 0.5
     mSelectedColorFactor: (F32, 0x0, 0x0, 0x0) = 0.5
     mAvatarSize: (I32, 0x0, 0x0, 0x0) = 1
+    0x67f41c0f: (U8, 0x0, 0x0, 0x0) = 4
     mSelectedSize: (I32, 0x0, 0x0, 0x0) = 1
+    0x88234e4: (F32, 0x0, 0x0, 0x0) = 0.5
+    0x944bc3d5: (F32, 0x0, 0x0, 0x0) = 0.5
     mMouseOverColorFactor: (F32, 0x0, 0x0, 0x0) = 0.5
     mAvatarColor: (Color, 0x0, 0x0, 0x0) = [0,255,255,255]
     mMouseOverBlurPassCount: (U32, 0x0, 0x0, 0x0) = 1
@@ -22970,6 +23263,7 @@ class OptionItemCheckbox(IOptionItem):
     TooltipTraKey: (String, 0x0, 0x0, 0x0) = ""
     Template: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Negate: (Bool, 0x0, 0x0, 0x0) = false
+    0xb214cac9: (Bool, 0x0, 0x0, 0x0) = true
     DescriptionTraKey: (String, 0x0, 0x0, 0x0) = ""
     LabelTraKey: (String, 0x0, 0x0, 0x0) = ""
     Option: (U16, 0x0, 0x0, 0x0) = 65535
@@ -23385,12 +23679,14 @@ class PatchingViewController(ViewController):
     Scene: (Hash, 0x0, 0x0, 0x0) = "0x0"
     KoreanWarningText: (Hash, 0x0, 0x0, 0x0) = "0x0"
     ProgressBar: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x3cbd727a: (Hash, 0x0, 0x0, 0x0) = "0x0"
     BaseLoadable: (Link, 0x0, 0x0, UiPropertyLoadable) = "0x0"
     KoreanAgeRatingIcon: (Hash, 0x0, 0x0, 0x0) = "0x0"
     StatusMessageText: (Hash, 0x0, 0x0, 0x0) = "0x0"
     BuildVersionText: (Hash, 0x0, 0x0, 0x0) = "0x0"
     LoginLogoMapping: (Map, U32, Hash, 0x0) = {}
     BeginPatchingButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xb96dbb63: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class PathingAngleParametricUpdater(IFloatParametricUpdater):
@@ -23967,7 +24263,7 @@ class ProgressBarViewController(ViewController):
 class ProgressTrack():
     Id: (String, 0x0, 0x0, 0x0) = ""
     SeasonId: (U32, 0x0, 0x0, 0x0) = 0
-    Version: (U8, 0x0, 0x0, 0x0) = 1
+    Version: (U8, 0x0, 0x0, 0x0) = 2
     CounterDefinitions: (List, 0x0, Link, CounterDefinition) = []
     PremiumEntitlementId: (String, 0x0, 0x0, 0x0) = ""
     Name: (String, 0x0, 0x0, 0x0) = ""
@@ -24371,8 +24667,8 @@ class ReplayTeamFightViewController(TeamFightViewController):
 
 class ReplayTeamFramesViewController(ViewController):
     BaseLoadable: (Link, 0x0, 0x0, UiPropertyLoadable) = "0x0"
-    ChaosTeamData: (Embed, 0x0, 0x0, UiReplayTeamFramesData) = {"Layout":"0x0","MemberTemplate":{"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"Scene":"0x0"}
-    OrderTeamData: (Embed, 0x0, 0x0, UiReplayTeamFramesData) = {"Layout":"0x0","MemberTemplate":{"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"Scene":"0x0"}
+    ChaosTeamData: (Embed, 0x0, 0x0, UiReplayTeamFramesData) = {"Layout":"0x0","MemberTemplate":{"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"Scene":"0x0"}
+    OrderTeamData: (Embed, 0x0, 0x0, UiReplayTeamFramesData) = {"Layout":"0x0","MemberTemplate":{"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"Scene":"0x0"}
     pass
 
 class ReplayVisibilityMenuViewController(ViewController):
@@ -24404,11 +24700,14 @@ class RequireVar(IBehaviorScriptBlock):
     pass
 
 class RerollButtonData():
+    0x156908a: (String, 0x0, 0x0, 0x0) = ""
+    0x3e778531: (String, 0x0, 0x0, 0x0) = ""
     RerollButtonText: (Hash, 0x0, 0x0, 0x0) = "0x0"
     RerollButtonTextDisabledColor: (Color, 0x0, 0x0, 0x0) = [0,0,0,255]
     RerollButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xc8f7f131: (Hash, 0x0, 0x0, 0x0) = "0x0"
     RerollButtonTextColor: (Color, 0x0, 0x0, 0x0) = [0,0,0,255]
+    0xe591c9c1: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class RerollTraitData():
@@ -24899,6 +25198,7 @@ class Sequence():
 
 class SequenceCategory():
     Name: (String, 0x0, 0x0, 0x0) = ""
+    0xc199472a: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Hash: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Phases: (List, 0x0, Embed, SequencePhase) = []
     pass
@@ -26330,7 +26630,7 @@ class StrawberryHeroStatsViewController(PlayerStatsPanelViewController):
     StatsUiData: (Embed, 0x0, 0x0, DisplayStatsUiData) = {"BasicLayout":"0x0","BasicStatUi":{"BasicGroup":"0x0","BasicHoverRegion":"0x0","BasicIcon":"0x0","BasicStatAmount":"0x0","BasicStatName":"0x0"},"DetailedLayout":"0x0","DetailedStatUi":{"0x83cc7d42":false,"0xab77f602":"0x0","DetailedGroup":"0x0","DetailedHoverRegion":"0x0","DetailedIcon":"0x0","DetailedStatAmount":"0x0","DetailedStatName":"0x0","DetailedStatTra":"","UseText":false},"DisplayStats":[]}
     pass
 
-class StrawberryInputUpdater(0x6ff8b2a7):
+class StrawberryInputUpdater(0x1742fda9, 0x6ff8b2a7):
     CastR: (Link, 0x0, 0x0, InputEventBool) = "0x0"
     CastE: (Link, 0x0, 0x0, InputEventBool) = "0x0"
     pass
@@ -26846,7 +27146,7 @@ class TeamFightViewController(ViewController):
     SceneTransition: (Embed, 0x0, 0x0, HudMenuTransitionData) = {"EasingType":0,"MaxAlpha":255,"MinAlpha":0,"TransitionStartDelaySecs":0.0,"TransitionTime":0.10000000149011612}
     ObjectName: (String, 0x0, 0x0, 0x0) = ""
     ParentScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
-    TeamData: (List, 0x2, Embed, UiTeamFightTeamData) = [{"TeamHealthMeter":null,"TeamMember":{"Frame":{"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"MultikillIcon":null,"Scene":"0x0"},"TeamMemberSlots":["0x0","0x0","0x0","0x0","0x0"],"TeamScore":null},{"TeamHealthMeter":null,"TeamMember":{"Frame":{"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"MultikillIcon":null,"Scene":"0x0"},"TeamMemberSlots":["0x0","0x0","0x0","0x0","0x0"],"TeamScore":null}]
+    TeamData: (List, 0x2, Embed, UiTeamFightTeamData) = [{"TeamHealthMeter":null,"TeamMember":{"Frame":{"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"MultikillIcon":null,"Scene":"0x0"},"TeamMemberSlots":["0x0","0x0","0x0","0x0","0x0"],"TeamScore":null},{"TeamHealthMeter":null,"TeamMember":{"Frame":{"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"MultikillIcon":null,"Scene":"0x0"},"TeamMemberSlots":["0x0","0x0","0x0","0x0","0x0"],"TeamScore":null}]
     pass
 
 class TeamFramesViewController(ViewController):
@@ -26854,7 +27154,7 @@ class TeamFramesViewController(ViewController):
     0x25f3de6e: (Link, 0x0, 0x0, UiPropertyOverrideLoadable) = "0x0"
     BaseLoadable: (Link, 0x0, 0x0, UiPropertyLoadable) = "0x0"
     FlippedMinimapOverride: (Link, 0x0, 0x0, UiPropertyOverrideLoadable) = "0x0"
-    TeamFrameTemplate: (Embed, 0x0, 0x0, UiTeamMemberData) = {"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"}
+    TeamFrameTemplate: (Embed, 0x0, 0x0, UiTeamMemberData) = {"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"}
     Layout: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xd24680d: (Pointer, 0x0, 0x0, HudReciprocityButton) = null
     ReciprocityButton: (Pointer, 0x0, 0x0, HudReciprocityButton) = null
@@ -27085,12 +27385,14 @@ class TftArmoryViewController(ViewController):
     TimeoutVfxDuration: (F32, 0x0, 0x0, 0x0) = 0.0
     0xbe1f6391: (Bool, 0x0, 0x0, 0x0) = true
     ItemSpace: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xcaf92dcd: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xd5e8a566: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xe23ea3ba: (Pointer, 0x0, 0x0, 0xf96d9400) = null
     SellAreas: (List, 0x0, Embed, TftSellArea) = []
     UseSequencer: (Bool, 0x0, 0x0, 0x0) = false
     ItemSlotData: (Embed, 0x0, 0x0, TftArmorySlotData) = {"0x19d35524":"0x0","0x351e8202":[],"0x4bdd71fb":"0x0","0x692794b6":"0x0","0xa51a4d37":"0x0","0xb5063433":{},"0xbc8f3dd5":0,"0xcd2b3ba4":"0x0","BadgeData":{"Group":"0x0","Icon":"0x0"},"ButtonStyles":{},"CategoryText":"0x0","CharacterTierGroups":[],"CurrencyValue":"0x0","DefaultButtonStyle":{"0x63df7bd3":[],"0x70927b29":[],"Description":"0x0","ItemButton":"0x0","Subtitle":"0x0","Title":"0x0","UseBorderedIcon":true},"DesaturateOnInactive":[],"ElementGroup":"0x0","IconMaskRegion":"0x0","ItemAction":0,"ItemActionButton":"0x0","ItemDragRegion":"0x0","ItemFootprintSelectedVfx":"0x0","ItemFootprintUnselectedVfx":"0x0","ItemIcon":"0x0","ItemIconBordered":"0x0","RecipeHintButton":"0x0","Scene":"0x0","SelectionCostText":"0x0","Traits":[]}
     TitleText: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xfc2297e7: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class TftAttachmentSlotStyleData():
@@ -28784,6 +29086,7 @@ class TftPassData():
     PremiumTitleTraKey: (String, 0x0, 0x0, 0x0) = ""
     0x890c336a: (String, 0x0, 0x0, 0x0) = ""
     ProductId: (String, 0x0, 0x0, 0x0) = "d1c2664a-5938-4c41-8d1b-61fd51052c22"
+    0x9ac407e6: (String, 0x0, 0x0, 0x0) = ""
     Dates: (Embed, 0x0, 0x0, 0x9f40fcd2) = {"Internal":{"0x927c10c9":0,"0xb9f88dc0":0},"Live":{"0x927c10c9":0,"0xb9f88dc0":0},"Pbe":{"0x927c10c9":0,"0xb9f88dc0":0}}
     TitleTrakey: (String, 0x0, 0x0, 0x0) = ""
     Levels: (List2, 0x0, Pointer, TftPassRewardBase) = []
@@ -29121,6 +29424,7 @@ class TftSetData():
     TraitUnitProperties: (List2, 0x0, String, 0x0) = []
     RollTable: (Link, 0x0, 0x0, 0x56dfd5e6) = "0x0"
     0x9b1b1d0b: (Link, 0x0, 0x0, 0x32233c05) = "0x0"
+    0x9b590e1d: (Link, 0x0, 0x0, 0xb183179) = "0x0"
     VfxResourceResolver: (Link, 0x0, 0x0, ResourceResolver) = "0x0"
     0x9fd292f5: (String, 0x0, 0x0, 0x0) = ""
     0x9fd4ae2b: (List2, 0x0, Link, 0xff30fa2f) = []
@@ -29128,6 +29432,7 @@ class TftSetData():
     TierBagList: (Link, 0x0, 0x0, ScriptDataObjectList) = "0x0"
     0xa8ae70b: (List2, 0x0, Link, TftTraitAssignmentVariation) = []
     TftGameType: (U32, 0x0, 0x0, 0x0) = 0
+    0xa8dec1d4: (F32, 0x0, 0x0, 0x0) = 0.0
     0xa91dafb1: (Map, U8, Embed, 0xb5f666f3) = {}
     0xaafd4216: (Map, Hash, Embed, 0x79e1c982) = {}
     AugmentUiOverride: (Pointer, 0x0, 0x0, 0x2483c715) = null
@@ -31361,7 +31666,7 @@ class UiPropertyOverrideLoadable(PropertyOverrideLoadable):
     pass
 
 class UiReplayTeamFramesData():
-    MemberTemplate: (Embed, 0x0, 0x0, UiTeamMemberData) = {"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"}
+    MemberTemplate: (Embed, 0x0, 0x0, UiTeamMemberData) = {"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"}
     Scene: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Layout: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
@@ -31513,7 +31818,7 @@ class UiTeamFightOffScreenDifferentiationData():
     pass
 
 class UiTeamFightTeamData():
-    TeamMember: (Embed, 0x0, 0x0, UiTeamFightTeamMemberData) = {"Frame":{"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"MultikillIcon":null,"Scene":"0x0"}
+    TeamMember: (Embed, 0x0, 0x0, UiTeamFightTeamMemberData) = {"Frame":{"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"},"MultikillIcon":null,"Scene":"0x0"}
     TeamScore: (Pointer, 0x0, 0x0, UiTeamFightTeamScoreData) = null
     TeamMemberSlots: (List, 0x5, Hash, 0x0) = ["0x0","0x0","0x0","0x0","0x0"]
     TeamHealthMeter: (Pointer, 0x0, 0x0, UiTeamFightTeamHealthMeterData) = null
@@ -31528,7 +31833,7 @@ class UiTeamFightTeamHealthMeterData():
 class UiTeamFightTeamMemberData():
     Scene: (Hash, 0x0, 0x0, 0x0) = "0x0"
     MultikillIcon: (Pointer, 0x0, 0x0, UiMultiKillIconData) = null
-    Frame: (Embed, 0x0, 0x0, UiTeamMemberData) = {"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"}
+    Frame: (Embed, 0x0, 0x0, UiTeamMemberData) = {"0x150797f":"0x0","0x1a22f108":null,"0x1d924766":null,"0x213b14bb":"0x0","0x4cee435":"0x0","0x67531bf1":"0x0","0x84b13172":"0x0","0xed8127c4":"0x0","Group":"0x0","HealthMeter":null,"HitRegion":"0x0","KeystoneIcon":"0x0","Level":null,"ObjectivePlanningIcon":null,"ParMeter":null,"Portrait":{"Frame":"0x0","FrameWhileDead":"0x0","PortraitIcon":"0x0","PortraitIconShape":0,"RespawnTimerText":"0x0","SingleClickToPing":false},"StatusEffects":null,"SummonerName":null,"SummonerSpellSlots":null,"UltimateCooldownGem":null,"UltimateSpellSlot":null,"VoiceChatHalo":"0x0"}
     pass
 
 class UiTeamFightTeamScoreData():
@@ -31544,7 +31849,9 @@ class UiTeamIdentityData():
 
 class UiTeamMemberData():
     UltimateSpellSlot: (Pointer, 0x0, 0x0, SpellSlotSimpleUiDefinition) = null
+    0x150797f: (Hash, 0x0, 0x0, 0x0) = "0x0"
     HealthMeter: (Pointer, 0x0, 0x0, HealthBarData) = null
+    0x1a22f108: (Pointer, 0x0, 0x0, ItemSlotDetailedUiData) = null
     SummonerSpellSlots: (Pointer, 0x0, 0x0, ScoreLineSpellSlots) = null
     0x1d924766: (Pointer, 0x0, 0x0, UiExpandableUnitStatsData) = null
     ObjectivePlanningIcon: (Pointer, 0x0, 0x0, 0x6c84152e) = null
