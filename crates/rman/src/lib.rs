@@ -29,6 +29,7 @@ pub enum HashType {
     SHA512,
     SHA256,
     HKDF,
+    BLAKE3,
 }
 
 #[derive(Clone, Copy, Debug, Default)]
@@ -105,12 +106,20 @@ impl HashType {
         u64::from_le_bytes(result)
     }
 
+    fn compute_blake3(input: &[u8]) -> u64 {
+        let hash = blake3::hash(input);
+        let mut slice = [0u8; 8];
+        slice.copy_from_slice(&hash.as_bytes()[..8]);
+        u64::from_le_bytes(slice)
+    }
+
     pub fn compute(self, input: &[u8]) -> u64 {
         match self {
             Self::NONE => 0,
             Self::SHA256 => Self::compute_sha256(input),
             Self::SHA512 => Self::compute_sha512(input),
             Self::HKDF => Self::compute_hkdf(input),
+            Self::BLAKE3 => Self::compute_blake3(input),
         }
     }
 }
@@ -123,7 +132,8 @@ impl TryFrom<u8> for HashType {
             1 => Ok(HashType::SHA512),
             2 => Ok(HashType::SHA256),
             3 => Ok(HashType::HKDF),
-            _ => throw("Bad HashType"),
+            4 => Ok(HashType::BLAKE3),
+            _ => throw(format!("Bad HashType: {}", value)),
         }
     }
 }
