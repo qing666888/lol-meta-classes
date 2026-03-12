@@ -20834,6 +20834,7 @@ class KeyFrameFloatMapClipAccessoryData(ClipAccessoryData):
 class KeyInputSourceBool(IInputSourceBool):
     BindInfo: (Pointer, 0x0, 0x0, 0x9d00ccbe) = null
     BindInfo: (Pointer, 0x0, 0x0, 0xf07517b3) = null
+    0x611f9b5f: (Bool, 0x0, 0x0, 0x0) = false
     KeySequence: (String, 0x0, 0x0, 0x0) = ""
     IniKeyValue: (String, 0x0, 0x0, 0x0) = ""
     pass
