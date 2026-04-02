@@ -14,3 +14,7 @@ ureq = "2.11"
 semver = "1.0.26"
 thiserror = "2.0"
 clap = { version = "4.0", features = ["derive"] }
+
+[[bin]]
+name = "test-dump"
+path = "src/bin/test-dump.rs"

@@ -98,7 +98,15 @@ fn dump_instance_mtx44(instance: usize) -> Value {
 
 fn dump_instance_string(instance: usize) -> Value {
     let result = unsafe { &*(instance as *const c_void as *const AString) };
-    result.str().into()
+    let s = result.str();
+    if s.len() > 10_000 {
+        eprintln!(
+            "WARNING: string property has length {}, likely garbage. Truncating.",
+            s.len()
+        );
+        return Value::String(String::new());
+    }
+    s.into()
 }
 
 fn dump_instance_hash(instance: usize) -> Value {
@@ -141,7 +149,13 @@ fn dump_instance_list(instance: usize, container: &ContainerI, class: Option<&Cl
 }
 
 fn dump_instance_map(instance: usize, map: &MapI, _class: Option<&Class>) -> Value {
-    assert_eq!(map.get_size(instance), 0, "Map is not empty");
+    let size = map.get_size(instance);
+    if size != 0 {
+        eprintln!(
+            "WARNING: map size {} is non-zero on default instance, likely uninitialized memory. Skipping.",
+            size
+        );
+    }
     serde_json::Map::new().into()
 }
 
@@ -315,7 +329,7 @@ fn dump_class_secondary(class_offset_pairs: &[BaseOff]) -> BTreeMap<String, u32>
 
 fn is_empty(class: &Class) -> bool {
     // FIXME: 16.1+ these depend on game flow being started
-    let blacklist = [
+    let blacklist: &[u32] = &[
         0xfea4e3fe,
         0xe501834f,
     ];

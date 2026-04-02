@@ -4,7 +4,7 @@ on:
   # Trigger when riot-manifests repository updates
   repository_dispatch:
     types: [manifest-updated]
-  
+
   # Manual trigger for testing
   workflow_dispatch:
     inputs:
@@ -27,7 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -65,59 +65,85 @@ jobs:
       run: |
         cargo run --release --bin meta-sync
       env:
-        # Add any environment variables needed by your sync script
         RUST_LOG: info
         DUMPER_PATH: ${{ github.workspace }}/target/x86_64-unknown-linux-gnu/release/dumper
 
-    - name: Check for changes
+    - name: Detect new dumps
       id: changes
       run: |
-        # First detect tracked file changes
-        if ! git diff --quiet -- dumps/; then
-          echo "changes=true" >> $GITHUB_OUTPUT
-          echo "Tracked changes detected in dumps/"
-          git diff --name-status -- dumps/
-          exit 0
-        fi
+        # Detect new untracked dump files
+        NEW_DUMPS=$(git ls-files --others --exclude-standard -- 'dumps/*.json')
+        # Detect modified dump files
+        MODIFIED_DUMPS=$(git diff --name-only -- 'dumps/*.json')
 
-        # Also detect untracked files (new dumps not yet added to Git)
-        if [ -n "$(git ls-files --others --exclude-standard -- dumps/)" ]; then
-          echo "changes=true" >> $GITHUB_OUTPUT
-          echo "Untracked files detected in dumps/"
-          git ls-files --others --exclude-standard -- dumps/
-        else
+        ALL_CHANGED=$(echo -e "${NEW_DUMPS}\n${MODIFIED_DUMPS}" | grep -v '^$' | sort -u)
+
+        if [ -z "$ALL_CHANGED" ]; then
           echo "changes=false" >> $GITHUB_OUTPUT
-          echo "No changes detected in dumps/"
-        fi
-
-    - name: Commit and push changes
-      if: steps.changes.outputs.changes == 'true' || github.event.inputs.force_run == 'true'
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add dumps/
-        git add temp/ || true  # Add temp files if they should be committed
-        
-        # Create commit message with version info from actually changed files
-        CHANGED_FILES=$( (git diff --name-only -- dumps/; git ls-files --others --exclude-standard -- dumps/) | sort -u )
-        LATEST_FROM_CHANGES=$(echo "$CHANGED_FILES" \
-          | grep -E '^dumps/[0-9]+\.[0-9]+\.[0-9]+\.json$' \
-          | sed -E 's#^dumps/([0-9]+\.[0-9]+\.[0-9]+)\.json$#\1#' \
-          | sort -V \
-          | tail -1)
-
-        if [ -n "$LATEST_FROM_CHANGES" ]; then
-          COMMIT_MSG="chore(dumper): ${LATEST_FROM_CHANGES}"
-        elif [ -d "dumps" ] && [ "$(ls -A dumps/)" ]; then
-          LATEST_VERSION=$(ls dumps/ | grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.json$' | sort -V | tail -1 | sed 's/\.json$//')
-          COMMIT_MSG="chore(dumper): ${LATEST_VERSION}"
+          echo "No new or modified dumps detected."
         else
-          COMMIT_MSG="Update LoL meta classes"
+          echo "changes=true" >> $GITHUB_OUTPUT
+          echo "Changed dumps:"
+          echo "$ALL_CHANGED"
+
+          # Extract version from the latest changed dump
+          LATEST_VERSION=$(echo "$ALL_CHANGED" \
+            | grep -E '^dumps/[0-9]+\.[0-9]+\.[0-9]+\.json$' \
+            | sed -E 's#^dumps/([0-9]+\.[0-9]+\.[0-9]+)\.json$#\1#' \
+            | sort -V \
+            | tail -1)
+          echo "latest_version=${LATEST_VERSION}" >> $GITHUB_OUTPUT
+
+          # Save list of changed files for release upload
+          echo "$ALL_CHANGED" > /tmp/changed_dumps.txt
         fi
 
-        git commit -m "$COMMIT_MSG" || exit 0
-        
-        git push
+    - name: Validate dump sizes
+      if: steps.changes.outputs.changes == 'true'
+      run: |
+        set -e
+        MAX_SIZE_MB=50
+        while IFS= read -r file; do
+          SIZE_BYTES=$(stat --format=%s "$file")
+          SIZE_MB=$((SIZE_BYTES / 1048576))
+          echo "$file: ${SIZE_MB}MB"
+          if [ "$SIZE_MB" -gt "$MAX_SIZE_MB" ]; then
+            echo "ERROR: $file is ${SIZE_MB}MB, exceeding ${MAX_SIZE_MB}MB limit. Dump is likely corrupted."
+            exit 1
+          fi
+        done < /tmp/changed_dumps.txt
+        echo "All dumps are within size limits."
+
+    - name: Create GitHub Release with dumps
+      if: steps.changes.outputs.changes == 'true'
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        set -e
+        VERSION="${{ steps.changes.outputs.latest_version }}"
+        TAG="v${VERSION}"
+
+        # Check if release already exists
+        if gh release view "$TAG" &>/dev/null; then
+          echo "Release $TAG already exists, updating assets..."
+          while IFS= read -r file; do
+            BASENAME=$(basename "$file")
+            # Delete existing asset if present, then upload new one
+            gh release delete-asset "$TAG" "$BASENAME" --yes 2>/dev/null || true
+            gh release upload "$TAG" "$file"
+          done < /tmp/changed_dumps.txt
+        else
+          echo "Creating release $TAG..."
+          ASSET_ARGS=""
+          while IFS= read -r file; do
+            ASSET_ARGS="$ASSET_ARGS $file"
+          done < /tmp/changed_dumps.txt
+
+          gh release create "$TAG" \
+            --title "LoL Meta Classes ${VERSION}" \
+            --notes "Meta class dumps for League of Legends version ${VERSION}" \
+            $ASSET_ARGS
+        fi
 
     - name: Regenerate db/database.py from latest dump
       if: steps.changes.outputs.changes == 'true' || github.event.inputs.force_run == 'true'
@@ -137,77 +163,35 @@ jobs:
         # Generate/update the database file
         python3 scripts/db_import.py db/database.py "${LATEST_DUMP}"
 
-    - name: Commit and push database update
+    - name: Commit and push database and dump updates
       if: steps.changes.outputs.changes == 'true' || github.event.inputs.force_run == 'true'
       run: |
         set -e
-        if git diff --quiet -- db/database.py; then
-          echo "No changes to db/database.py"
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+
+        # Stage dump files and database
+        git add dumps/
+
+        if ! git diff --quiet -- db/database.py 2>/dev/null; then
+          git add db/database.py
+        fi
+
+        # Check if there's anything to commit
+        if git diff --cached --quiet; then
+          echo "No changes to commit."
           exit 0
         fi
 
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add db/database.py
-
-        # Use latest dump version in commit message if available
-        if [ -d "dumps" ] && [ -n "$(ls -1 dumps/*.json 2>/dev/null || true)" ]; then
-          VERSION=$(ls -1 dumps/*.json | sort -V | tail -1 | xargs -n1 basename | sed 's/\.json$//')
-          git commit -m "chore(db): update database.py from ${VERSION}"
+        VERSION="${{ steps.changes.outputs.latest_version }}"
+        if [ -n "$VERSION" ]; then
+          COMMIT_MSG="chore(dumper): ${VERSION}"
         else
-          git commit -m "chore(db): update database.py"
+          COMMIT_MSG="Update LoL meta classes"
         fi
 
+        git commit -m "$COMMIT_MSG"
         git push
-
-    - name: Create release on major version change
-      if: steps.changes.outputs.changes == 'true'
-      uses: actions/github-script@v7
-      with:
-        script: |
-          const fs = require('fs');
-          const path = require('path');
-          
-          // Get latest version from dumps directory
-          try {
-            const dumpsDir = 'dumps';
-            const files = fs.readdirSync(dumpsDir);
-            const versionFiles = files.filter(f => /^\d+\.\d+\.\d+\.json$/.test(f));
-            
-            if (versionFiles.length > 0) {
-              const latestVersion = versionFiles.sort((a, b) => {
-                const versionA = a.replace('.json', '');
-                const versionB = b.replace('.json', '');
-                return versionA.localeCompare(versionB, undefined, { numeric: true });
-              }).pop();
-              
-              const version = latestVersion.replace('.json', '');
-              const [major, minor, patch] = version.split('.').map(Number);
-              
-              // Check if this is a new major version (you can adjust this logic)
-              const previousVersions = versionFiles.map(f => f.replace('.json', ''));
-              const isNewMajor = !previousVersions.some(v => {
-                const [prevMajor] = v.split('.').map(Number);
-                return prevMajor === major && v !== version;
-              });
-              
-              if (isNewMajor) {
-                await github.rest.repos.createRelease({
-                  owner: context.repo.owner,
-                  repo: context.repo.repo,
-                  tag_name: `v${version}`,
-                  name: `LoL Meta Classes v${version}`,
-                  body: `Updated meta classes for League of Legends version ${version}`,
-                  draft: false,
-                  prerelease: false
-                });
-                
-                console.log(`Created release for version ${version}`);
-              }
-            }
-          } catch (error) {
-            console.log('Could not create release:', error.message);
-          }
 
     - name: Upload artifacts
       if: always()
