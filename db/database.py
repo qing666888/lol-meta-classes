@@ -370,6 +370,7 @@ class 0x15e03ef5():
 
 class 0x15e1fe7e(0xc87f69f4):
     0x4c546bb7: (String, 0x0, 0x0, 0x0) = ""
+    0x64132003: (Embed, 0x0, 0x0, 0x7a55218f) = {"0xef5104c7":"0x0","Disabled":false,"Priority":0.5}
     Priority: (F32, 0x0, 0x0, 0x0) = 0.8999999761581421
     pass
 
@@ -384,6 +385,9 @@ class 0x15f2f87c(0x43f3ebf6):
     pass
 
 class 0x15f5445c(LoLCursorContextAwareKeybind):
+    pass
+
+class 0x161ec8fe(0x2610a4a3):
     pass
 
 class 0x163138fc(0x116f5c56, IOptionItem):
@@ -483,6 +487,8 @@ class 0x1742fda9():
     pass
 
 class 0x174c7096(UiPropertyLoadable):
+    0x1b1cc8c3: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x29ab62c2: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Name: (String, 0x0, 0x0, 0x0) = ""
     0xac60f21e: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
@@ -748,6 +754,9 @@ class 0x1b1b0d1a(0x62a09c62):
     Team: (U32, 0x0, 0x0, 0x0) = 100
     pass
 
+class 0x1b2711f4(0x2610a4a3):
+    pass
+
 class 0x1b3a73f0():
     ProgressText: (Hash, 0x0, 0x0, 0x0) = "0x0"
     ProgressBar: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -807,6 +816,12 @@ class 0x1c23f02c(IContextualAction):
 class 0x1c3ab3f1(0x2508c71e):
     ItemId: (String, 0x0, 0x0, 0x0) = ""
     ItemType: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0x1c3dfd0c(0x2015ccfc):
+    Values: (List, 0x0, Vec3, 0x0) = []
+    Times: (List, 0x0, F32, 0x0) = []
+    ProbabilityTables: (List, 0x3, Pointer, VfxProbabilityTableData) = [null,null,null]
     pass
 
 class 0x1c4bac51(MapGraphicsFeature):
@@ -1055,7 +1070,7 @@ class 0x1f1f50f2(0x40a9c74a):
     Definition: (Embed, 0x0, 0x0, VfxDefinition) = {"0x63176011":false,"0x8f59d48c":[],"0x9d9b6793":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"IsReplicated":true,"OptionalConfigs":[],"System":"0x0","Tags":[],"Team":100,"TeamDefinition":"0x0","TextureOverride":null}
     IsReplicated: (Bool, 0x0, 0x0, 0x0) = true
     Vfx: (Embed, 0x0, 0x0, 0x385c323f) = {}
-    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x9d9b6793":false,"0xf718ab13":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
+    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x658b896a":[],"0x9d9b6793":false,"0x9f499a15":false,"0xf718ab13":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
     Team: (Embed, 0x0, 0x0, 0x1b1b0d1a) = {"Team":100,"TeamDefinition":"0x0"}
     0xf8f165ee: (Embed, 0x0, 0x0, 0x1eee9d10) = {}
     0xf8f165ee: (Embed, 0x0, 0x0, 0x385c323f) = {}
@@ -1162,6 +1177,9 @@ class 0x1ff0e246(IGameModeConfig):
     0xf39f8571: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0x2015ccfc():
+    pass
+
 class 0x20194a16(0xd0c7ee75, 0xda11137d):
     ResourceResolver: (Hash, 0x0, 0x0, 0x0) = "0x0"
     IsOwner: (Bool, 0x0, 0x0, 0x0) = true
@@ -1205,6 +1223,9 @@ class 0x20cda9b0(0xc59dfcfb):
     0xbfc92e63: (Pointer, 0x0, 0x0, ILogicDriver) = null
     pass
 
+class 0x20cfedcf(0x2610a4a3):
+    pass
+
 class 0x20dd0f2f():
     Name: (String, 0x0, 0x0, 0x0) = ""
     Scope: (U8, 0x0, 0x0, 0x0) = 0
@@ -1223,6 +1244,14 @@ class 0x20e8567f(0x62a09c62):
     0xd1318f26: (F32, 0x0, 0x0, 0x0) = 0.0
     0xf908963: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
     0xfe060fba: (Bool, 0x0, 0x0, 0x0) = false
+    pass
+
+class 0x20ff220e():
+    0xa0fa85ce: (String, 0x0, 0x0, 0x0) = ""
+    0xa5f13f37: (String, 0x0, 0x0, 0x0) = ""
+    0xbc4acbd2: (String, 0x0, 0x0, 0x0) = ""
+    0xcac8c65f: (String, 0x0, 0x0, 0x0) = ""
+    0xe5f3c5d4: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x2104851a(0x115c2d61, 0x46d8b2a4):
@@ -1293,6 +1322,7 @@ class 0x221f2907():
     pass
 
 class 0x227fcad0(0xc87f69f4):
+    0x64132003: (Embed, 0x0, 0x0, 0x7a55218f) = {"0xef5104c7":"0x0","Disabled":false,"Priority":0.5}
     Priority: (F32, 0x0, 0x0, 0x0) = 0.10000000149011612
     0xa2f5a276: (String, 0x0, 0x0, 0x0) = ""
     pass
@@ -1319,6 +1349,7 @@ class 0x22daa5b8(IAugment):
     AugmentSmallIconPath: (String, 0x0, 0x0, 0x0)
     mBuildTags: (U32, 0x0, 0x0, 0x0)
     0x791eb92e: (Pointer, 0x0, 0x0, 0x21dad86e)
+    0x815dad28: (U8, 0x0, 0x0, 0x0)
     AugmentDisplayTags: (List, 0x0, U32, 0x0)
     mAugmentTags: (U32, 0x0, 0x0, 0x0)
     AugmentLargeIconPath: (String, 0x0, 0x0, 0x0)
@@ -1430,6 +1461,10 @@ class 0x24a2c8d1(ISequenceAction):
     0x1609b312: (Pointer, 0x0, 0x0, 0x286deb81) = {}
     0x5e9b875d: (Pointer, 0x0, 0x0, 0x6dfe8e70) = {}
     TargetObject: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
+    pass
+
+class 0x24de77f2(0x69cd83da, 0xb041c60a):
+    Value: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x24e1cb45():
@@ -1578,6 +1613,9 @@ class 0x25ef31db():
     0xf1381710: (Bool, 0x0, 0x0, 0x0) = true
     pass
 
+class 0x2610a4a3(0x5afcc38b):
+    pass
+
 class 0x26129005(0x8930818a):
     Source: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
     pass
@@ -1687,6 +1725,11 @@ class 0x272b222f():
     0xab5cfd6e: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0x2732cb3a():
+    0x56dd40a3: (String, 0x0, 0x0, 0x0) = ""
+    0x76d6827b: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0x2743f2b3(0x902e246e):
     Button: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
@@ -1719,6 +1762,9 @@ class 0x27bc6378():
     0x746ade9: (String, 0x0, 0x0, 0x0) = ""
     0x96b4b430: (Link, 0x0, 0x0, SpellObject) = "0x0"
     0x97e82990: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0x27d0b42d(0x2610a4a3):
     pass
 
 class 0x27d92a31(IScriptBlock):
@@ -1935,7 +1981,14 @@ class 0x2aa356bc():
     0x5089a721: (List2, 0x0, Link, 0xee4ec7c) = []
     pass
 
+class 0x2ae7663(0x69cd83da, 0x729df20b, 0xb041c60a):
+    Value: (F32, 0x0, 0x0, 0x0) = 0.0
+    pass
+
 class 0x2af4e3d0(LoLCursorContextAwareKeybind):
+    pass
+
+class 0x2afbbce0():
     pass
 
 class 0x2b00c366(TftPassRewardBase):
@@ -1944,6 +1997,12 @@ class 0x2b00c366(TftPassRewardBase):
     pass
 
 class 0x2b2278d6(ISequenceActionInstance):
+    pass
+
+class 0x2b25a73a(IGameCalculationPart):
+    DataValue: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x1ba2bd1: (U8, 0x0, 0x0, 0x0) = 0
+    0xd13afc27: (U8, 0x0, 0x0, 0x0) = 0
     pass
 
 class 0x2b365a82():
@@ -2218,6 +2277,8 @@ class 0x2ec48688(0xc59dfcfb):
 
 class 0x2ee6df14():
     0x6b02dd72: (Embed, 0x0, 0x0, 0x9e0d4004) = {"0x7042c2bf":[]}
+    0xe2194251: (Embed, 0x0, 0x0, 0xc124ec81) = {"0x2d2de997":{"0x3b5b846f":"Play_mus_Client_LOL_Lobby_PRISM_Test","RtpcName":"AroundGame_VisualModulation"}}
+    BankUnits: (List2, 0x0, Embed, BankUnit) = []
     pass
 
 class 0x2ef7017(ILogicBoolDriver):
@@ -2252,6 +2313,20 @@ class 0x2f4e299b():
     0x872c99d2: (I32, 0x0, 0x0, 0x0) = 0
     0x9dd33568: (Link, 0x0, 0x0, 0x19ff61ac) = "0x0"
     Category: (U8, 0x0, 0x0, 0x0) = 0
+    pass
+
+class 0x2f798a22():
+    PickedVfxSystem: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    0x34296273: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    IdleVfxSystem: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    0x649a346e: (Pointer, 0x0, 0x0, 0x2732cb3a) = null
+    RefreshVfxSystem: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    0x7d555132: (Pointer, 0x0, 0x0, 0x20ff220e) = null
+    NotPickedVfxSystem: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    0x83af5436: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    RefreshOverlayVfxSystem: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    HoverVfxSystem: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
+    0xdfc337ad: (Embed, 0x0, 0x0, 0x6685fe5a) = {"0x16118b27":"","0x756be398":"","0xc8c5e272":"","0xd6ce8043":""}
     pass
 
 class 0x2f87c01d(ScriptTableSet):
@@ -2617,10 +2692,20 @@ class 0x338822e7():
 class 0x339ecf91():
     0x9df0bf7f: (Bool, 0x0, 0x0, 0x0) = false
     0xc11c69b4: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xea59c349: (List2, 0x0, Hash, 0x0) = []
+    pass
+
+class 0x33d1cb2e():
+    0x9346aa18: (List2, 0x0, Link, 0x9bc919f2) = []
     pass
 
 class 0x3401293a(IComponentData):
     0x9a61ffcf: (Pointer, 0x0, 0x0, 0x5a331a0c) = null
+    pass
+
+class 0x3412c115():
+    RtpcName: (String, 0x0, 0x0, 0x0) = ""
+    0x3b5b846f: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x34262325(ILogicFloatDriver):
@@ -2759,6 +2844,10 @@ class 0x365c0422():
     Values: (List2, 0x0, F32, 0x0) = []
     pass
 
+class 0x367e5ca(LoLCursorContextAwareKeybind):
+    0xa4aaab62: (U32, 0x0, 0x0, 0x0) = 0
+    pass
+
 class 0x36a5593c():
     0x27b7800b: (String, 0x0, 0x0, 0x0) = ""
     0x3f5f98b7: (String, 0x0, 0x0, 0x0) = ""
@@ -2785,6 +2874,11 @@ class 0x3730b3d2():
 
 class 0x373272a6():
     0x26188390: (Pointer, 0x0, 0x0, 0x68eabd15) = null
+    pass
+
+class 0x375bfaa0(0x41bb3fd7):
+    0x4a4ac20: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xba6c2b68: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0x377491e8():
@@ -3084,6 +3178,11 @@ class 0x3b2ba6c0():
 class 0x3b49ffb9():
     pass
 
+class 0x3b4c602e():
+    DefaultColor: (Color, 0x0, 0x0, 0x0) = [0,0,0,255]
+    ColorblindColor: (Option, 0x0, Color, 0x0) = null
+    pass
+
 class 0x3b67e083(IAugment):
     Rarity: (U8, 0x0, 0x0, 0x0) = 0
     SkinId: (U32, 0x0, 0x0, 0x0) = 0
@@ -3172,8 +3271,12 @@ class 0x3c995caf(IPath):
     pass
 
 class 0x3ca1fe0():
+    0x10278985: (U8, 0x0, 0x0, 0x0) = 2
+    0x23382109: (Bool, 0x0, 0x0, 0x0) = false
+    0x3cc9ab8a: (Bool, 0x0, 0x0, 0x0) = false
+    0x4e1a2c8: (Bool, 0x0, 0x0, 0x0) = false
     0xb0f77798: (List2, 0x0, Embed, 0x339ecf91) = []
-    0xbb2fa3e3: (Embed, 0x0, 0x0, 0x408a4521) = {"0x3965005a":0.5,"0x4c1ddc1f":5.0,"0x6962a32b":0.5,"0x8d6db3ea":5.0,"0x9ccb16cf":0.5,"0xcf47a91e":0.5}
+    0xbb2fa3e3: (Embed, 0x0, 0x0, 0x408a4521) = {"0x3965005a":0.5,"0x4c1ddc1f":5.0,"0x5b921cd7":0.0,"0x61906396":0.5,"0x65887d65":180.0,"0x8d6db3ea":5.0,"0x9ccb16cf":0.5,"0xb379dd33":0.5,"0xb519cb5c":180.0,"0xb633052":0.0,"0xc127258f":1.0,"0xf5f7f81a":1.0}
     pass
 
 class 0x3ca2b710():
@@ -3246,6 +3349,9 @@ class 0x3ddbfcb4(ISequenceAction):
     EasingType: (U8, 0x0, 0x0, 0x0) = 0
     EndScale: (F32, 0x0, 0x0, 0x0) = 1.0
     0xcfe79554: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0x3de2b2a3(0x2610a4a3):
     pass
 
 class 0x3df230bf(0xf9dd7e92):
@@ -3374,6 +3480,11 @@ class 0x3f90b51b(0x62a09c62):
     ViewController: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0x3fa64abf(0x27d92a31):
+    Rotation: (Pointer, 0x0, 0x0, IVectorGet) = null
+    Target: (Pointer, 0x0, 0x0, IEntityGet) = null
+    pass
+
 class 0x3fccf1e3(0xc59dfcfb):
     0xc050e5f7: (U8, 0x0, 0x0, 0x0) = 0
     pass
@@ -3437,6 +3548,7 @@ class 0x402c056e():
 
 class 0x40405c82():
     0x140c8eed: (List2, 0x0, Pointer, ITeam) = []
+    Color: (Embed, 0x0, 0x0, 0x3b4c602e) = {"ColorblindColor":null,"DefaultColor":[0,0,0,255]}
     Team: (Pointer, 0x0, 0x0, ITeam) = null
     Colors: (Embed, 0x0, 0x0, 0xe2041f7a) = {"0x419458b7":{"0x28d65053":[0,0,0,255]},"Default":{"0x28d65053":[0,0,0,255]}}
     pass
@@ -3444,10 +3556,18 @@ class 0x40405c82():
 class 0x408a4521():
     0x3965005a: (F32, 0x0, 0x0, 0x0) = 0.5
     0x4c1ddc1f: (F32, 0x0, 0x0, 0x0) = 5.0
+    0x5b921cd7: (F32, 0x0, 0x0, 0x0) = 0.0
+    0x61906396: (F32, 0x0, 0x0, 0x0) = 0.5
+    0x65887d65: (F32, 0x0, 0x0, 0x0) = 180.0
     0x6962a32b: (F32, 0x0, 0x0, 0x0) = 0.5
     0x8d6db3ea: (F32, 0x0, 0x0, 0x0) = 5.0
     0x9ccb16cf: (F32, 0x0, 0x0, 0x0) = 0.5
+    0xb379dd33: (F32, 0x0, 0x0, 0x0) = 0.5
+    0xb519cb5c: (F32, 0x0, 0x0, 0x0) = 180.0
+    0xb633052: (F32, 0x0, 0x0, 0x0) = 0.0
+    0xc127258f: (F32, 0x0, 0x0, 0x0) = 1.0
     0xcf47a91e: (F32, 0x0, 0x0, 0x0) = 0.5
+    0xf5f7f81a: (F32, 0x0, 0x0, 0x0) = 1.0
     pass
 
 class 0x40900b41():
@@ -3504,6 +3624,10 @@ class 0x4146f732(LoLCursorContextAwareKeybind):
 
 class 0x414d1503(0x8877ad7c):
     Range: (Vec2, 0x0, 0x0, 0x0) = [0.0,1.0]
+    pass
+
+class 0x41bb3fd7():
+    Name: (String, 0x0, 0x0, 0x0)
     pass
 
 class 0x41bdce89():
@@ -3667,6 +3791,9 @@ class 0x43e9418e(GameModeConstant):
 class 0x43f3ebf6():
     pass
 
+class 0x440078ff(0x2610a4a3):
+    pass
+
 class 0x442b234c(0xc03c9e4e):
     pass
 
@@ -3783,6 +3910,9 @@ class 0x4664ae0a():
 
 class 0x467070a9(IScriptCondition):
     Value: (Pointer, 0x0, 0x0, ScriptTableGet) = null
+    pass
+
+class 0x46958bc2(0x2610a4a3):
     pass
 
 class 0x46a048a9(ITimerView):
@@ -4077,6 +4207,14 @@ class 0x4b150334():
     ElementEnter: (String, 0x0, 0x0, 0x0) = ""
     pass
 
+class 0x4b24468b():
+    Group: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    HitArea: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Text: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Meter: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Icon: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
 class 0x4b26ffad(0x27071fbd):
     Value: (Map, U32, Hash, 0x0) = {}
     pass
@@ -4101,7 +4239,7 @@ class 0x4bd85f7d(0x40a9c74a):
     0x58a1d8fb: (Embed, 0x0, 0x0, 0x385c323f) = {}
     0x58a1d8fb: (Embed, 0x0, 0x0, 0x7a2bf6d5) = {}
     Definition: (Embed, 0x0, 0x0, VfxDefinition) = {"0x63176011":false,"0x8f59d48c":[],"0x9d9b6793":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"IsReplicated":true,"OptionalConfigs":[],"System":"0x0","Tags":[],"Team":100,"TeamDefinition":"0x0","TextureOverride":null}
-    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x9d9b6793":false,"0xf718ab13":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
+    Vfx: (Embed, 0x0, 0x0, 0x82b49579) = {"0x63176011":false,"0x658b896a":[],"0x9d9b6793":false,"0x9f499a15":false,"0xf718ab13":false,"AllDimensions":false,"ColorModulate":[1.0,1.0,1.0,1.0],"EyeCandy":false,"System":"0x0","TextureOverride":null}
     Team: (Embed, 0x0, 0x0, 0x1b1b0d1a) = {"Team":100,"TeamDefinition":"0x0"}
     0xc7a3b52: (Embed, 0x0, 0x0, 0x385c323f) = {}
     0xc7a3b52: (Embed, 0x0, 0x0, 0x82b49579) = {}
@@ -4201,6 +4339,15 @@ class 0x4e2ab0b1():
     0x87c68649: (List2, 0x0, Embed, 0xd0ee37b5) = []
     pass
 
+class 0x4e527598():
+    0x129ae887: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    ItemId: (U32, 0x0, 0x0, 0x0) = 1
+    0x536c1dd1: (String, 0x0, 0x0, 0x0) = ""
+    ShortName: (String, 0x0, 0x0, 0x0) = ""
+    0xccd0de98: (String, 0x0, 0x0, 0x0) = ""
+    ImagePath: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0x4e590cfd(ISequenceAction):
     DisableOnEnd: (Bool, 0x0, 0x0, 0x0) = true
     Element: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -4232,6 +4379,7 @@ class 0x4e9c58a0():
     0x6e4f45c5: (Bool, 0x0, 0x0, 0x0) = true
     0x7258d3aa: (Bool, 0x0, 0x0, 0x0) = true
     0x770c41e9: (Vec4, 0x0, 0x0, 0x0) = [0.0,0.0,0.0,0.0]
+    0x9564729f: (U8, 0x0, 0x0, 0x0) = 0
     IgnoreDisabledElements: (Bool, 0x0, 0x0, 0x0) = true
     0xc6196c2d: (U8, 0x0, 0x0, 0x0) = 0
     HorizontalAlignment: (U8, 0x0, 0x0, 0x0) = 0
@@ -4547,6 +4695,9 @@ class 0x5301c149(0xf0763c13):
     BlendMode: (U8, 0x0, 0x0, 0x0) = 3
     pass
 
+class 0x537385f5(Cheat):
+    pass
+
 class 0x53cfbd4c(ISequenceActionInstance):
     pass
 
@@ -4610,6 +4761,14 @@ class 0x5566d3a3():
 
 class 0x557bb273(0xa4b9367d):
     Value: (Vec4, 0x0, 0x0, 0x0) = [0.0,0.0,0.0,0.0]
+    pass
+
+class 0x558ed61b():
+    0x251b4cfe: (String, 0x0, 0x0, 0x0) = ""
+    0x3fee2bfa: (String, 0x0, 0x0, 0x0) = ""
+    Component: (String, 0x0, 0x0, 0x0) = ""
+    0xabb44364: (String, 0x0, 0x0, 0x0) = ""
+    Product: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class 0x55a810cb(0xaf6bce07):
@@ -4840,7 +4999,7 @@ class 0x59ef46df(0xd0c7ee75, 0xda11137d):
     pass
 
 class 0x59f5f97e(0x40a9c74a):
-    0x50a298b: (Embed, 0x0, 0x0, 0xd3dda5e5) = {"0x37ae4cad":false,"0xfc90acf2":"","Polygon":{"Vertices":[[-200.0,0.0,-200.0],[200.0,0.0,-200.0],[200.0,0.0,200.0],[-200.0,0.0,200.0]]}}
+    0x50a298b: (Embed, 0x0, 0x0, 0xd3dda5e5) = {"0x28e60732":true,"0x37ae4cad":false,"0x7168974e":false,"0x9b15d5eb":false,"0xaecee07f":100,"0xc7543bfc":true,"0xfc90acf2":"","Polygon":{"Vertices":[[-200.0,0.0,-200.0],[200.0,0.0,-200.0],[200.0,0.0,200.0],[-200.0,0.0,200.0]]}}
     pass
 
 class 0x5a1f2aca(ISequenceAction, 0xf71f4123):
@@ -4852,6 +5011,9 @@ class 0x5a1f2aca(ISequenceAction, 0xf71f4123):
     pass
 
 class 0x5a331a0c():
+    pass
+
+class 0x5a3e70d():
     pass
 
 class 0x5a43dcb1(Cheat):
@@ -4919,6 +5081,9 @@ class 0x5af2b668():
     0xc02ad6d8: (String, 0x0, 0x0, 0x0) = ""
     0xd5cba936: (String, 0x0, 0x0, 0x0) = ""
     0xf68db2ae: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0x5afcc38b(0xf8cc0ea3):
     pass
 
 class 0x5b02aed1(0x2a4d735b, UiElementGroup):
@@ -5254,6 +5419,19 @@ class 0x5e73536(ViewController):
     DamageSkinLoadoutGridButtonData: (Embed, 0x0, 0x0, DamageSkinLoadoutGridButtonData) = {"0x516737fb":"0x0","0x5267398e":"0x0","0x53673b21":"0x0","Check":"0x0","FavoriteIcon":"0x0","GamePass":"0x0","Group":"0x0","Icon":"0x0","Lock":"0x0","RarityGem":"0x0"}
     pass
 
+class 0x5e7413cb():
+    0x2c36fecc: (Option, 0x0, String, 0x0) = null
+    0x3e6bd56c: (Option, 0x0, String, 0x0) = null
+    0x527d0336: (String, 0x0, 0x0, 0x0) = ""
+    0x6a9ff76c: (Embed, 0x0, 0x0, 0x558ed61b) = {"0x251b4cfe":"","0x3fee2bfa":"","0xabb44364":"","Component":"","Product":""}
+    Timestamp: (String, 0x0, 0x0, 0x0) = "1970-01-01T00:00:00.000Z"
+    0xb86d992: (Option, 0x0, String, 0x0) = null
+    pass
+
+class 0x5e85ec95(0x5a3e70d, 0x69cd83da, 0xaf2d04aa, 0xb041c60a):
+    Value: (Bool, 0x0, 0x0, 0x0) = false
+    pass
+
 class 0x5e9d9da3(ISequenceActionInstance):
     pass
 
@@ -5336,6 +5514,11 @@ class 0x6030f7c6(0xe6f0047):
 
 class 0x6055e037(0xd866344b):
     Source: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
+    pass
+
+class 0x605a9a2f(0x41bb3fd7):
+    0x4a4ac20: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xba6c2b68: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0x606b91a(ScriptTableSet):
@@ -5490,6 +5673,10 @@ class 0x629f5938():
     pass
 
 class 0x62a09c62():
+    pass
+
+class 0x62abd8e():
+    0xff4593ca: (Map, U8, Embed, 0x7a1cab0d) = {}
     pass
 
 class 0x62ba66ab(IGameModeConfig):
@@ -5747,7 +5934,7 @@ class 0x665c9fe7():
     0x5dbadfca: (U8, 0x0, 0x0, 0x0) = 0
     0x8108c459: (F32, 0x0, 0x0, 0x0) = 9.999999747378752e-06
     0xa791f85d: (U8, 0x0, 0x0, 0x0) = 0
-    Gravity: (Vec3, 0x0, 0x0, 0x0) = [0.0,-9.8100004196167,0.0]
+    Gravity: (Vec3, 0x0, 0x0, 0x0) = [0.0,-981.0,0.0]
     0xf3ca8ece: (I32, 0x0, 0x0, 0x0) = 20
     0xf3ca8ece: (U16, 0x0, 0x0, 0x0) = 20
     pass
@@ -5774,6 +5961,9 @@ class 0x668688b0(LoLCursorContextAwareKeybind):
 class 0x6693bb9(0x2b00c366):
     0x2484d6c3: (Bool, 0x0, 0x0, 0x0) = true
     Arena: (Link, 0x0, 0x0, TftMapSkin) = "0x0"
+    pass
+
+class 0x66969f1a(Cheat):
     pass
 
 class 0x66a573df(0x2393bd4d):
@@ -5810,7 +6000,7 @@ class 0x67406e7f(0xbc280d0a):
     Value: (String, 0x0, 0x0, 0x0) = ""
     pass
 
-class 0x67953695(GameStateViewController):
+class 0x67953695(GameStateViewController, 0xfed5253f):
     DrawAreaList: (Embed, 0x0, 0x0, DrawAreaList) = {"DrawRegions":[]}
     pass
 
@@ -5865,6 +6055,10 @@ class 0x67dbe108(ViewController):
 class 0x67ee2ddb():
     pass
 
+class 0x68067fa5(0xe057ab66):
+    0x5ff6cd50: (List2, 0x0, Pointer, 0xe057ab66) = []
+    pass
+
 class 0x680cfd91(0xc03c9e4e):
     pass
 
@@ -5881,6 +6075,9 @@ class 0x683df6e9(0x2b949af2):
 class 0x685ea36b(0x9449f1a5):
     NameTraKey: (String, 0x0, 0x0, 0x0) = ""
     EmoteItem: (Link, 0x0, 0x0, SummonerEmote) = "0x0"
+    pass
+
+class 0x687bf78e(0x7f631ac9):
     pass
 
 class 0x687e026f(0xb432effc):
@@ -5958,6 +6155,9 @@ class 0x69bf9d05():
     Button: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Type: (U32, 0x0, 0x0, 0x0) = 1
     Filter: (U32, 0x0, 0x0, 0x0) = 14
+    pass
+
+class 0x69cd83da():
     pass
 
 class 0x69cdddcc(TftCutscenePositionProvider):
@@ -6161,6 +6361,9 @@ class 0x6bbc3db6(0x288b8edc):
     0xda28e4c: (Color, 0x0, 0x0, 0x0) = [0,0,0,255]
     pass
 
+class 0x6bc6872b(0x2610a4a3):
+    pass
+
 class 0x6bc9dcf2(MissileTriggerSpec):
     pass
 
@@ -6174,6 +6377,10 @@ class 0x6bd8d557():
     0x663e9c58: (Bool, 0x0, 0x0, 0x0) = false
     0x72a30c9e: (Embed, 0x0, 0x0, 0xf3fca686) = {"0x6e84dbd7":"","0xc49d0560":"","0xda990ca6":"","0xecdf7afb":""}
     0x789ea797: (Map, Hash, Embed, 0xd79663ee) = {}
+    pass
+
+class 0x6c050131(Cheat):
+    Lifetime: (F32, 0x0, 0x0, 0x0) = 0.5
     pass
 
 class 0x6c455dac(0x333759dd):
@@ -6361,6 +6568,7 @@ class 0x6ee0055e(0x505f1532):
 
 class 0x6efc1017(0xe2238458):
     0x251b26c8: (String, 0x0, 0x0, 0x0) = ""
+    Buff: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0x6efc4aa7():
@@ -6407,6 +6615,7 @@ class 0x6f505a2(ILogicDriver):
     pass
 
 class 0x6f7bac4e(IGameModeConfigClient):
+    DefaultColor: (Embed, 0x0, 0x0, 0x3b4c602e) = {"ColorblindColor":null,"DefaultColor":[0,0,0,255]}
     0x69602260: (List2, 0x0, Embed, 0x40405c82) = []
     0x8a6f9936: (Embed, 0x0, 0x0, 0xe2041f7a) = {"0x419458b7":{"0x28d65053":[0,0,0,255]},"Default":{"0x28d65053":[0,0,0,255]}}
     pass
@@ -6470,6 +6679,10 @@ class 0x70785a68():
     0x7da31411: (F32, 0x0, 0x0, 0x0) = 450.0
     0xc95b9468: (F32, 0x0, 0x0, 0x0) = 8.0
     0xddf06680: (F32, 0x0, 0x0, 0x0) = 10.0
+    pass
+
+class 0x707d57b1(0xe057ab66):
+    0x5ff6cd50: (List2, 0x0, Pointer, 0xe057ab66) = []
     pass
 
 class 0x7084628f(0x18871c61):
@@ -6577,6 +6790,9 @@ class 0x7296321a():
     BackgroundTexture: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0x729df20b():
+    pass
+
 class 0x72a4bae5(0x8b5022d2):
     0x654153c3: (Embed, 0x0, 0x0, 0x373272a6) = {"0x26188390":null}
     0x654153c3: (Pointer, 0x0, 0x0, 0x3eb74cbe) = null
@@ -6644,6 +6860,7 @@ class 0x7463e786():
     pass
 
 class 0x747991cb(0x62a09c62):
+    0x71d50d51: (Bool, 0x0, 0x0, 0x0) = false
     IdleAnimationName: (String, 0x0, 0x0, 0x0) = ""
     PlayIdleAnimation: (Bool, 0x0, 0x0, 0x0) = false
     0xb887f6e9: (F32, 0x0, 0x0, 0x0) = 0.0
@@ -6983,6 +7200,13 @@ class 0x79aa0a94(0x6d79484d):
     Source: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
     pass
 
+class 0x79b4930(ViewController):
+    0x386e926b: (U32, 0x0, 0x0, 0x0) = 2
+    MainScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xa7f23864: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xae6404bb: (Embed, 0x0, 0x0, 0x4b24468b) = {"Group":"0x0","HitArea":"0x0","Icon":"0x0","Meter":"0x0","Text":"0x0"}
+    pass
+
 class 0x79ca73e7():
     0x1ef5b158: (String, 0x0, 0x0, 0x0) = ""
     0x20e0b520: (String, 0x0, 0x0, 0x0) = ""
@@ -7059,6 +7283,12 @@ class 0x7a5040ea(BaseLoadoutData):
     EnemyDamageSkin: (Hash, 0x0, 0x0, 0x0) = "0x0"
     EnemyCompanion: (Hash, 0x0, 0x0, 0x0) = "0x0"
     DifficultyLevel: (U8, 0x0, 0x0, 0x0) = 0
+    pass
+
+class 0x7a55218f():
+    Disabled: (Bool, 0x0, 0x0, 0x0) = false
+    Priority: (F32, 0x0, 0x0, 0x0) = 0.5
+    0xef5104c7: (Link, 0x0, 0x0, 0x9bc919f2) = "0x0"
     pass
 
 class 0x7aa5ea7a(0x2508c71e):
@@ -7255,9 +7485,15 @@ class 0x7d52573d(0x40a9c74a):
     Definition: (Embed, 0x0, 0x0, RegionDefinition) = {"0x301dab05":null,"0x8f59d48c":[],"RenderInfo":null,"ShapeData":null,"Tags":[]}
     pass
 
+class 0x7d564f9a():
+    0xe0ef4172: (Bool, 0x0, 0x0, 0x0) = false
+    pass
+
 class 0x7d98777d():
     0x1ee9686c: (Embed, 0x0, 0x0, 0x1ee9686c) = {"0x1775abaf":"0x0","0x19cc6053":"0x0","0x2dbcf122":"0x0","0x3510dea4":"0x0","0x3a738c83":"0x0","0x3ae31586":"0x0","0x3e5bf916":"0x0","0x5f832b26":"0x0","0x67cca4a":"0x0","0x6a4fa98c":"0x0","0x6ac4e44f":"0x0","0x70682a7":"0x0","0x73a7c872":"0x0","0x77b17247":"0x0","0x792f614a":"0x0","0x7afcb694":"0x0","0x8281a415":"0x0","0x8b507734":"0x0","0x8b5831bd":"0x0","0x90214be4":"0x0","0x94311ea0":"0x0","0x98912876":"0x0","0x9bbb4468":"0x0","0x9f77283f":"0x0","0xa8a230d9":"0x0","0xa9769d67":"0x0","0xaf4d582d":"0x0","0xb4a64e19":"0x0","0xba9bae76":[],"0xbc0f0c0":"0x0","0xc402fafa":"0x0","0xd0cc4924":"0x0","0xd5ed622":"0x0","0xdc4cc17b":"0x0","0xe1bc2b5b":"0x0","0xe1ea923b":"0x0","0xf8965958":"0x0","0xfa045deb":"0x0"}
+    0x64e312ae: (Embed, 0x0, 0x0, 0x33d1cb2e) = {"0x9346aa18":[]}
     0x9963c03a: (Embed, 0x0, 0x0, 0x9963c03a) = {"0x1775abaf":"0x0","0x19cc6053":"0x0","0x2dbcf122":"0x0","0x3510dea4":"0x0","0x3a738c83":"0x0","0x3ae31586":"0x0","0x3e5bf916":"0x0","0x5f832b26":"0x0","0x67cca4a":"0x0","0x6a4fa98c":"0x0","0x6ac4e44f":"0x0","0x70682a7":"0x0","0x73a7c872":"0x0","0x77b17247":"0x0","0x792f614a":"0x0","0x7afcb694":"0x0","0x8281a415":"0x0","0x8b507734":"0x0","0x8b5831bd":"0x0","0x90214be4":"0x0","0x94311ea0":"0x0","0x98912876":"0x0","0x9bbb4468":"0x0","0x9f77283f":"0x0","0xa8a230d9":"0x0","0xa9769d67":"0x0","0xaf4d582d":"0x0","0xb4a64e19":"0x0","0xba9bae76":[],"0xbc0f0c0":"0x0","0xc402fafa":"0x0","0xd0cc4924":"0x0","0xd5ed622":"0x0","0xdc4cc17b":"0x0","0xe1bc2b5b":"0x0","0xe1ea923b":"0x0","0xf8965958":"0x0","0xfa045deb":"0x0"}
+    0xb2246553: (List2, 0x0, Link, ContextualActionData) = []
     pass
 
 class 0x7da835ce(0xc03c9e4e):
@@ -7339,6 +7575,10 @@ class 0x7e0ad0f9(ViewController):
 
 class 0x7e173e2f(ILogicFloatDriver):
     VisibilityController: (Link, 0x0, 0x0, IMapVisibilityController) = "0x0"
+    pass
+
+class 0x7e771bf4():
+    Items: (List2, 0x0, Hash, 0x0) = []
     pass
 
 class 0x7e861f7(0x60b94b9):
@@ -7501,8 +7741,23 @@ class 0x80d55cb7():
 class 0x80d914e0(ISequenceActionInstance):
     pass
 
+class 0x80f31f46():
+    0x9e618338: (F32, 0x0, 0x0, 0x0) = 0.20000000298023224
+    0xdba24ad6: (F32, 0x0, 0x0, 0x0) = 1.0
+    0xe9552339: (F32, 0x0, 0x0, 0x0) = 275.0
+    0xed8edf74: (F32, 0x0, 0x0, 0x0) = 0.10000000149011612
+    pass
+
 class 0x810de4e7(ISequenceAction):
     ContinueAt: (U8, 0x0, 0x0, 0x0) = 0
+    pass
+
+class 0x81169a8b():
+    0x2d790b62: (U8, 0x0, 0x0, 0x0) = 2
+    0x41796e8e: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
+    0x575e63f2: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
+    0x73548d8b: (Link, 0x0, 0x0, Sequence) = "0x0"
+    0x7b6954ef: (Link, 0x0, 0x0, Sequence) = "0x0"
     pass
 
 class 0x81199b5b(0xc03c9e4e):
@@ -7510,6 +7765,13 @@ class 0x81199b5b(0xc03c9e4e):
 
 class 0x813646af(0x6837de51):
     UiElement: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0x8152c1ec(0x2015ccfc):
+    Values: (List2, 0x0, Vec3, 0x0) = []
+    Times: (List2, 0x0, F32, 0x0) = []
+    0x7c9bcfd5: (List2, 0x0, U8, 0x0) = []
+    ProbabilityTables: (List, 0x3, Pointer, VfxProbabilityTableData) = [null,null,null]
     pass
 
 class 0x81580a34(0x116f5c56, IOptionItem):
@@ -7577,6 +7839,10 @@ class 0x8263e1d():
 class 0x827227f3():
     pass
 
+class 0x828f08a7(0x5a3e70d, 0x69cd83da, 0x729df20b, 0xaf2d04aa, 0xb041c60a):
+    Value: (I32, 0x0, 0x0, 0x0) = 0
+    pass
+
 class 0x82905e5b(0x68eabd15):
     Params: (List2, 0x0, Pointer, 0x68eabd15) = []
     pass
@@ -7592,7 +7858,9 @@ class 0x82b49579(0x62a09c62):
     System: (Link, 0x0, 0x0, VfxSystemDefinitionData) = "0x0"
     EyeCandy: (Bool, 0x0, 0x0, 0x0) = false
     0x63176011: (Bool, 0x0, 0x0, 0x0) = false
+    0x658b896a: (List2, 0x0, Pointer, ITeam) = []
     0x9d9b6793: (Bool, 0x0, 0x0, 0x0) = false
+    0x9f499a15: (Bool, 0x0, 0x0, 0x0) = false
     ColorModulate: (Vec4, 0x0, 0x0, 0x0) = [1.0,1.0,1.0,1.0]
     0xf718ab13: (Bool, 0x0, 0x0, 0x0) = false
     pass
@@ -7820,6 +8088,10 @@ class 0x854a4f5b(0x46d8b2a4):
 class 0x8563543c(0x2576b4fc, 0x3497f0cf):
     pass
 
+class 0x856b3943(0x7f631ac9):
+    0x5ff6cd50: (List2, 0x0, Pointer, 0x7f631ac9) = []
+    pass
+
 class 0x856ba9bc(ViewController):
     pass
 
@@ -7905,6 +8177,9 @@ class 0x865c607b(0x8877ad7c):
     pass
 
 class 0x86687e99():
+    pass
+
+class 0x8685eb51():
     pass
 
 class 0x86901781():
@@ -8084,6 +8359,11 @@ class 0x8969bfa(0x3ab4ee7c):
     AugmentIcon: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x8493cde2: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0x898bb7cb():
+    0x3d6a5a2: (String, 0x0, 0x0, 0x0) = ""
+    0x7fec0982: (U32, 0x0, 0x0, 0x0) = 0
     pass
 
 class 0x89a52204(ViewController):
@@ -8376,6 +8656,17 @@ class 0x8cc8ea8a():
     Key: (String, 0x0, 0x0, 0x0)
     pass
 
+class 0x8d31b69b():
+    0x4796bf5f: (String, 0x0, 0x0, 0x0) = ""
+    Milestones: (List2, 0x0, Embed, 0x898bb7cb) = []
+    0x6b06978: (Embed, 0x0, 0x0, 0x7a1cab0d) = {"TexturePath":""}
+    0x9d67381: (List2, 0x0, Pointer, 0x8685eb51) = []
+    QuestName: (String, 0x0, 0x0, 0x0) = ""
+    0xbc1b3d88: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    StartValue: (U32, 0x0, 0x0, 0x0) = 0
+    0xc88f1a9b: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0x8d579c0a():
     Icon: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
@@ -8562,6 +8853,9 @@ class 0x90f7282b(IGameModeConfig):
     0xfb3d4d80: (Bool, 0x0, 0x0, 0x0) = false
     pass
 
+class 0x90ff6ef(0xe057ab66):
+    pass
+
 class 0x911f126a():
     Vfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xe50e4f4f: (String, 0x0, 0x0, 0x0) = ""
@@ -8605,6 +8899,7 @@ class 0x91873e8a():
 class 0x9188776(BaseRigPoseModifierData):
     0x23d901d3: (List2, 0x0, Embed, 0x3ca1fe0) = []
     0xbb1d1aac: (String, 0x0, 0x0, 0x0) = ""
+    0xbdaa6f16: (F32, 0x0, 0x0, 0x0) = 1.0
     0xc20b2e61: (Embed, 0x0, 0x0, 0xc20b2e61) = {"0x97f2e0f1":1.0,"0xbc016dbd":null}
     DefaultOn: (Bool, 0x0, 0x0, 0x0) = true
     pass
@@ -8753,6 +9048,9 @@ class 0x9315164():
 class 0x9316b8d7(GameObject):
     pass
 
+class 0x932d34a1(0x2610a4a3):
+    pass
+
 class 0x939e4c68(IScriptBt):
     pass
 
@@ -8789,6 +9087,9 @@ class 0x93e412e0():
     LevelPipClaimed: (Hash, 0x0, 0x0, 0x0) = "0x0"
     HitRegion: (Hash, 0x0, 0x0, 0x0) = "0x0"
     MilestoneRewardsIcon: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0x93f16627(0x2610a4a3):
     pass
 
 class 0x9424ef9f():
@@ -8854,9 +9155,11 @@ class 0x95182f0a(0x505f1532):
 
 class 0x9583cf01(0xc87f69f4):
     0x1fd795aa: (F32, 0x0, 0x0, 0x0) = 0.6000000238418579
+    0x50b8f3f6: (Embed, 0x0, 0x0, 0x7a55218f) = {"0xef5104c7":"0x0","Disabled":false,"Priority":0.5}
     0x66fa31d8: (String, 0x0, 0x0, 0x0) = ""
     0x7c74a459: (String, 0x0, 0x0, 0x0) = ""
     0x8e8371bb: (String, 0x0, 0x0, 0x0) = ""
+    0xa084e3ec: (Embed, 0x0, 0x0, 0x7a55218f) = {"0xef5104c7":"0x0","Disabled":false,"Priority":0.5}
     0xb038b134: (F32, 0x0, 0x0, 0x0) = 0.20000000298023224
     0xd4714dbb: (String, 0x0, 0x0, 0x0) = ""
     0xfbb66c25: (String, 0x0, 0x0, 0x0) = ""
@@ -9021,6 +9324,7 @@ class 0x9789a09a():
     0x473dc18e: (Bool, 0x0, 0x0, 0x0) = false
     0x6b16b5e6: (U8, 0x0, 0x0, 0x0) = 0
     0x6b62f120: (F32, 0x0, 0x0, 0x0) = 0.0
+    0xa4b83760: (Bool, 0x0, 0x0, 0x0) = false
     0xb8ec3a49: (U8, 0x0, 0x0, 0x0) = 1
     Mode: (U8, 0x0, 0x0, 0x0) = 0
     0xfd674e81: (U8, 0x0, 0x0, 0x0) = 0
@@ -9187,6 +9491,12 @@ class 0x9a2d73f2(0x68eabd15):
     0xa6c45d85: (Pointer, 0x0, 0x0, 0x8877ad7c) = null
     pass
 
+class 0x9a397a79(0x41bb3fd7):
+    0x4a4ac20: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x98d8d27d: (Bool, 0x0, 0x0, 0x0) = false
+    0xba6c2b68: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
 class 0x9a4ba494():
     0x12cef16b: (Pointer, 0x0, 0x0, 0x2b365a82) = null
     ProgressText: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -9225,8 +9535,9 @@ class 0x9a7de981(0x49832ca7, 0x6ca3cfd):
     pass
 
 class 0x9aa5b4bc(0x40a9c74a):
+    Script: (Embed, 0x0, 0x0, 0x4017248c) = {"ScriptDef":{"Scripts":[]}}
     0x35431c5: (Embed, 0x0, 0x0, 0x385c323f) = {}
-    0x35431c5: (Embed, 0x0, 0x0, 0x747991cb) = {"0xb887f6e9":0.0,"IdleAnimationName":"","PlayIdleAnimation":false}
+    0x35431c5: (Embed, 0x0, 0x0, 0x747991cb) = {"0x71d50d51":false,"0xb887f6e9":0.0,"IdleAnimationName":"","PlayIdleAnimation":false}
     0x58a1d8fb: (Embed, 0x0, 0x0, 0x385c323f) = {}
     0x58a1d8fb: (Embed, 0x0, 0x0, 0x7a2bf6d5) = {}
     Statemachine: (Pointer, 0x0, 0x0, 0x13e5fb09) = null
@@ -9292,6 +9603,14 @@ class 0x9bc366ca(ILogicBoolDriver):
     0x3b0a7a6a: (Bool, 0x0, 0x0, 0x0) = true
     SkinId: (U32, 0x0, 0x0, 0x0) = 0
     UseValidParentForChroma: (Bool, 0x0, 0x0, 0x0) = true
+    pass
+
+class 0x9bc919f2():
+    Disabled: (Bool, 0x0, 0x0, 0x0) = false
+    Name: (String, 0x0, 0x0, 0x0) = ""
+    Tag: (U8, 0x0, 0x0, 0x0) = 0
+    0xc8d0888c: (F32, 0x0, 0x0, 0x0) = 0.0
+    0xcd02e270: (F32, 0x0, 0x0, 0x0) = 50.0
     pass
 
 class 0x9bd3c53b(0x857c08ad, 0x8ffd7c61):
@@ -9628,6 +9947,10 @@ class 0xa0eddc9():
     Values: (List, 0x7, F32, 0x0) = [0.0,0.0,0.0,0.0,0.0,0.0,0.0]
     pass
 
+class 0xa0ffdf09():
+    0xd0271699: (List2, 0x0, Link, 0x8d31b69b) = []
+    pass
+
 class 0xa138eeb3():
     Positions: (List2, 0x0, Embed, TftBoardPosition) = []
     pass
@@ -9641,6 +9964,10 @@ class 0xa1898a43(ModalDialogViewController):
     pass
 
 class 0xa19405b3(ILolSpellScriptEvent):
+    pass
+
+class 0xa1e28449(0x8685eb51):
+    0xf9bce4c2: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0xa21d6491():
@@ -9680,6 +10007,7 @@ class 0xa2913bfb(ISequenceAction):
     pass
 
 class 0xa29e7869(0xc87f69f4):
+    0x64132003: (Embed, 0x0, 0x0, 0x7a55218f) = {"0xef5104c7":"0x0","Disabled":false,"Priority":0.5}
     0x8e8371bb: (String, 0x0, 0x0, 0x0) = ""
     Priority: (F32, 0x0, 0x0, 0x0) = 0.5
     0xd4714dbb: (String, 0x0, 0x0, 0x0) = ""
@@ -9715,7 +10043,7 @@ class 0xa361c5ef(IGameModeConfig):
     pass
 
 class 0xa38a798c(0xadec1272, VfxPrimitiveBase):
-    0x42b4cb29: (Embed, 0x0, 0x0, 0x9789a09a) = {"0x27abb06d":0,"0x6b16b5e6":0,"0x6b62f120":0.0,"0xb8ec3a49":1,"0xfd674e81":0,"BirthTilingSize":{"ConstantValue":[100.0,100.0],"Dynamics":null}}
+    0x42b4cb29: (Embed, 0x0, 0x0, 0x9789a09a) = {"0x27abb06d":0,"0x6b16b5e6":0,"0x6b62f120":0.0,"0xa4b83760":false,"0xb8ec3a49":1,"0xfd674e81":0,"BirthTilingSize":{"ConstantValue":[100.0,100.0],"Dynamics":null}}
     pass
 
 class 0xa39a53be():
@@ -9837,6 +10165,11 @@ class 0xa52f76d9(ViewController):
 class 0xa534365c():
     Group: (Hash, 0x0, 0x0, 0x0) = "0x0"
     TimerVfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0xa55c9d58(0x27d92a31):
+    OutEntity: (Embed, 0x0, 0x0, 0x851d2116) = {"Table":{},"Var":""}
+    Entity: (Pointer, 0x0, 0x0, IEntityGet) = null
     pass
 
 class 0xa56f7c7a(0xece68ca6):
@@ -9991,6 +10324,10 @@ class 0xa8c6f5f0():
     0xb80015ba: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0xa8c7473f(0x69cd83da, 0xb041c60a):
+    Value: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0xa8c89348(0x7992a72c):
     pass
 
@@ -10106,6 +10443,9 @@ class 0xaab3465e(0xb98830a1):
     pass
 
 class 0xaadc6ca8(0x12b2d1cc, 0x3497f0cf, 0xa4795108):
+    pass
+
+class 0xaae0d2b3(0x2610a4a3):
     pass
 
 class 0xab02008c(0xa8a6ac21):
@@ -10410,6 +10750,9 @@ class 0xaf2a99d2():
     0x9dd329dc: (Map, Hash, Pointer, IScriptValueGet) = {}
     pass
 
+class 0xaf2d04aa():
+    pass
+
 class 0xaf3a602a(ISkinAugment):
     MaterialBin: (Pointer, 0x0, 0x0, 0x59ef46df) = null
     Modifiers: (List2, 0x0, Pointer, 0xbd0a017e) = []
@@ -10471,6 +10814,10 @@ class 0xb0254004(0xb432effc):
     DistanceThreshold: (Option, 0x0, F32, 0x0) = null
     pass
 
+class 0xb041c60a():
+    Name: (String, 0x0, 0x0, 0x0)
+    pass
+
 class 0xb0607142(IScriptCondition):
     pass
 
@@ -10496,6 +10843,10 @@ class 0xb08ef62f(Cheat):
 class 0xb09016f6():
     EffectCalculation: (Pointer, 0x0, 0x0, IGameCalculation) = null
     EffectTag: (U32, 0x0, 0x0, 0x0) = 0
+    pass
+
+class 0xb09bee48():
+    0x1b1cc8c3: (List2, 0x0, Link, 0x41bb3fd7) = []
     pass
 
 class 0xb0afae41(ViewControllerFilterI):
@@ -10747,6 +11098,9 @@ class 0xb4517220():
     Inactive: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0xb4b5ab41(0x2610a4a3):
+    pass
+
 class 0xb4dee917(0xf37213a8):
     0x2e1cea4f: (Pointer, 0x0, 0x0, 0x2e1cea4f) = null
     pass
@@ -10865,6 +11219,36 @@ class 0xb62c8675(UiMetricTypeI):
     TowerIcons: (Embed, 0x0, 0x0, 0xa8c6f5f0) = {"0x1793d323":"0x0","0x4297f4f9":"0x0","0x5329572e":"0x0","0xb80015ba":"0x0"}
     0xb057cf4b: (U8, 0x0, 0x0, 0x0) = 0
     DetailsPanel: (Embed, 0x0, 0x0, 0x7a19656) = {"0x6188e7b7":"0x0","DetailPanel":"0x0","DetailTextT1":"0x0","DetailTextT2":"0x0","TimerPanel":"0x0","TimerText":"0x0"}
+    pass
+
+class 0xb67bce14(ViewController):
+    OverlayScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Team2AllyGlow: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    MainTooltipAnchor: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Team2SwapHoverIcon: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Team1SwapHoverIcon: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x330f7f89: (Link, 0x0, 0x0, UiPropertyOverrideLoadable) = "0x0"
+    ScoreboardScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    ChaosScoreLineUiData: (Pointer, 0x0, 0x0, ScoreLineBaseUiData) = null
+    DragOverlayScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Team1AllyGlow: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    ChaosObjectiveBountiesData: (Pointer, 0x0, 0x0, SbObjectiveBounties) = null
+    OrderObjectiveBountiesData: (Pointer, 0x0, 0x0, SbObjectiveBounties) = null
+    Team1EnemyGlow: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    OrderScoreLineUiData: (Pointer, 0x0, 0x0, ScoreLineBaseUiData) = null
+    ChaosTeamIdentity: (Pointer, 0x0, 0x0, UiTeamIdentityData) = null
+    TeamScoresDefinitions: (Pointer, 0x0, 0x0, 0xe66ed8ff) = null
+    0xb01c9387: (Link, 0x0, 0x0, UiPropertyOverrideLoadable) = "0x0"
+    Team1SwapDragTarget: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Team1ReportModalAnchor: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    DragonUiLoadable: (Link, 0x0, 0x0, UiPropertyOverrideLoadable) = "0x0"
+    SummonerSocialCard: (Pointer, 0x0, 0x0, UiSummonerSocialCardData) = null
+    Team2ReportModalAnchor: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Team2EnemyGlow: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Team2SwapDragTarget: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    OrderTeamIdentity: (Pointer, 0x0, 0x0, UiTeamIdentityData) = null
+    PlayerSlotHeightReference: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xfc473cee: (Pointer, 0x0, 0x0, IOptionItem) = null
     pass
 
 class 0xb6a24478():
@@ -11155,6 +11539,7 @@ class 0xbb0904fc(LoLCursorContextAwareKeybind):
 
 class 0xbb109c9b(ViewController):
     0x2f50e99b: (Embed, 0x0, 0x0, 0x67d3ab82) = {"Button":"0x0","Scene":"0x0"}
+    0x2f50e99b: (Embed, 0x0, 0x0, 0xc3558483) = {"Button":"0x0","Scene":"0x0"}
     0x3220df94: (U8, 0x0, 0x0, 0x0) = 0
     0x3b44ff7a: (String, 0x0, 0x0, 0x0) = ""
     MainScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -11162,16 +11547,21 @@ class 0xbb109c9b(ViewController):
     0x55047b08: (Map, Hash, Embed, 0x55047b08) = {}
     0x56592fa3: (U32, 0x0, 0x0, 0x0) = 2
     TimeoutPreventClicksOnShow: (F32, 0x0, 0x0, 0x0) = 0.0
+    0x5e0c072: (Vec4, 0x0, 0x0, 0x0) = [0.0,0.10000000149011612,1.0,0.8999999761581421]
+    0x6da1a863: (Embed, 0x0, 0x0, 0x2f798a22) = {"0x34296273":"0x0","0x649a346e":null,"0x7d555132":null,"0x83af5436":"0x0","0xdfc337ad":{"0x16118b27":"","0x756be398":"","0xc8c5e272":"","0xd6ce8043":""},"HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     0x6da1a863: (Embed, 0x0, 0x0, 0xfb1989a3) = {"0x34296273":"0x0","0x83af5436":"0x0","0xdfc337ad":{"0x16118b27":"","0x756be398":"","0xc8c5e272":"","0xd6ce8043":""},"HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     0x7c4b972: (F32, 0x0, 0x0, 0x0) = 0.5
+    0xb25b0bc0: (Map, Hash, Embed, 0x2f798a22) = {}
     0xb25b0bc0: (Map, Hash, Embed, 0xb25b0bc0) = {}
     0xb25b0bc0: (Map, Hash, Embed, 0xfb1989a3) = {}
     0xb53b9fa1: (Pointer, 0x0, 0x0, 0xb53b9fa1) = null
     MaxAugmentSlots: (U32, 0x0, 0x0, 0x0) = 3
     MaxAugmentSlots: (U8, 0x0, 0x0, 0x0) = 3
+    0xce64b8ab: (Embed, 0x0, 0x0, 0x2f798a22) = {"0x34296273":"0x0","0x649a346e":null,"0x7d555132":null,"0x83af5436":"0x0","0xdfc337ad":{"0x16118b27":"","0x756be398":"","0xc8c5e272":"","0xd6ce8043":""},"HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     0xce64b8ab: (Embed, 0x0, 0x0, 0xfb1989a3) = {"0x34296273":"0x0","0x83af5436":"0x0","0xdfc337ad":{"0x16118b27":"","0x756be398":"","0xc8c5e272":"","0xd6ce8043":""},"HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     TooltipAnchor: (Hash, 0x0, 0x0, 0x0) = "0x0"
-    AugmentSlotData: (Embed, 0x0, 0x0, AugmentSlotData) = {"0x2984933":"0x0","0x4ddb7d67":"0x0","0x58d3e60":null,"0x608f42dd":"0x0","0x791eb92e":null,"0xa8d38a0":"0x0","AugmentButton":"0x0","AugmentDescription":"0x0","AugmentDisplayTagData":{"AugmentDisplayTagFrame":"0x0","AugmentDisplayTagRow":"0x0","AugmentDisplayTagSpacer":"0x0","AugmentDisplayTagText":"0x0"},"AugmentGroup":"0x0","AugmentHoverVfx":"0x0","AugmentIconLarge":"0x0","AugmentIconMedium":"0x0","AugmentIdleVfx":"0x0","AugmentName":"0x0","AugmentNotPickedVfx":"0x0","AugmentPickedVfx":"0x0","AugmentRefreshOverlayVfx":"0x0","AugmentRefreshVfx":"0x0","RerollButtonData":{"0x156908a":"","0x3e778531":"","0xc8f7f131":"0x0","0xe591c9c1":"0x0","RerollButton":"0x0","RerollButtonText":"0x0","RerollButtonTextColor":[0,0,0,255],"RerollButtonTextDisabledColor":[0,0,0,255]}}
+    AugmentSlotData: (Embed, 0x0, 0x0, AugmentSlotData) = {"0x162165":"0x0","0x2984933":"0x0","0x369e5f96":"0x0","0x419bd007":"0x0","0x4ddb7d67":"0x0","0x58d3e60":null,"0x608f42dd":"0x0","0x78c28cef":"0x0","0x791eb92e":null,"0x9c67ea24":"0x0","0xa8d38a0":"0x0","0xb086e5e9":"0x0","0xbdb791ec":"0x0","0xdb1d31de":{},"0xe737695d":"0x0","0xf12803df":"0x0","AugmentButton":"0x0","AugmentDescription":"0x0","AugmentDisplayTagData":{"AugmentDisplayTagFrame":"0x0","AugmentDisplayTagRow":"0x0","AugmentDisplayTagSpacer":"0x0","AugmentDisplayTagText":"0x0"},"AugmentGroup":"0x0","AugmentHoverVfx":"0x0","AugmentIdleVfx":"0x0","AugmentName":"0x0","AugmentNotPickedVfx":"0x0","AugmentPickedVfx":"0x0","AugmentRefreshOverlayVfx":"0x0","AugmentRefreshVfx":"0x0","RerollButtonData":{"0x156908a":"","0x3e778531":"","0xc8f7f131":"0x0","0xe591c9c1":"0x0","RerollButton":"0x0","RerollButtonText":"0x0","RerollButtonTextColor":[0,0,0,255],"RerollButtonTextDisabledColor":[0,0,0,255]}}
+    0xf8d5ccda: (Embed, 0x0, 0x0, 0x2f798a22) = {"0x34296273":"0x0","0x649a346e":null,"0x7d555132":null,"0x83af5436":"0x0","0xdfc337ad":{"0x16118b27":"","0x756be398":"","0xc8c5e272":"","0xd6ce8043":""},"HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     0xf8d5ccda: (Embed, 0x0, 0x0, 0xfb1989a3) = {"0x34296273":"0x0","0x83af5436":"0x0","0xdfc337ad":{"0x16118b27":"","0x756be398":"","0xc8c5e272":"","0xd6ce8043":""},"HoverVfxSystem":"0x0","IdleVfxSystem":"0x0","NotPickedVfxSystem":"0x0","PickedVfxSystem":"0x0","RefreshOverlayVfxSystem":"0x0","RefreshVfxSystem":"0x0"}
     pass
 
@@ -11188,6 +11578,11 @@ class 0xbb1b4a24(IGameModeConfig):
     0xd55e5eb7: (F32, 0x0, 0x0, 0x0) = 1000.0
     0xe89de4e3: (U32, 0x0, 0x0, 0x0) = 3
     0xfb77eb31: (F32, 0x0, 0x0, 0x0) = 0.8999999761581421
+    pass
+
+class 0xbb50fcec(0x41bb3fd7):
+    0x4a4ac20: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xba6c2b68: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0xbb52980e(0x5aa60796):
@@ -11414,6 +11809,11 @@ class 0xbe793e5f(0x7379bca6):
 class 0xbeb63ce3(0xc03c9e4e):
     pass
 
+class 0xbec5ee23(0x41bb3fd7):
+    0x4a4ac20: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xba6c2b68: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
 class 0xbef2c2b0():
     Group: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Modifier: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -11535,6 +11935,10 @@ class 0xc0f504e(0xe2a48eac):
 class 0xc10d4fdc():
     pass
 
+class 0xc124ec81():
+    0x2d2de997: (Embed, 0x0, 0x0, 0x3412c115) = {"0x3b5b846f":"Play_mus_Client_LOL_Lobby_PRISM_Test","RtpcName":"AroundGame_VisualModulation"}
+    pass
+
 class 0xc126997e(ISequenceAction):
     Color: (Color, 0x0, 0x0, 0x0) = [255,255,255,255]
     0x44ee0c82: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -11632,6 +12036,11 @@ class 0xc2b1af7f(ISequenceAction):
     Element: (Pointer, 0x0, 0x0, 0xe561be2e) = null
     0x76df2a8b: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
     EnableOnStart: (Bool, 0x0, 0x0, 0x0) = true
+    pass
+
+class 0xc3558483():
+    Scene: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    Button: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0xc3737f3e():
@@ -11910,6 +12319,10 @@ class 0xc7e628b9():
     0xe5bc4229: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0xc8093bd(0xd027765c):
+    0x66225340: (Embed, 0x0, 0x0, 0x5e7413cb)
+    pass
+
 class 0xc83d315a():
     MapLightInfo: (Embed, 0x0, 0x0, MapLightingInfo) = {"0xc6d048fc":3.0,"FogAlternateColor":[0.10000000149011612,0.10000000149011612,0.20000000298023224,1.0],"FogColor":[0.20000000298023224,0.20000000298023224,0.4000000059604645,1.0],"FogEmissiveRemap":1.899999976158142,"FogEnabled":true,"FogLowQualityModeEmissiveRemap":0.019999999552965164,"FogStartAndEnd":[0.0,-2000.0],"GroundColor":[0.10000000149011612,0.10000000149011612,0.10000000149011612,1.0],"HorizonColor":[0.4000000059604645,0.4000000059604645,0.4000000059604645,1.0],"LightMapColorScale":1.0,"OverrideSunSpecDirection":null,"PbrSunAdditionalScale":10.0,"ScaleSunShadowIntensity":1.0,"ShadowBias":0.006000000052154064,"SkyLightColor":[0.7049999833106995,0.8799999952316284,1.0,1.0],"SkyLightScale":0.20000000298023224,"SunColor":[1.0,1.0,1.0,1.0],"SunDirection":[0.0,0.7070000171661377,0.7070000171661377],"SunIntensityScale":1.0,"SunRadiusForShadows":0.0}
     CubemapPath: (String, 0x0, 0x0, 0x0) = ""
@@ -12099,6 +12512,7 @@ class 0xca27818b():
     LocalizedName: (String, 0x0, 0x0, 0x0) = ""
     Priority: (U8, 0x0, 0x0, 0x0) = 255
     0x9a1e7475: (String, 0x0, 0x0, 0x0) = ""
+    0xb52e49ae: (Map, String, String, 0x0) = {}
     TexturePath: (String, 0x0, 0x0, 0x0) = ""
     LocalizedDescription: (String, 0x0, 0x0, 0x0) = ""
     pass
@@ -12401,6 +12815,9 @@ class 0xd002d925(0x40a9c74a):
     0x941786d4: (Embed, 0x0, 0x0, 0x912bf9eb) = {"0x4bcc2801":true,"0x7114af11":false,"EyeCandy":0,"MaterialMapping":{},"MeshPath":"","Quality":31,"RenderPass":0}
     pass
 
+class 0xd027765c():
+    pass
+
 class 0xd03de37f():
     MessageTra: (String, 0x0, 0x0, 0x0) = ""
     pass
@@ -12636,9 +13053,18 @@ class 0xd37e7059(0x6ca3cfd):
     0xc011585: (Pointer, 0x0, 0x0, 0x49832ca7)
     pass
 
+class 0xd3d7f73c(0x69cd83da, 0xb041c60a):
+    Value: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
 class 0xd3dda5e5(0x62a09c62):
+    0x28e60732: (Bool, 0x0, 0x0, 0x0) = true
     0x37ae4cad: (Bool, 0x0, 0x0, 0x0) = false
     Polygon: (Embed, 0x0, 0x0, EntityPolygonData) = {"Vertices":[[-200.0,0.0,-200.0],[200.0,0.0,-200.0],[200.0,0.0,200.0],[-200.0,0.0,200.0]]}
+    0x7168974e: (Bool, 0x0, 0x0, 0x0) = false
+    0x9b15d5eb: (Bool, 0x0, 0x0, 0x0) = false
+    0xaecee07f: (U8, 0x0, 0x0, 0x0) = 100
+    0xc7543bfc: (Bool, 0x0, 0x0, 0x0) = true
     0xfc90acf2: (String, 0x0, 0x0, 0x0) = ""
     pass
 
@@ -12869,6 +13295,7 @@ class 0xd6d3da87(0x27d92a31):
 class 0xd6edc2f4(ViewController):
     MessageTemplate: (Embed, 0x0, 0x0, 0xb3d7a02f) = {"0x87d3fa93":"0x0","0xa0e9b9b4":"0x0","0xa5987244":"0x0","0xa60fc46e":"0x0","Icon":"0x0","SlotArea":"0x0","Text":"0x0"}
     MessageDisplayData: (Embed, 0x0, 0x0, HudMessageDisplayData) = {"0xf13367cf":false,"MessageCount":4,"MessageDurationSecs":5.0,"TransitionIn":{"EasingType":0,"MaxAlpha":255,"MinAlpha":0,"TransitionStartDelaySecs":0.0,"TransitionTime":0.10000000149011612}}
+    0x99c3584f: (Map, Hash, Embed, 0x3b4c602e) = {}
     0x99c3584f: (Map, Hash, Embed, 0xe2041f7a) = {}
     ItemSceneTemplate: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
@@ -13119,6 +13546,11 @@ class 0xdb992149(0x19916651, ScriptTableGet):
 class 0xdb9a90ba(0xe561be2e):
     Source: (Link, 0x0, 0x0, SequenceObjectSelector) = "0x0"
     DebugOverride: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    pass
+
+class 0xdba067bf(0x41bb3fd7):
+    0x4a4ac20: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xba6c2b68: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0xdba754d5(0xadec1272):
@@ -13630,6 +14062,10 @@ class 0xe1c21adb(ModalDialogViewController):
 class 0xe1c569f0(0xb432effc):
     pass
 
+class 0xe1e087bd():
+    0x29ab62c2: (List2, 0x0, Link, 0xb041c60a) = []
+    pass
+
 class 0xe2041f7a():
     0x419458b7: (Embed, 0x0, 0x0, 0x613376ad) = {"0x28d65053":[0,0,0,255]}
     Default: (Embed, 0x0, 0x0, 0x613376ad) = {"0x28d65053":[0,0,0,255]}
@@ -13857,6 +14293,14 @@ class 0xe64ff723(0x40a9c74a):
     0xf8f165ee: (Embed, 0x0, 0x0, 0x1eee9d10) = {}
     pass
 
+class 0xe66ed8ff():
+    0x516fe283: (Embed, 0x0, 0x0, 0xb36c777a) = {"0x6975adea":"0x0","0xb2d11fb5":"0x0","0xba6de6d3":"0x0","0xd736c5a4":"0x0","DeviceUx":0}
+    DragonTracker: (Embed, 0x0, 0x0, UiMetricMultiDragonKillsSrX) = {"DeviceUx":0,"DragonTypeIcons":{},"SoulSlot":null,"Team1IconSlots":[],"Team2IconSlots":[],"TeamSlotDisabledIcon":"0x0"}
+    TowerKills: (Embed, 0x0, 0x0, UiMetricTeamTowerKills) = {"DeviceUx":0,"Team1TowerKillsIcon":"0x0","Team1TowerKillsText":"0x0","Team2TowerKillsIcon":"0x0","Team2TowerKillsText":"0x0"}
+    0xbcbb5260: (Embed, 0x0, 0x0, 0x6734c597) = {"0x3594d7df":"0x0","0xd43baf7a":"0x0","0xe47ec0fc":"0x0","0xe7bfbb59":"0x0","DeviceUx":0}
+    ChampionKills: (Embed, 0x0, 0x0, UiMetricTeamKills) = {"DeviceUx":0,"Team1KillText":"0x0","Team2KillText":"0x0","TeamKillsIcon":"0x0"}
+    pass
+
 class 0xe67a27c8(0xd37e7059):
     0x6f521854: (List2, 0x0, U32, 0x0) = []
     0x8f7bb6e: (U32, 0x0, 0x0, 0x0) = 0
@@ -13977,6 +14421,7 @@ class 0xe8402935(ViewController):
 
 class 0xe8c34b52(IGameModeConfig):
     EliminatedColor: (Color, 0x0, 0x0, 0x0) = [0,0,0,255]
+    0x7d555132: (Pointer, 0x0, 0x0, 0x62abd8e) = null
     AugmentColors: (Map, U8, Color, 0x0) = {}
     0xf021feb3: (U8, 0x0, 0x0, 0x0) = 0
     pass
@@ -14074,6 +14519,10 @@ class 0xe92f8b6c(ViewController):
     SubTeamsLoadable: (Link, 0x0, 0x0, UiPropertyLoadable) = "0x0"
     0xebeabff1: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xfff63be6: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0xe93de85a():
+    0x9d0cf3d: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class 0xe945834a(IGameCalculationPart):
@@ -14523,7 +14972,7 @@ class 0xeee5fffe():
     0x7fad8491: (List2, 0x0, Pointer, 0x8cc8ea8a) = []
     pass
 
-class 0xef17c645(0x3497f0cf, 0x3b49ffb9):
+class 0xef17c645(0x129e311, 0x3497f0cf, 0x3b49ffb9):
     pass
 
 class 0xef2a4fa0():
@@ -14875,6 +15324,14 @@ class 0xf35298c9():
     ItemLayout: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
+class 0xf358e3d3():
+    0x63a546fd: (U32, 0x0, 0x0, 0x0) = 0
+    Name: (String, 0x0, 0x0, 0x0) = ""
+    0xafd1af53: (U32, 0x0, 0x0, 0x0) = 0
+    0xd5a890d3: (F32, 0x0, 0x0, 0x0) = 0.0
+    0xdcc6671d: (U32, 0x0, 0x0, 0x0) = 0
+    pass
+
 class 0xf3641a9f(0x10fa8e8f):
     pass
 
@@ -14896,6 +15353,7 @@ class 0xf37151c(TftCutsceneClip):
     pass
 
 class 0xf37213a8():
+    0xd3aa34a: (Hash, 0x0, 0x0, 0x0)
     PathHash: (Hash, 0x0, 0x0, 0x0)
     pass
 
@@ -15147,6 +15605,8 @@ class 0xf7665f1a(ILogicDriver):
     pass
 
 class 0xf7711a64(ValueVector3):
+    ConstantValue: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
+    Dynamics: (Pointer, 0x0, 0x0, 0x2015ccfc) = null
     pass
 
 class 0xf7cd3e83(0x51affcd0):
@@ -15248,6 +15708,9 @@ class 0xf8ae8458(0x27d92a31):
 
 class 0xf8c18a6e():
     NameTraKey: (String, 0x0, 0x0, 0x0) = ""
+    pass
+
+class 0xf8cc0ea3():
     pass
 
 class 0xf96d9400():
@@ -15576,6 +16039,10 @@ class 0xfd935b1a(ILogicBoolDriver):
 class 0xfd983fde(0x10fa8e8f):
     pass
 
+class 0xfd9d20f6(0x2afbbce0, 0xb041c60a):
+    Value: (Color, 0x0, 0x0, 0x0) = [255,255,255,255]
+    pass
+
 class 0xfdb6b027(0x62a09c62):
     pass
 
@@ -15588,6 +16055,9 @@ class 0xfdce240b(0xfaf91113):
 
 class 0xfdd1d768(0x10fa8e8f):
     0x34400254: (Embed, 0x0, 0x0, IntTableSet) = {"Table":{},"Var":"TouchIndex"}
+    pass
+
+class 0xfddb75c6(0x505f1532):
     pass
 
 class 0xfddcab18():
@@ -15676,6 +16146,9 @@ class 0xfead7e9b():
     0x4dac327b: (List2, 0x0, Hash, 0x0) = []
     0x4ec15a0a: (List2, 0x0, Hash, 0x0) = []
     Tags: (List2, 0x0, Hash, 0x0) = []
+    pass
+
+class 0xfed5253f(GameStateViewController):
     pass
 
 class 0xff2348d3(0xc59dfcfb):
@@ -15785,9 +16258,9 @@ class AbilitiesUiData():
     SpellRankPips: (Pointer, 0x0, 0x0, SpellRankPipsUiData) = null
     SpellRankText: (Pointer, 0x0, 0x0, SpellRankTextUiData) = null
     CustomAbilities: (Pointer, 0x0, 0x0, CustomAbilitiesUiData) = null
-    ChampionSpells: (List, 0x4, Embed, SpellSlotDetailedUiDefinition) = [{"AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"}]
-    Passive: (Embed, 0x0, 0x0, SpellSlotDetailedUiDefinition) = {"AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"}
-    SummonerSpells: (List, 0x2, Embed, SpellSlotDetailedUiDefinition) = [{"AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"}]
+    ChampionSpells: (List, 0x4, Embed, SpellSlotDetailedUiDefinition) = [{"0x5b4a2352":"0x0","AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"0x5b4a2352":"0x0","AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"0x5b4a2352":"0x0","AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"0x5b4a2352":"0x0","AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"}]
+    Passive: (Embed, 0x0, 0x0, SpellSlotDetailedUiDefinition) = {"0x5b4a2352":"0x0","AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"}
+    SummonerSpells: (List, 0x2, Embed, SpellSlotDetailedUiDefinition) = [{"0x5b4a2352":"0x0","AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"},{"0x5b4a2352":"0x0","AmmoBg":"0x0","AmmoFx":"0x0","AmmoText":"0x0","BorderDisabled":"0x0","BorderEnabled":"0x0","BuffTimer":null,"ContentElement":"0x0","CooldownGem":null,"CooldownUiData":{"CooldownCompleteEffect":"0x0","CooldownJumpEffect":"0x0","CooldownText":"0x0","RadialEffect":"0x0"},"Cost":"0x0","CostBg":"0x0","HotKeyBg":"0x0","Hotkey":"0x0","MouseoverRegion":"0x0","OverlayCced":"0x0","OverlayDisabled":"0x0","OverlayOom":"0x0","ResetFlashFxAttention":"0x0","ToggleFx":"0x0"}]
     pass
 
 class AbilityObject():
@@ -16287,6 +16760,7 @@ class AugmentData(0x22daa5b8, IAugment):
     NameTra: (String, 0x0, 0x0, 0x0) = ""
     Enabled: (Bool, 0x0, 0x0, 0x0) = true
     AugmentTooltipTra: (String, 0x0, 0x0, 0x0) = ""
+    0x3ed971bd: (Pointer, 0x0, 0x0, 0xe93de85a) = null
     AugmentSmallIconPath: (String, 0x0, 0x0, 0x0) = ""
     Rarity: (U8, 0x0, 0x0, 0x0) = 0
     mBuildTags: (U32, 0x0, 0x0, 0x0) = 0
@@ -16339,9 +16813,12 @@ class AugmentSlot():
     pass
 
 class AugmentSlotData():
+    0x162165: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x2984933: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentGroup: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x344729ae: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x369e5f96: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x419bd007: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentPickedVfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x4ddb7d67: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x58d3e60: (Pointer, 0x0, 0x0, 0x58d3e60) = null
@@ -16352,17 +16829,24 @@ class AugmentSlotData():
     RerollButtonData: (Embed, 0x0, 0x0, RerollButtonData) = {"0x156908a":"","0x3e778531":"","0xc8f7f131":"0x0","0xe591c9c1":"0x0","RerollButton":"0x0","RerollButtonText":"0x0","RerollButtonTextColor":[0,0,0,255],"RerollButtonTextDisabledColor":[0,0,0,255]}
     AugmentIcon: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x76215b4c: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x78c28cef: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x791eb92e: (Embed, 0x0, 0x0, 0x791eb92e) = {"0x8f6fed86":"0x0","0xb136a8a8":[]}
     0x791eb92e: (Pointer, 0x0, 0x0, 0x791eb92e) = null
     AugmentIdleVfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x9c67ea24: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentName: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xa8d38a0: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xb086e5e9: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentIconMedium: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentHoverVfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xbdb791ec: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentDisplayTagData: (Embed, 0x0, 0x0, AugmentDisplayTagData) = {"AugmentDisplayTagFrame":"0x0","AugmentDisplayTagRow":"0x0","AugmentDisplayTagSpacer":"0x0","AugmentDisplayTagText":"0x0"}
     AugmentIconLarge: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AugmentRefreshOverlayVfx: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xdb1d31de: (Map, U8, Hash, 0x0) = {}
     AugmentButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xe737695d: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xf12803df: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class AutoSpellCastInfo():
@@ -16397,12 +16881,12 @@ class BankUnitList():
     pass
 
 class BannerFlagData():
-    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
+    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"0x8881ee77":null,"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
     AnimationGraphData: (Link, 0x0, 0x0, AnimationGraphData) = "0x0"
     pass
 
 class BannerFrameData():
-    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
+    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"0x8881ee77":null,"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
     AnimationGraphData: (Link, 0x0, 0x0, AnimationGraphData) = "0x0"
     pass
 
@@ -18415,6 +18899,7 @@ class CursorConfig():
     mHoverNotUseableCursor: (Embed, 0x0, 0x0, CursorDataCaptureCooldownContext) = {"mData":[{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""}]}
     mTeamContextCursors: (List, 0x3, Embed, CursorDataTeamContext) = [{"mData":[{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""}]},{"mData":[{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""}]},{"mData":[{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""}]}]
     mSingleContextCursors: (List, 0xa, Embed, CursorData) = [{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""},{"mColorblindTargetChampionsOnlyTextureName":"","mColorblindTextureName":"","mHotSpot":[0.0,0.0],"mTargetChampionsOnlyTextureName":"","mTextureName":""}]
+    0xd8ec603e: (String, 0x0, 0x0, 0x0) = ""
     pass
 
 class CursorData():
@@ -19000,9 +19485,12 @@ class EndOfGameViewController(ViewController):
     ContinueButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
     VictoryGroupHandle: (Hash, 0x0, 0x0, 0x0) = "0x0"
     TencentOverrideLoadable: (Link, 0x0, 0x0, UiPropertyOverrideLoadable) = "0x0"
+    0xa8b19f3b: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xabd77ed0: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0xae51ebbc: (Map, U8, String, 0x0) = {}
     0xbfd85eff: (Hash, 0x0, 0x0, 0x0) = "0x0"
     VanguardContinueButton: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xfe37e8e3: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class EnemyRespawnTimersViewController(0xe7d4252f, ViewController):
@@ -19541,7 +20029,7 @@ class FloatingTextDamageDisplayTypeList():
 class FloatingTextGlobalConfig():
     mDamageDisplayTypes: (Embed, 0x0, 0x0, FloatingTextDamageDisplayTypeList) = {"BarrackMinion":"0x0","Default":"0x0","Dot":"0x0","DotNoCombine":"0x0","DotParentMissile":"0x0","DotSlow":"0x0","Impact":"0x0","Mini":"0x0","Multistrike":"0x0","MultistrikeFast":"0x0","MultistrikeSlow":"0x0","PlayerMinion":"0x0","SelfMagicalDamageCounter":"0x0","SelfPhysicalDamageCounter":"0x0","SelfTrueDamageCounter":"0x0","Ult":"0x0","Zone":"0x0"}
     mTunables: (Embed, 0x0, 0x0, FloatingTextTunables) = {"CameraMask":1,"mAnimatedTextQueueDelay":0.10000000149011612,"mComparisonByLevel":[],"mExpirationPriorityThreshold":-1.0,"mExpirationTimeThreshold":1000000.0,"mIntervalInPix":-1.0,"mLocalPlayerHealthComparison":12.5,"mMaxFloatingTextItems":25,"mMaximumDynamicScale":1.75,"mMinimumDynamicScale":1.0,"mMinionComparisonMultiplier":1.25,"mScrollSpeed":45.0,"mYResolutionBaseline":1200.0}
-    mFloatingTextTypes: (Embed, 0x0, 0x0, FloatingTextTypeList) = {"0x32383120":"0x0","0x3388fb50":"0x0","0x81f43042":"0x0","0x8457d57":"0x0","0x9591979a":"0x0","0xa82223b3":"0x0","0xa9222546":"0x0","0xcf504aff":"0x0","0xee6adc8c":"0x0","0xf816d439":"0x0","Absorbed":"0x0","Countdown":"0x0","Debug":"0x0","Disable":"0x0","Dodge":"0x0","EnemyMagicalDamage":"0x0","EnemyMagicalDamageCritical":"0x0","EnemyPhysicalDamage":"0x0","EnemyPhysicalDamageCritical":"0x0","EnemyTrueDamage":"0x0","EnemyTrueDamageCritical":"0x0","Experience":"0x0","Gold":"0x0","Heal":"0x0","Invulnerable":"0x0","Level":"0x0","MagicalDamage":"0x0","MagicalDamageCritical":"0x0","MagicalDamageEnhanced":"0x0","ManaDamage":"0x0","ManaHeal":"0x0","Omw":"0x0","PhysicalDamage":"0x0","PhysicalDamageCritical":"0x0","PhysicalDamageEnhanced":"0x0","PracticeToolDps":"0x0","PracticeToolLastHit":"0x0","PracticeToolTotal":"0x0","QuestComplete":"0x0","QuestReceived":"0x0","Score":"0x0","ScoreDarkStar":"0x0","ScoreProject0":"0x0","ScoreProject1":"0x0","ShieldBonusDamage":"0x0","Special":"0x0","TftUnitLabel":"0x0","TrueDamage":"0x0","TrueDamageCritical":"0x0","TrueDamageEnhanced":"0x0"}
+    mFloatingTextTypes: (Embed, 0x0, 0x0, FloatingTextTypeList) = {"0x32383120":"0x0","0x3388fb50":"0x0","0x81f43042":"0x0","0x8457d57":"0x0","0x9591979a":"0x0","0xa82223b3":"0x0","0xa9222546":"0x0","0xcf504aff":"0x0","0xee6adc8c":"0x0","0xf816d439":"0x0","Absorbed":"0x0","Armor":"0x0","Countdown":"0x0","Debug":"0x0","Disable":"0x0","Dodge":"0x0","EnemyMagicalDamage":"0x0","EnemyMagicalDamageCritical":"0x0","EnemyPhysicalDamage":"0x0","EnemyPhysicalDamageCritical":"0x0","EnemyTrueDamage":"0x0","EnemyTrueDamageCritical":"0x0","Experience":"0x0","Gold":"0x0","Heal":"0x0","Invulnerable":"0x0","Level":"0x0","MagicResist":"0x0","MagicalDamage":"0x0","MagicalDamageCritical":"0x0","MagicalDamageEnhanced":"0x0","ManaDamage":"0x0","ManaHeal":"0x0","Omw":"0x0","PhysicalDamage":"0x0","PhysicalDamageCritical":"0x0","PhysicalDamageEnhanced":"0x0","PracticeToolDps":"0x0","PracticeToolLastHit":"0x0","PracticeToolTotal":"0x0","QuestComplete":"0x0","QuestReceived":"0x0","Score":"0x0","ScoreDarkStar":"0x0","ScoreProject0":"0x0","ScoreProject1":"0x0","ShieldBonusDamage":"0x0","Special":"0x0","TftUnitLabel":"0x0","TrueDamage":"0x0","TrueDamageCritical":"0x0","TrueDamageEnhanced":"0x0"}
     pass
 
 class FloatingTextOverride():
@@ -19597,6 +20085,7 @@ class FloatingTextTypeList():
     0xa82223b3: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     0xa9222546: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     QuestReceived: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
+    MagicResist: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     Omw: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     Countdown: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     QuestComplete: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
@@ -19615,6 +20104,7 @@ class FloatingTextTypeList():
     0xee6adc8c: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     PhysicalDamage: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     0xf816d439: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
+    Armor: (Link, 0x0, 0x0, FloatTextFormattingData) = "0x0"
     pass
 
 class FloorFloatMaterialDriver(ILogicFloatDriver):
@@ -20016,7 +20506,7 @@ class GdsMapObjectExtraInfo():
 
 class GearData():
     mCharacterSubmeshesToShow: (List, 0x0, Hash, 0x0) = []
-    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
+    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"0x8881ee77":null,"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
     mVfxResourceResolver: (Pointer, 0x0, 0x0, ResourceResolver) = null
     mSelfOnlyPortraitIcon: (String, 0x0, 0x0, 0x0) = ""
     EnableOverrideIdleEffects: (Bool, 0x0, 0x0, 0x0) = false
@@ -20137,6 +20627,7 @@ class GlobalStatsUiData():
     FormulaPartRangeStyleBonusPercent: (String, 0x0, 0x0, 0x0) = ""
     mNumberStylePercent: (String, 0x0, 0x0, 0x0) = ""
     CharLevelIconKey: (String, 0x0, 0x0, 0x0) = ""
+    0x745e38b2: (String, 0x0, 0x0, 0x0) = ""
     mNumberStyleBonusPercent: (String, 0x0, 0x0, 0x0) = ""
     StaticTooltipCalculationExpansion: (U8, 0x0, 0x0, 0x0) = 2
     FormulaPartStyleBonus: (String, 0x0, 0x0, 0x0) = ""
@@ -20859,6 +21350,7 @@ class HudItemShopRecItemCardDefinition(HudItemShopItemIconDefinition):
     AdviceCharBorderHover1: (Hash, 0x0, 0x0, 0x0) = "0x0"
     AdviceCharBorderHover0: (Hash, 0x0, 0x0, 0x0) = "0x0"
     CardSelectedNonMythic: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x49d0b3d8: (Hash, 0x0, 0x0, 0x0) = "0x0"
     CardHoverNonMythic: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x579a2d5a: (Hash, 0x0, 0x0, 0x0) = "0x0"
     BriefText: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -21936,6 +22428,7 @@ class ItemModifier():
 class ItemRecOverrideRange():
     Items: (List, 0x0, Hash, 0x0) = []
     MaxCompletedItems: (U32, 0x0, 0x0, 0x0) = 6
+    0xf71960ab: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class ItemRecommendationChoices():
@@ -21982,6 +22475,7 @@ class ItemRecommendationMatrixRow():
 class ItemRecommendationOverride():
     mStartingItemSets: (List, 0x0, Embed, ItemRecommendationOverrideStartingItemSet) = []
     mCoreItems: (List, 0x0, Hash, 0x0) = []
+    0x5c16cd52: (Bool, 0x0, 0x0, 0x0) = false
     mRecItemRanges: (List, 0x0, Embed, ItemRecOverrideRange) = []
     mRecommendedItems: (List, 0x0, Embed, ItemRecommendationCondition) = []
     mForceOverride: (Bool, 0x0, 0x0, 0x0) = false
@@ -22038,6 +22532,7 @@ class ItemShopGameModeData():
     RecOverrideSmiteStartingItems: (List, 0x0, Hash, 0x0) = []
     CompletedItems: (List2, 0x0, Hash, 0x0) = []
     AllItemGroupDefinitionsOverride: (Pointer, 0x0, 0x0, 0xac27b13a) = null
+    0xec650074: (List2, 0x0, Embed, 0x7e771bf4) = []
     pass
 
 class ItemShopViewController(ViewController):
@@ -22405,7 +22900,7 @@ class ListenerConstraintInfo():
     pass
 
 class LiveFeatureToggles():
-    mLolToggles: (Embed, 0x0, 0x0, LolFeatureToggles) = {"0x1243f0b":false,"0x17fb5d01":false,"0x1947bf4":false,"0x1ac248aa":true,"0x1db16466":false,"0x1f7a2991":false,"0x2094dd6e":false,"0x2cb137a3":false,"0x2da5d839":false,"0x30ba7188":false,"0x3eebe0a":true,"0x46a63d99":false,"0x488bc114":false,"0x4ed93bd7":false,"0x51601c15":false,"0x5524ca3c":false,"0x5a0599c9":false,"0x5adee452":false,"0x5b41032a":false,"0x5e414ebb":false,"0x5e7dec3f":false,"0x60db17b3":false,"0x625c69b3":false,"0x62aaa28f":true,"0x67b280d":false,"0x724bed8c":false,"0x751afdde":true,"0x791348b4":true,"0x79300d79":false,"0x7aacbbbc":false,"0x86df15e6":true,"0x898c0b97":false,"0x8ce38003":true,"0x8d1b31e9":false,"0x90ede9a7":false,"0x96eee674":false,"0x9a0588ef":true,"0xa882cddf":false,"0xaa0fcb5":false,"0xab3d1e78":true,"0xaef3b874":true,"0xb059e275":false,"0xbc0ba76a":true,"0xbe70d686":true,"0xc1a41d10":false,"0xc34957b2":false,"0xda2f1faf":false,"0xda5b6e04":false,"0xe2213221":true,"0xe314b705":true,"0xe7bdcea6":true,"0xeb6a5659":false,"0xed1d15f0":true,"0xf306863":false,"0xf5d6cca4":false,"0xfb9572d0":false,"AllChatRemoved":false,"AutoItemPurchasingUsesNewRecData":false,"BbNewBlockOnly":true,"CloseOnEndGameAfterDelay":false,"EnableUnitOrderHandler":false,"FixAccidentalAttackWhileSnared":true,"FixAttackMoveWhileSnared":true,"GetAcquisitionRangeUsesAttackRange":false,"ItemUndo":true,"LiveClientDataApi":true,"OmnivampStat":false,"PathControllerMessageSizeLimit":false,"PhysicalVampStat":false,"PromoController":false,"RegularUpdateClock":false,"SpellsCheckTheirAmmoRequirement":true,"TftLittleLegendEvolution":false,"TftMatchupBanner":false,"TftPcItemPanel":false,"TftPcTeamPlanner":false,"TftRegularUpdateClock":false,"TftSocialModeRequestSystem":false,"TftUnrestrictedArenaCamera":false,"TftZoomSkin":false,"UseOverideAttackSpeedForAutoAttackTime":false}
+    mLolToggles: (Embed, 0x0, 0x0, LolFeatureToggles) = {"0x1243f0b":false,"0x17fb5d01":false,"0x1947bf4":false,"0x1ac248aa":true,"0x1db16466":false,"0x2094dd6e":false,"0x2cb137a3":false,"0x2da5d839":false,"0x30ba7188":false,"0x3eebe0a":true,"0x488bc114":false,"0x4ed93bd7":false,"0x51601c15":false,"0x54bd35c6":true,"0x5524ca3c":false,"0x5a0599c9":false,"0x5adee452":false,"0x5b41032a":false,"0x5e414ebb":false,"0x5e7dec3f":false,"0x60db17b3":false,"0x625c69b3":false,"0x62aaa28f":true,"0x67b280d":false,"0x724bed8c":false,"0x751afdde":true,"0x791348b4":true,"0x79300d79":false,"0x7aacbbbc":false,"0x80e296cb":false,"0x86df15e6":true,"0x898c0b97":false,"0x8ce38003":true,"0x8d1b31e9":false,"0x90ede9a7":false,"0x96eee674":false,"0x9a0588ef":true,"0xa882cddf":false,"0xaa0fcb5":false,"0xab3d1e78":true,"0xaef3b874":true,"0xb059e275":false,"0xbc0ba76a":true,"0xbe70d686":true,"0xc1a41d10":false,"0xc34957b2":false,"0xda2f1faf":false,"0xda5b6e04":false,"0xe2213221":true,"0xe314b705":true,"0xe3e24362":true,"0xe7bdcea6":true,"0xeb6a5659":false,"0xed1d15f0":true,"0xf306863":false,"0xf5d6cca4":false,"0xfb9572d0":false,"AllChatRemoved":false,"AutoItemPurchasingUsesNewRecData":false,"BbNewBlockOnly":true,"CloseOnEndGameAfterDelay":false,"EnableUnitOrderHandler":false,"FixAccidentalAttackWhileSnared":true,"FixAttackMoveWhileSnared":true,"GetAcquisitionRangeUsesAttackRange":false,"ItemUndo":true,"LiveClientDataApi":true,"OmnivampStat":false,"PathControllerMessageSizeLimit":false,"PhysicalVampStat":false,"PromoController":false,"RegularUpdateClock":false,"SpellsCheckTheirAmmoRequirement":true,"TftLittleLegendEvolution":false,"TftMatchupBanner":false,"TftPcItemPanel":false,"TftPcTeamPlanner":false,"TftRegularUpdateClock":false,"TftSocialModeRequestSystem":false,"TftUnrestrictedArenaCamera":false,"TftZoomSkin":false,"UseOverideAttackSpeedForAutoAttackTime":false}
     mGameplayToggles: (Embed, 0x0, 0x0, GameplayFeatureToggles) = {"DisableSpellLevelMinimumProtections":false,"FowCastRayAccurate":false}
     pass
 
@@ -23115,6 +23610,7 @@ class LolFeatureToggles():
     0x50cada4c: (Bool, 0x0, 0x0, 0x0) = true
     0x51601c15: (Bool, 0x0, 0x0, 0x0) = false
     0x53dc659d: (Bool, 0x0, 0x0, 0x0) = false
+    0x54bd35c6: (Bool, 0x0, 0x0, 0x0) = true
     0x5524ca3c: (Bool, 0x0, 0x0, 0x0) = false
     0x57a5db59: (Bool, 0x0, 0x0, 0x0) = true
     0x57d3f2c8: (Bool, 0x0, 0x0, 0x0) = false
@@ -23163,6 +23659,7 @@ class LolFeatureToggles():
     0x7c3a50: (Bool, 0x0, 0x0, 0x0) = false
     0x7de343b9: (Bool, 0x0, 0x0, 0x0) = false
     RegularUpdateClock: (Bool, 0x0, 0x0, 0x0) = false
+    0x80e296cb: (Bool, 0x0, 0x0, 0x0) = false
     0x82cdcf2e: (Bool, 0x0, 0x0, 0x0) = false
     GetAcquisitionRangeUsesAttackRange: (Bool, 0x0, 0x0, 0x0) = false
     0x8684c5b7: (Bool, 0x0, 0x0, 0x0) = true
@@ -23254,6 +23751,7 @@ class LolFeatureToggles():
     TftUnrestrictedArenaCamera: (Bool, 0x0, 0x0, 0x0) = false
     0xe2213221: (Bool, 0x0, 0x0, 0x0) = true
     0xe314b705: (Bool, 0x0, 0x0, 0x0) = true
+    0xe3e24362: (Bool, 0x0, 0x0, 0x0) = true
     0xe759b66e: (Bool, 0x0, 0x0, 0x0) = true
     0xe7bdcea6: (Bool, 0x0, 0x0, 0x0) = true
     0xeb6a5659: (Bool, 0x0, 0x0, 0x0) = false
@@ -23281,7 +23779,7 @@ class LolGameEntity(GameEntity, 0xd738f7c9):
     0xbbe68da1: (Bool, 0x0, 0x0, 0x0)
     pass
 
-class LolGameStateViewController(GameStateViewController):
+class LolGameStateViewController(GameStateViewController, 0xfed5253f):
     DrawAreaList: (Embed, 0x0, 0x0, DrawAreaList) = {"DrawRegions":[]}
     pass
 
@@ -23677,6 +24175,7 @@ class MapAnimatedProp(GenericMapPlaceable):
     VisibilityController: (Link, 0x0, 0x0, IMapVisibilityController) = "0x0"
     PropName: (String, 0x0, 0x0, 0x0) = ""
     EyeCandy: (Bool, 0x0, 0x0, 0x0) = false
+    0x670b6ae3: (U8, 0x0, 0x0, 0x0) = 0
     IdleAnimationName: (String, 0x0, 0x0, 0x0) = ""
     SkinId: (U32, 0x0, 0x0, 0x0) = 0
     PlayIdleAnimation: (Bool, 0x0, 0x0, 0x0) = false
@@ -27617,7 +28116,7 @@ class SkinCharacterDataProperties():
     AlternateIconsCircle: (List, 0x0, String, 0x0) = []
     HudUnmuteEvent: (String, 0x0, 0x0, 0x0) = ""
     SkinAnimationProperties: (Embed, 0x0, 0x0, SkinAnimationProperties) = {"AnimationGraphData":"0x0"}
-    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
+    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"0x8881ee77":null,"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
     0x46558f0e: (U32, 0x0, 0x0, 0x0) = 0
     0x46558f0e: (U8, 0x0, 0x0, 0x0) = 0
     OverrideOnScreenName: (String, 0x0, 0x0, 0x0) = ""
@@ -27634,6 +28133,8 @@ class SkinCharacterDataProperties():
     SkinUpgradeData: (Embed, 0x0, 0x0, SkinUpgradeData) = {"SkinAugmentCategories":{"BasicAugments":[],"BorderAugments":[]},"mGearSkinUpgrades":[]}
     VoiceOverOverride: (String, 0x0, 0x0, 0x0) = ""
     0x7b6954ef: (Link, 0x0, 0x0, Sequence) = "0x0"
+    0x7d564f9a: (Map, String, Embed, 0x7d564f9a) = {}
+    0x81169a8b: (Embed, 0x0, 0x0, 0x81169a8b) = {"0x2d790b62":2,"0x41796e8e":"0x0","0x575e63f2":"0x0","0x73548d8b":"0x0","0x7b6954ef":"0x0"}
     mAdditionalResourceResolvers: (List, 0x0, Link, ResourceResolver) = []
     IdleParticlesEffects: (List, 0x0, Embed, SkinCharacterDataProperties_CharacterIdleEffect) = []
     SkinClassification: (U32, 0x0, 0x0, 0x0) = 0
@@ -27717,6 +28218,7 @@ class SkinMeshDataProperties():
     BoundingCylinderHeight: (F32, 0x0, 0x0, 0x0) = 150.0
     MaterialController: (Pointer, 0x0, 0x0, SkinnedMeshDataMaterialController) = null
     InitialSubmeshToHide: (String, 0x0, 0x0, 0x0) = ""
+    0x8881ee77: (Pointer, 0x0, 0x0, 0x80f31f46) = null
     Fresnel: (F32, 0x0, 0x0, 0x0) = 0.0
     BoundingSphereRadius: (Option, 0x0, F32, 0x0) = null
     EmissiveTexture: (String, 0x0, 0x0, 0x0) = ""
@@ -27740,6 +28242,7 @@ class SkinMeshDataProperties():
 class SkinMeshDataProperties_MaterialOverride():
     RoughnessMetallicAoTexture: (String, 0x0, 0x0, 0x0) = ""
     Texture: (String, 0x0, 0x0, 0x0) = ""
+    0x8881ee77: (Pointer, 0x0, 0x0, 0x80f31f46) = null
     Submesh: (String, 0x0, 0x0, 0x0) = ""
     Material: (Link, 0x0, 0x0, IMaterialDef) = "0x0"
     GlossTexture: (String, 0x0, 0x0, 0x0) = ""
@@ -28212,6 +28715,7 @@ class SpellSlotDetailedUiDefinition(SpellSlotPassiveUiDefinition):
     Hotkey: (Hash, 0x0, 0x0, 0x0) = "0x0"
     HotKeyBg: (Hash, 0x0, 0x0, 0x0) = "0x0"
     ToggleFx: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x5b4a2352: (Hash, 0x0, 0x0, 0x0) = "0x0"
     ResetFlashFxAttention: (Hash, 0x0, 0x0, 0x0) = "0x0"
     OverlayOom: (Hash, 0x0, 0x0, 0x0) = "0x0"
     OverlayCced: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -28971,7 +29475,10 @@ class SurrenderTypeData():
 class SurrenderViewController(VotePanelViewController):
     EarlyText: (Hash, 0x0, 0x0, 0x0) = "0x0"
     RemakeText: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0x804f19ee: (Hash, 0x0, 0x0, 0x0) = "0x0"
     DefaultText: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xcb6f219c: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    0xdfadfc6b: (Hash, 0x0, 0x0, 0x0) = "0x0"
     pass
 
 class SwapChampionCheat(Cheat):
@@ -29511,6 +30018,7 @@ class TftArmorySlotData():
 class TftArmoryViewController(ViewController):
     HoverTooltipOffsetAboveTitle: (U32, 0x0, 0x0, 0x0) = 16
     TimerText: (Hash, 0x0, 0x0, 0x0) = "0x0"
+    StreakUi: (Pointer, 0x0, 0x0, TftHudStreakUi) = null
     TimerFillTexture: (Hash, 0x0, 0x0, 0x0) = "0x0"
     0x284d353b: (Hash, 0x0, 0x0, 0x0) = "0x0"
     ArmoryStyle: (U8, 0x0, 0x0, 0x0) = 0
@@ -33029,7 +33537,7 @@ class TriggerOnStart(MissileTriggerSpec):
 
 class TrophyData(BaseLoadoutData):
     mPerceptionBubbleRadius: (F32, 0x0, 0x0, 0x0) = 250.0
-    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
+    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"0x8881ee77":null,"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
     mBracketTraKey: (String, 0x0, 0x0, 0x0) = ""
     mVfxResourceResolver: (Pointer, 0x0, 0x0, ResourceResolver) = null
     AnimationGraphData: (Link, 0x0, 0x0, AnimationGraphData) = "0x0"
@@ -33037,7 +33545,7 @@ class TrophyData(BaseLoadoutData):
 
 class TrophyPedestalData(BaseLoadoutData):
     mTierTraKey: (String, 0x0, 0x0, 0x0) = ""
-    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
+    SkinMeshProperties: (Embed, 0x0, 0x0, SkinMeshDataProperties) = {"0x8881ee77":null,"BoundingCylinderHeight":150.0,"BoundingCylinderRadius":50.0,"BoundingSphereRadius":null,"BrushAlphaOverride":0.25,"CastShadows":true,"EmissiveTexture":"","EmitterSubmeshAvatarToHide":"","EnablePicking":true,"ForceDrawLast":false,"Fresnel":0.0,"FresnelColor":[0,0,0,255],"GlossTexture":"","InitialSubmeshAvatarToHide":"","InitialSubmeshMouseOversToHide":"","InitialSubmeshShadowsToHide":"","InitialSubmeshToHide":"","Material":"0x0","MaterialController":null,"MaterialOverride":[],"NormalMapTexture":"","OverrideBoundingBox":null,"ReducedBoneSkinning":false,"ReflectionFresnel":1.0,"ReflectionFresnelColor":[255,255,255,255],"ReflectionMap":"","ReflectionOpacityDirect":0.0,"ReflectionOpacityGlancing":1.0,"RigPoseModifierData":[],"RoughnessMetallicAoTexture":"","SelfIllumination":0.0,"SimpleSkin":"","Skeleton":"","SkinScale":1.0,"SubmeshRenderOrder":"","Texture":"","UsesSkinVo":false}
     mJointName: (String, 0x0, 0x0, 0x0) = ""
     AnimationGraphData: (Link, 0x0, 0x0, AnimationGraphData) = "0x0"
     pass
@@ -33524,6 +34032,7 @@ class UiItemSelectionSlotData():
 class UiLevelUp():
     ButtonsScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
     ButtonEasingData: (Embed, 0x0, 0x0, UiLevelUpButtonEasingData) = {"AnimTimeSecs":0.27000001072883606,"DelaySecs":0.10000000149011612,"IdleSheenIntervalSecs":5.0,"Inertia":0.5,"MaxAlpha":255,"MaxOffset":0.05000000074505806,"MinAlpha":0,"Overshoot":1.0}
+    LevelUpLinks: (List2, 0x0, Hash, 0x0) = []
     Spells: (List, 0x4, Pointer, SpellLevelUpUiData) = [null,null,null,null]
     FxInScene: (Hash, 0x0, 0x0, 0x0) = "0x0"
     Title: (Hash, 0x0, 0x0, 0x0) = "0x0"
@@ -33826,11 +34335,15 @@ class UiPositionPolygon(UiPositionRect):
 class UiPositionRect(UiPositionBase):
     Anchors: (Pointer, 0x0, 0x0, AnchorBase) = {}
     UiRect: (Embed, 0x0, 0x0, UiElementRect) = {"Position":[0.0,0.0],"Size":[0.0,0.0],"SourceResolutionHeight":0,"SourceResolutionWidth":0}
+    0x3b6daffe: (U8, 0x0, 0x0, 0x0) = 0
     IgnoreGlobalScale: (Bool, 0x0, 0x0, 0x0) = false
+    MaxSize: (Vec2, 0x0, 0x0, 0x0) = [1000000.0,1000000.0]
+    0x92944b54: (U8, 0x0, 0x0, 0x0) = 0
     0x981fbd00: (Bool, 0x0, 0x0, 0x0) = false
     DisablePixelSnappingY: (Bool, 0x0, 0x0, 0x0) = false
     DisablePixelSnappingX: (Bool, 0x0, 0x0, 0x0) = false
     DisableResolutionDownscale: (Bool, 0x0, 0x0, 0x0) = false
+    0xeaebcf6e: (Vec2, 0x0, 0x0, 0x0) = [0.0,0.0]
     pass
 
 class UiPropertyLoadable(PropertyLoadable):
