@@ -4527,6 +4527,8 @@ class 0x5014eb79(LoLCursorContextAwareKeybind):
 class 0x5024ba80():
     0x55bac004: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
     0x66291610: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
+    mLocalSpaceTargetOffset: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
+    mLocalSpaceSourceOffset: (Vec3, 0x0, 0x0, 0x0) = [0.0,0.0,0.0]
     pass
 
 class 0x502b0c72():
@@ -11357,7 +11359,7 @@ class 0xb84d0322():
     pass
 
 class 0xb86f4f7f(0xadec1272, VfxPrimitiveBase):
-    0x9dac718c: (Embed, 0x0, 0x0, 0x2335a083) = {"0x2190d6c4":0,"0x55bac004":[0.0,0.0,0.0],"0x66291610":[0.0,0.0,0.0],"0xd7aefac9":{"ConstantValue":100.0,"Dynamics":null}}
+    0x9dac718c: (Embed, 0x0, 0x0, 0x2335a083) = {"0x2190d6c4":0,"0xd7aefac9":{"ConstantValue":100.0,"Dynamics":null},"mLocalSpaceSourceOffset":[0.0,0.0,0.0],"mLocalSpaceTargetOffset":[0.0,0.0,0.0]}
     pass
 
 class 0xb8a49c96():
@@ -13555,7 +13557,7 @@ class 0xdba067bf(0x41bb3fd7):
 
 class 0xdba754d5(0xadec1272):
     0xa100bebc: (Embed, 0x0, 0x0, VfxMeshDefinitionData) = {"mAnimationName":"","mAnimationVariants":[],"mLockMeshToAttachment":false,"mMeshName":"","mMeshSkeletonName":"","mSimpleMeshName":"","mSubmeshesToDraw":[],"mSubmeshesToDrawAlways":[]}
-    0xa75279fa: (Embed, 0x0, 0x0, 0x7f3cb96d) = {"0x55bac004":[0.0,0.0,0.0],"0x66291610":[0.0,0.0,0.0]}
+    0xa75279fa: (Embed, 0x0, 0x0, 0x7f3cb96d) = {"mLocalSpaceSourceOffset":[0.0,0.0,0.0],"mLocalSpaceTargetOffset":[0.0,0.0,0.0]}
     pass
 
 class 0xdbb4f634(0x709be6c3):
@@ -35301,7 +35303,7 @@ class VfxPrimitiveBase():
     pass
 
 class VfxPrimitiveBeam(0x60c24094, 0x67ee2ddb, VfxPrimitiveBase):
-    mBeam: (Embed, 0x0, 0x0, VfxBeamDefinitionData) = {"0x55bac004":[0.0,0.0,0.0],"0x66291610":[0.0,0.0,0.0],"mAnimatedColorWithDistance":{"ConstantValue":[1.0,1.0,1.0,1.0],"Dynamics":null},"mBirthTilingSize":{"ConstantValue":[0.0,0.0,0.0],"Dynamics":null},"mIsColorBindedWithDistance":false,"mMode":0,"mSegments":0,"mTrailMode":0}
+    mBeam: (Embed, 0x0, 0x0, VfxBeamDefinitionData) = {"mAnimatedColorWithDistance":{"ConstantValue":[1.0,1.0,1.0,1.0],"Dynamics":null},"mBirthTilingSize":{"ConstantValue":[0.0,0.0,0.0],"Dynamics":null},"mIsColorBindedWithDistance":false,"mLocalSpaceSourceOffset":[0.0,0.0,0.0],"mLocalSpaceTargetOffset":[0.0,0.0,0.0],"mMode":0,"mSegments":0,"mTrailMode":0}
     mMesh: (Embed, 0x0, 0x0, VfxMeshDefinitionData) = {"mAnimationName":"","mAnimationVariants":[],"mLockMeshToAttachment":false,"mMeshName":"","mMeshSkeletonName":"","mSimpleMeshName":"","mSubmeshesToDraw":[],"mSubmeshesToDrawAlways":[]}
     pass
 
