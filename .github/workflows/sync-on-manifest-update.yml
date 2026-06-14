@@ -192,15 +192,6 @@ jobs:
 
         git commit -m "$COMMIT_MSG"
         git push
-
-    - name: Upload temp binaries
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: temp-binaries-${{ github.run_id }}
-        path: |
-          temp/16.12.7869679
-        retention-days: 7
         
     - name: Upload artifacts
       if: always()
